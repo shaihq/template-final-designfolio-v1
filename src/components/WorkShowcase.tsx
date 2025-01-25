@@ -101,7 +101,7 @@ export const WorkShowcase = () => {
               <h3 className="text-2xl font-semibold mb-3 leading-tight">
                 {project.title}
               </h3>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-[#7E69AB] mb-6">
                 {project.description}
               </p>
               <a
