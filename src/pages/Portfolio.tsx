@@ -120,18 +120,15 @@ const Portfolio = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="group bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden"
+                className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-star-shimmer pointer-events-none" />
-                <div className="relative z-10">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <span className="text-white font-medium">{exp.role}</span>
-                      <p className="text-sm text-gray-400">{exp.company}</p>
-                      <p className="text-gray-400 mt-2">{exp.description}</p>
-                    </div>
-                    <span className="text-sm text-gray-400">{exp.period}</span>
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="text-white font-medium">{exp.role}</span>
+                    <p className="text-sm text-gray-400">{exp.company}</p>
+                    <p className="text-gray-400 mt-2">{exp.description}</p>
                   </div>
+                  <span className="text-sm text-gray-400">{exp.period}</span>
                 </div>
               </motion.div>
             ))}
