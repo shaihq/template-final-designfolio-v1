@@ -50,7 +50,7 @@ const Portfolio = () => {
         className="fixed z-50 w-[150px] h-[150px] rounded-full bg-tertiary/20 blur-[100px] pointer-events-none"
         animate={{
           x: mousePosition.x - 75,
-          y: mousePosition.y - 75,
+          y: 50, // Fixed vertical position at the top
         }}
         transition={{
           type: "spring",
