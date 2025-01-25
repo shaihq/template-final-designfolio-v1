@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+import { Github, Figma, Laptop, Browser, FileCode, Pencil } from "lucide-react";
 
 export const ToolStack = () => {
   const tools = [
-    { name: "Mockup (iPad)", icon: "📱" },
-    { name: "Arc Browser", icon: "🌐" },
-    { name: "Notion", icon: "📝" },
-    { name: "Framer", icon: "🎨" },
-    { name: "Figma", icon: "✏️" },
-    { name: "Midbin", icon: "🤖" },
+    { name: "Github", icon: Github, link: "#" },
+    { name: "Figma", icon: Figma, link: "#" },
+    { name: "Mockup", icon: Laptop, link: "#" },
+    { name: "Arc Browser", icon: Browser, link: "#" },
+    { name: "Code Editor", icon: FileCode, link: "#" },
+    { name: "Design", icon: Pencil, link: "#" },
   ];
 
   const container = {
@@ -19,7 +20,7 @@ export const ToolStack = () => {
       transition: {
         duration: 0.3,
         ease: "easeOut",
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
@@ -47,17 +48,23 @@ export const ToolStack = () => {
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="grid grid-cols-2 gap-4"
+        className="flex justify-center gap-4"
       >
-        {tools.map((tool, index) => (
-          <motion.div
+        {tools.map((Tool, index) => (
+          <motion.a
             key={index}
+            href={Tool.link}
             variants={item}
-            className="bg-card p-4 rounded-lg flex items-center gap-3 hover:bg-card/80 transition-colors"
+            whileHover={{ scale: 1.2, y: -8 }}
+            className="relative group"
           >
-            <span className="text-2xl">{tool.icon}</span>
-            <span>{tool.name}</span>
-          </motion.div>
+            <div className="bg-card p-4 rounded-2xl flex items-center justify-center transition-colors hover:bg-card/80">
+              <Tool.icon className="size-8" />
+            </div>
+            <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-sm whitespace-nowrap">
+              {Tool.name}
+            </div>
+          </motion.a>
         ))}
       </motion.div>
     </section>
