@@ -201,7 +201,7 @@ const Portfolio = () => {
         >
           <h3 className="text-2xl font-bold mb-8 text-center">What People Say</h3>
           
-          <div className="relative h-[300px] w-full max-w-2xl mx-auto">
+          <div className="relative w-full max-w-2xl mx-auto">
             <AnimatePresence mode="wait">
               {testimonials.map((testimonial, index) => {
                 const isActive = index === currentIndex;
