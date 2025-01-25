@@ -24,14 +24,14 @@ export const Hero = () => {
     const scrollContent = scrollContainer.firstElementChild;
     if (!scrollContent) return;
 
-    // Clone the content for seamless scrolling
-    scrollContainer.appendChild(scrollContent.cloneNode(true));
-
     const scroll = () => {
-      if (scrollContainer.scrollLeft >= scrollContent.scrollWidth) {
+      if (!scrollContainer) return;
+      
+      scrollContainer.scrollLeft += 1;
+      
+      // Reset scroll position when reaching the end
+      if (scrollContainer.scrollLeft >= (scrollContent.scrollWidth - scrollContainer.offsetWidth) / 2) {
         scrollContainer.scrollLeft = 0;
-      } else {
-        scrollContainer.scrollLeft += 1;
       }
     };
 
@@ -56,23 +56,23 @@ export const Hero = () => {
         into a refined design.
       </p>
       
-      {/* Scrolling Skills */}
-      <div className="w-full max-w-4xl overflow-hidden mt-8" ref={scrollRef}>
-        <div className="flex gap-8 whitespace-nowrap">
-          {skills.map((skill, index) => (
-            <span
-              key={index}
-              className="text-primary px-4 py-2 rounded-full border border-primary/20"
-            >
-              {skill}
-            </span>
-          ))}
+      {/* Scrolling Skills with gradient overlay */}
+      <div className="relative w-full max-w-4xl">
+        <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10" />
+        <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10" />
+        <div className="w-full overflow-hidden" ref={scrollRef}>
+          <div className="flex gap-8 whitespace-nowrap">
+            {skills.map((skill, index) => (
+              <span
+                key={index}
+                className="text-primary px-4 py-2 rounded-full border border-primary/20"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
         </div>
       </div>
-
-      <button className="bg-primary px-6 py-2 rounded-full hover:opacity-90 transition-opacity mt-12">
-        Contact
-      </button>
     </section>
   );
 };
