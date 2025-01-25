@@ -29,9 +29,12 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative">
+      {/* Glow Effect */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150px] h-[150px] rounded-full bg-tertiary/10 blur-[100px] pointer-events-none" />
+      
       {/* Header Section */}
-      <header className="border-b border-secondary-border py-6">
+      <header className="border-b border-secondary-border py-6 relative">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
