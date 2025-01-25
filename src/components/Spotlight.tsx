@@ -1,3 +1,7 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 export const Spotlight = () => {
   const experiences = [
     {
@@ -20,13 +24,38 @@ export const Spotlight = () => {
     },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section className="py-16">
       <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
-      <div className="space-y-6">
+      <motion.div
+        ref={ref}
+        variants={container}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="space-y-6"
+      >
         {experiences.map((experience, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={item}
             className="bg-card p-6 rounded-lg hover:bg-card/80 transition-colors"
           >
             <div className="flex flex-col gap-1">
@@ -37,9 +66,9 @@ export const Spotlight = () => {
               <div className="text-base text-foreground/80">{experience.company}</div>
               <p className="text-sm text-foreground/60 mt-2">{experience.description}</p>
             </div>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
