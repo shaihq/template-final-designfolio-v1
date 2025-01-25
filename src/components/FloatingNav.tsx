@@ -6,9 +6,9 @@ export const FloatingNav = () => {
 
   const sections = [
     { id: "hero", label: "Home", icon: Home },
-    { id: "spotlight", label: "Featured Projects", icon: Award },
+    { id: "work", label: "Featured Projects", icon: Award },
     { id: "tools", label: "Tools", icon: Wrench },
-    { id: "work", label: "Work Experience", icon: Briefcase },
+    { id: "spotlight", label: "Work Experience", icon: Briefcase },
   ];
 
   // Filter sections for mobile view (excluding tools)
