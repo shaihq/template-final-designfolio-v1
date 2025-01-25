@@ -79,8 +79,8 @@ export const WorkShowcase = () => {
   };
 
   return (
-    <section className="py-12">
-      <h2 className="text-3xl font-bold mb-8">Featured Projects</h2>
+    <section className="py-16">
+      <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
       <motion.div
         ref={ref}
         variants={container}

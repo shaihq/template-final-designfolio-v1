@@ -6,7 +6,7 @@ export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
-    <section className="flex flex-col items-center text-center py-12 animate-fade-in">
+    <section className="flex flex-col items-center text-center py-20 animate-fade-in">
       <Avatar className="w-24 h-24 mb-6 relative rounded-2xl">
         <div className="relative w-full h-full">
           <AnimatePresence mode="wait">

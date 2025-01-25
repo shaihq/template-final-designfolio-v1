@@ -3,7 +3,7 @@ import { Download, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="py-12 border-t border-gray-800">
+    <footer className="py-16 border-t border-gray-800">
       <div className="container max-w-3xl mx-auto px-4">
         <div className="flex flex-col items-center gap-8">
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground max-w-2xl text-center leading-tight">
