@@ -1,23 +1,38 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, Figma, Laptop, Globe, FileCode, Pencil } from "lucide-react";
+import { Figma, Framer, Slack, Miro } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export const ToolStack = () => {
   const isMobile = useIsMobile();
   
   const tools = [
-    { name: "Github", icon: Github, link: "#" },
-    { name: "Figma", icon: Figma, link: "#" },
-    { name: "Mockup", icon: Laptop, link: "#" },
-    { name: "Arc Browser", icon: Globe, link: "#" },
-    { name: "Code Editor", icon: FileCode, link: "#" },
-    { name: "Design", icon: Pencil, link: "#" },
+    { 
+      name: "Figma", 
+      icon: Figma, 
+      description: "Design Tool",
+      link: "#" 
+    },
+    { 
+      name: "Framer", 
+      icon: Framer, 
+      description: "No-code Development",
+      link: "#" 
+    },
+    { 
+      name: "Slack", 
+      icon: Slack, 
+      description: "Communication",
+      link: "#" 
+    },
+    { 
+      name: "Miro", 
+      icon: Miro, 
+      description: "Workshops",
+      link: "#" 
+    },
   ];
-
-  // Duplicate tools multiple times for smoother infinite scroll
-  const scrollTools = [...tools, ...tools, ...tools];
 
   const container = {
     hidden: { opacity: 0 },
@@ -43,72 +58,39 @@ export const ToolStack = () => {
     },
   };
 
-  const scrollAnimation = {
-    x: [0, -1000],
-    transition: {
-      x: {
-        repeat: Infinity,
-        repeatType: "loop",
-        duration: 30,
-        ease: "linear",
-      },
-    },
-  };
-
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 overflow-hidden">
-      <h2 className="text-2xl font-bold mb-8 text-center">Tool Stack</h2>
-      {isMobile ? (
-        <div className="relative w-full">
-          <motion.div 
-            className="flex gap-4 px-4"
-            animate={scrollAnimation}
+    <section className="py-16">
+      <h2 className="text-2xl font-bold mb-8">Stack</h2>
+      <motion.div
+        ref={ref}
+        variants={container}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+      >
+        {tools.map((Tool, index) => (
+          <motion.a
+            key={index}
+            href={Tool.link}
+            variants={item}
+            whileHover={{ scale: 1.05 }}
+            className="group"
           >
-            {scrollTools.map((Tool, index) => (
-              <a
-                key={index}
-                href={Tool.link}
-                className="flex flex-col items-center gap-2 min-w-[100px]"
-              >
-                <div className="bg-card p-4 rounded-2xl flex items-center justify-center transition-colors hover:bg-card/80">
-                  <Tool.icon className="size-8" />
-                </div>
-                <span className="text-sm whitespace-nowrap">
-                  {Tool.name}
-                </span>
-              </a>
-            ))}
-          </motion.div>
-        </div>
-      ) : (
-        <motion.div
-          ref={ref}
-          variants={container}
-          initial="hidden"
-          animate={isInView ? "show" : "hidden"}
-          className="flex justify-center gap-4"
-        >
-          {tools.map((Tool, index) => (
-            <motion.a
-              key={index}
-              href={Tool.link}
-              variants={item}
-              whileHover={{ scale: 1.2, y: -8 }}
-              className="relative group"
-            >
-              <div className="bg-card p-4 rounded-2xl flex items-center justify-center transition-colors hover:bg-card/80">
-                <Tool.icon className="size-8" />
+            <div className="bg-card border border-card-border p-4 rounded-lg flex items-center gap-3 transition-colors hover:bg-card/80">
+              <div className="bg-secondary p-2 rounded-lg">
+                <Tool.icon className="size-6" />
               </div>
-              <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 opacity-0 group-hover:opacity-100 transition-opacity text-sm whitespace-nowrap">
-                {Tool.name}
+              <div>
+                <h3 className="font-medium text-foreground">{Tool.name}</h3>
+                <p className="text-sm text-gray-400">{Tool.description}</p>
               </div>
-            </motion.a>
-          ))}
-        </motion.div>
-      )}
+            </div>
+          </motion.a>
+        ))}
+      </motion.div>
     </section>
   );
 };
