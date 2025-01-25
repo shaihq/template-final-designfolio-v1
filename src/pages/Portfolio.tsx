@@ -1,9 +1,36 @@
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { ToolStack } from "@/components/ToolStack";
+import { useState } from "react";
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Product Manager",
+    company: "TechCorp",
+    content: "Working with Shai was an absolute pleasure. Their attention to detail and innovative approach to design challenges truly set them apart.",
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "CEO",
+    company: "StartupX",
+    content: "Shai's ability to balance user needs with business objectives resulted in a product that exceeded our expectations.",
+  },
+  {
+    id: 3,
+    name: "Emily Rodriguez",
+    role: "Design Director",
+    company: "DesignLab",
+    content: "The design system Shai created has become the foundation of our product's visual language. Exceptional work!",
+  }
+];
 
 const Portfolio = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -26,6 +53,18 @@ const Portfolio = () => {
         ease: "easeOut",
       }
     },
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => 
+      prev + 1 >= testimonials.length ? 0 : prev + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => 
+      prev - 1 < 0 ? testimonials.length - 1 : prev - 1
+    );
   };
 
   return (
@@ -150,6 +189,54 @@ const Portfolio = () => {
             ))}
           </div>
         </motion.section>
+
+        {/* Testimonials Section */}
+        <section className="mb-16 relative">
+          <h3 className="text-2xl font-bold mb-8">What People Say</h3>
+          <div className="relative">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ scale: 0.8, opacity: 0, x: 100 }}
+                animate={{ scale: 1, opacity: 1, x: 0 }}
+                exit={{ scale: 0.8, opacity: 0, x: -100 }}
+                transition={{ duration: 0.5 }}
+                className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
+              >
+                <p className="text-gray-400 mb-4">
+                  {testimonials[currentIndex].content}
+                </p>
+                <div className="flex items-center gap-2">
+                  <div>
+                    <h4 className="font-semibold">{testimonials[currentIndex].name}</h4>
+                    <p className="text-sm text-gray-400">
+                      {testimonials[currentIndex].role} at {testimonials[currentIndex].company}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            <div className="flex justify-end gap-2 mt-4">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrev}
+                className="rounded-full hover:scale-105 transition-transform"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNext}
+                className="rounded-full hover:scale-105 transition-transform"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+        </section>
 
         {/* Tool Stack Section */}
         <ToolStack />
