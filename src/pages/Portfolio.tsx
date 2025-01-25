@@ -252,7 +252,7 @@ const Portfolio = () => {
                       transformStyle: "preserve-3d"
                     }}
                   >
-                    <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg">
+                    <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg mb-12">
                       <p className="text-gray-400">
                         {testimonial.content}
                         {!expandedCards.includes(testimonial.id) && (
@@ -302,7 +302,7 @@ const Portfolio = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-2 mt-8">
+          <div className="flex justify-center gap-2 mt-4">
             <Button
               variant="outline"
               size="icon"
