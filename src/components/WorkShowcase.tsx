@@ -127,7 +127,7 @@ export const WorkShowcase = () => {
 
   return (
     <section className="pt-0 pb-16">
-      <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
+      <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
       <motion.div
         ref={ref}
         variants={container}
