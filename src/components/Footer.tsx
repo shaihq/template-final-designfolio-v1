@@ -55,12 +55,6 @@ export const Footer = () => {
               <span className="sr-only">Github</span>
             </a>
           </div>
-
-          <div className="flex items-center gap-2 text-gray-400 text-sm">
-            <span>Chennai, IN</span>
-            <span className="w-1 h-1 rounded-full bg-gray-400"></span>
-            <span>3:30 AM</span>
-          </div>
         </div>
       </div>
     </footer>
