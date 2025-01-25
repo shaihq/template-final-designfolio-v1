@@ -77,15 +77,15 @@ export const ToolStack = () => {
             href={Tool.link}
             variants={item}
             whileHover={{ scale: 1.05 }}
-            className="group"
+            className="group block"
           >
-            <div className="bg-card border border-card-border p-4 rounded-lg flex items-center gap-3 transition-colors hover:bg-card/80">
-              <div className="bg-secondary p-2 rounded-lg">
-                <Tool.icon className="size-6" />
+            <div className="bg-card border border-card-border p-6 rounded-lg flex items-start gap-4 transition-colors hover:bg-card/80 h-full">
+              <div className="bg-secondary p-3 rounded-lg shrink-0">
+                <Tool.icon className="size-5" />
               </div>
-              <div>
+              <div className="flex flex-col">
                 <h3 className="font-medium text-foreground">{Tool.name}</h3>
-                <p className="text-sm text-gray-400">{Tool.description}</p>
+                <p className="text-sm text-gray-400 mt-1">{Tool.description}</p>
               </div>
             </div>
           </motion.a>
