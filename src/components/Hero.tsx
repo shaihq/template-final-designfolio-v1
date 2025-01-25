@@ -16,6 +16,8 @@ export const Hero = () => {
   ];
 
   const scrollRef = useRef<HTMLDivElement>(null);
+  const animationRef = useRef<number>();
+  const scrollPositionRef = useRef<number>(0);
 
   useEffect(() => {
     const scrollContainer = scrollRef.current;
@@ -24,27 +26,26 @@ export const Hero = () => {
     const scrollContent = scrollContainer.firstElementChild;
     if (!scrollContent) return;
 
-    let scrollPosition = 0;
-    const scrollSpeed = 1;
-
-    const scroll = () => {
+    const animate = () => {
       if (!scrollContainer) return;
       
-      scrollPosition += scrollSpeed;
-      scrollContainer.scrollLeft = scrollPosition;
+      scrollPositionRef.current += 0.5; // Reduced speed for smoother scrolling
+      scrollContainer.scrollLeft = scrollPositionRef.current;
 
-      // When we reach the end of the first set of items
-      if (scrollPosition >= scrollContent.clientWidth / 2) {
-        // Reset to the beginning of the first set
-        scrollPosition = 0;
-        scrollContainer.scrollLeft = scrollPosition;
+      if (scrollPositionRef.current >= scrollContent.clientWidth / 2) {
+        scrollPositionRef.current = 0;
+        scrollContainer.scrollLeft = 0;
       }
+
+      animationRef.current = requestAnimationFrame(animate);
     };
 
-    const scrollInterval = setInterval(scroll, 30);
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      clearInterval(scrollInterval);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, []);
 
