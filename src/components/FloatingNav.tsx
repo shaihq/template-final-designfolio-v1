@@ -77,7 +77,7 @@ export const FloatingNav = () => {
       <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden">
         <div className="bg-card border border-card-border rounded-xl p-2 shadow-lg">
           <div className="flex items-center gap-2">
-            {mobileSections.map(({ id, label, icon: Icon }) => (
+            {mobileSections.map(({ id, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
@@ -92,9 +92,6 @@ export const FloatingNav = () => {
                     }`}
                   />
                 </div>
-                <span className="text-xs mt-1 whitespace-nowrap">
-                  {label}
-                </span>
               </button>
             ))}
           </div>
