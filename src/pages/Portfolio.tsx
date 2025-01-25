@@ -1,37 +1,9 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Testimonials } from "@/components/Testimonials";
 
 const Portfolio = () => {
-  const [stars, setStars] = useState<Array<{ x: number; y: number; opacity: number }>>([]);
-  const [cometPosition, setCometPosition] = useState(-20);
-
-  useEffect(() => {
-    // Generate random stars
-    const generateStars = () => {
-      const newStars = Array.from({ length: 50 }, () => ({
-        x: Math.random() * 100,
-        y: Math.random() * 100,
-        opacity: Math.random() * 0.5 + 0.2,
-      }));
-      setStars(newStars);
-    };
-
-    generateStars();
-
-    // Animate comet
-    const animateComet = () => {
-      setCometPosition((prev) => (prev > 120 ? -20 : prev + 0.2));
-    };
-
-    const cometInterval = setInterval(animateComet, 16);
-
-    return () => {
-      clearInterval(cometInterval);
-    };
-  }, []);
-
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -46,47 +18,20 @@ const Portfolio = () => {
 
   const item = {
     hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
+    show: { 
+      opacity: 1, 
       y: 0,
       transition: {
         duration: 0.4,
         ease: "easeOut",
-      },
+      }
     },
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
-      {/* Space Effect */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Stars */}
-        {stars.map((star, index) => (
-          <div
-            key={index}
-            className="absolute w-1 h-1 bg-white rounded-full"
-            style={{
-              left: `${star.x}%`,
-              top: `${star.y}%`,
-              opacity: star.opacity,
-            }}
-          />
-        ))}
-        {/* Comet */}
-        <div
-          className="absolute w-20 h-1"
-          style={{
-            left: `${cometPosition}%`,
-            top: "15%",
-            background: "linear-gradient(90deg, rgba(51,195,240,0.8) 0%, rgba(51,195,240,0) 100%)",
-            transform: "rotate(-15deg)",
-            boxShadow: "0 0 10px rgba(51,195,240,0.5)",
-          }}
-        />
-      </div>
-
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
-      <header className="border-b border-secondary-border py-6 relative">
+      <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -125,7 +70,12 @@ const Portfolio = () => {
         </section>
 
         {/* Experience Section */}
-        <motion.section variants={container} initial="hidden" animate="show" className="mb-16">
+        <motion.section 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-16"
+        >
           <h3 className="text-2xl font-bold mb-6">Experience</h3>
           <div className="space-y-4">
             {[
@@ -161,7 +111,12 @@ const Portfolio = () => {
         </motion.section>
 
         {/* Projects Section */}
-        <motion.section variants={container} initial="hidden" animate="show" className="mb-16">
+        <motion.section 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-16"
+        >
           <h3 className="text-2xl font-bold mb-6">Projects</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
@@ -198,6 +153,9 @@ const Portfolio = () => {
             ))}
           </div>
         </motion.section>
+
+        {/* Testimonials Section */}
+        <Testimonials />
 
         {/* Footer */}
         <footer className="pt-8 border-t border-secondary-border">
