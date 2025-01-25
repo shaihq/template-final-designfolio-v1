@@ -1,34 +1,9 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
-import { useEffect, useState } from "react";
 
 const Portfolio = () => {
-  const mouseX = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, {
-    damping: 50,
-    stiffness: 400,
-  });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      const heroSection = document.querySelector('.hero-section');
-      if (heroSection) {
-        const rect = heroSection.getBoundingClientRect();
-        // Only update mouseX if mouse is within the hero section's bounds
-        if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
-          // Calculate relative X position within the hero section
-          const relativeX = e.clientX - rect.left;
-          mouseX.set(relativeX);
-        }
-      }
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX]);
-
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -54,7 +29,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
@@ -81,18 +56,8 @@ const Portfolio = () => {
       </header>
 
       <div className="container max-w-3xl mx-auto px-4 py-12">
-        {/* Hero Section with Glow Effect */}
-        <section className="hero-section mb-16 relative overflow-hidden">
-          {/* Glow Effect */}
-          <motion.div
-            className="absolute top-0 left-0 w-1 h-1 pointer-events-none z-50"
-            style={{
-              background: "linear-gradient(180deg, rgba(255,85,62,0.3) 0%, transparent 100%)",
-              boxShadow: "0 0 80px 40px rgba(255,85,62,0.15)",
-              opacity: 0.7,
-              x: smoothMouseX
-            }}
-          />
+        {/* Hero Section */}
+        <section className="mb-16">
           <h1 className="text-4xl font-bold mb-4">
             Product Designer with over 7+ years of experience.{" "}
             <span className="text-gray-400">
@@ -104,6 +69,7 @@ const Portfolio = () => {
           </p>
         </section>
 
+        {/* Experience Section */}
         <motion.section 
           variants={container}
           initial="hidden"
