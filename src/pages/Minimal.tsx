@@ -13,13 +13,13 @@ const Minimal = () => {
         <section id="hero">
           <Hero />
         </section>
-        <section id="work">
+        <section id="featured-projects">
           <WorkShowcase />
         </section>
         <section id="tools">
           <ToolStack />
         </section>
-        <section id="spotlight">
+        <section id="work-experience">
           <Spotlight />
         </section>
         <section id="testimonials">

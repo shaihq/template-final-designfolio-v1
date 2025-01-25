@@ -16,9 +16,12 @@ export const FloatingNav = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sectionElements = sections.map(({ id }) => 
-        document.getElementById(id)
-      );
+      const sectionElements = [
+        document.getElementById("hero"),
+        document.getElementById("featured-projects"),
+        document.getElementById("tools"),
+        document.getElementById("work-experience"),
+      ];
 
       const currentSection = sectionElements.find((element) => {
         if (!element) return false;
@@ -27,7 +30,14 @@ export const FloatingNav = () => {
       });
 
       if (currentSection) {
-        setActiveSection(currentSection.id);
+        // Map section IDs back to nav IDs
+        const sectionToNavMapping: { [key: string]: string } = {
+          "hero": "hero",
+          "featured-projects": "spotlight",
+          "tools": "tools",
+          "work-experience": "work"
+        };
+        setActiveSection(sectionToNavMapping[currentSection.id] || currentSection.id);
       }
     };
 
@@ -38,8 +48,10 @@ export const FloatingNav = () => {
   const scrollToSection = (id: string) => {
     // Map the navigation IDs to their corresponding section IDs
     const sectionMapping: { [key: string]: string } = {
-      spotlight: "featured-projects",
-      work: "work-experience"
+      "hero": "hero",
+      "spotlight": "featured-projects",
+      "tools": "tools",
+      "work": "work-experience"
     };
 
     // Use the mapped ID if it exists, otherwise use the original ID
