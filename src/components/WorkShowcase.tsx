@@ -104,8 +104,14 @@ export const WorkShowcase = () => {
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
           }}
         />
-        <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
+        <div className="aspect-[4/3] overflow-hidden bg-secondary/50 relative">
           <ImageWithPreload src={project.image} alt={project.title} />
+          <a
+            href={project.link}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 size-14 rounded-full bg-tertiary flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 hover:bg-tertiary-hover"
+          >
+            <ArrowUpRight className="size-6 text-white" />
+          </a>
         </div>
         <div className="p-8">
           <h3 className="text-2xl font-semibold mb-3 leading-tight">
@@ -114,12 +120,6 @@ export const WorkShowcase = () => {
           <p className="text-gray-400 mb-6 line-clamp-2">
             {project.description}
           </p>
-          <a
-            href={project.link}
-            className="inline-flex items-center text-lg text-muted-foreground hover:text-primary transition-colors"
-          >
-            View project <ArrowUpRight className="ml-2" />
-          </a>
         </div>
       </motion.div>
     );
