@@ -107,11 +107,13 @@ const Portfolio = () => {
               {
                 role: "Senior Product Designer",
                 company: "Design Studio X",
+                period: "2023 - Present",
                 description: "Leading the design team in creating innovative digital products. Collaborated with cross-functional teams to deliver user-centered solutions."
               },
               {
                 role: "UX Designer",
                 company: "Tech Innovations Inc",
+                period: "2020 - 2022",
                 description: "Spearheaded the redesign of core products resulting in a 30% increase in user satisfaction."
               }
             ].map((exp, index) => (
@@ -126,6 +128,7 @@ const Portfolio = () => {
                     <p className="text-sm text-gray-400">{exp.company}</p>
                     <p className="text-gray-400 mt-2">{exp.description}</p>
                   </div>
+                  <span className="text-sm text-gray-400">{exp.period}</span>
                 </div>
               </motion.div>
             ))}
