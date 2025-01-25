@@ -69,7 +69,7 @@ export const ToolStack = () => {
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+        className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto"
       >
         {tools.map((Tool, index) => (
           <motion.a
@@ -83,9 +83,9 @@ export const ToolStack = () => {
               <div className="bg-secondary p-3 rounded-lg shrink-0">
                 <Tool.icon className="size-5" />
               </div>
-              <div className="flex flex-col">
-                <h3 className="font-medium text-foreground">{Tool.name}</h3>
-                <p className="text-sm text-gray-400 mt-1">{Tool.description}</p>
+              <div className="flex flex-col min-w-0">
+                <h3 className="font-medium text-foreground break-words">{Tool.name}</h3>
+                <p className="text-sm text-gray-400 mt-1 break-words">{Tool.description}</p>
               </div>
             </div>
           </motion.a>
