@@ -5,7 +5,7 @@ export const Hero = () => {
     <section className="flex flex-col items-center text-center py-20 animate-fade-in">
       <Avatar className="w-24 h-24 mb-6">
         <img
-          src="/lovable-uploads/84412779-0539-4904-9377-f71b15d378f7.png"
+          src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
           alt="Profile"
           className="rounded-full"
         />
