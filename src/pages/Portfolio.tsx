@@ -47,19 +47,20 @@ const Portfolio = () => {
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Glow Effect */}
       <motion.div
-        className="fixed top-0 z-50 w-[200px] h-[200px] rounded-full bg-tertiary/10 blur-[120px] pointer-events-none"
+        className="fixed top-0 z-50 w-[300px] h-[300px] rounded-[50%] bg-tertiary/5 blur-[150px] pointer-events-none backdrop-blur-3xl"
         animate={{
-          x: mousePosition.x - 100,
-          y: -50, // Fixed position slightly above the top
+          x: mousePosition.x - 150,
+          y: -100, // Fixed position slightly above the top
         }}
         transition={{
           type: "spring",
-          stiffness: 100,
-          damping: 20,
-          mass: 0.5,
+          stiffness: 50,
+          damping: 30,
+          mass: 1,
+          restDelta: 0.001,
         }}
       />
-      
+
       {/* Header Section */}
       <header className="border-b border-secondary-border py-6 relative">
         <div className="container max-w-3xl mx-auto px-4">
