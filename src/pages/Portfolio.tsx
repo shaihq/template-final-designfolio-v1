@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
-import { ArrowRight, Figma, FileCode, Laptop, Globe, Pencil } from "lucide-react";
+import { Figma, FileCode, Laptop, Globe, Pencil } from "lucide-react";
 import { Footer } from "@/components/Footer";
 
 const Portfolio = () => {
@@ -34,37 +34,31 @@ const Portfolio = () => {
   const tools = [
     {
       name: "Figma",
-      description: "Interface Design Tool",
       icon: Figma,
       link: "#"
     },
     {
       name: "VS Code",
-      description: "Code Editor",
       icon: FileCode,
       link: "#"
     },
     {
       name: "Mockup",
-      description: "Design Tool",
       icon: Laptop,
       link: "#"
     },
     {
       name: "Arc Browser",
-      description: "Web Browser",
       icon: Globe,
       link: "#"
     },
     {
       name: "Design",
-      description: "Design System",
       icon: Pencil,
       link: "#"
     },
     {
       name: "Github",
-      description: "Version Control",
       icon: Github,
       link: "#"
     }
@@ -118,22 +112,18 @@ const Portfolio = () => {
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {tools.map((tool, index) => (
               <motion.a
                 key={index}
                 href={tool.link}
                 variants={item}
-                className="group bg-card border border-card-border p-6 rounded-lg flex items-center gap-4 hover:bg-card/80 transition-colors"
+                className="group bg-card border border-card-border p-6 rounded-lg flex flex-col items-center gap-2 hover:bg-card/80 transition-colors"
               >
                 <div className="p-3 bg-secondary rounded-lg">
                   <tool.icon className="w-6 h-6" />
                 </div>
-                <div>
-                  <h4 className="font-medium">{tool.name}</h4>
-                  <p className="text-sm text-gray-400">{tool.description}</p>
-                </div>
-                <ArrowRight className="w-4 h-4 ml-auto opacity-0 group-hover:opacity-100 transition-opacity" />
+                <span className="text-sm">{tool.name}</span>
               </motion.a>
             ))}
           </div>
