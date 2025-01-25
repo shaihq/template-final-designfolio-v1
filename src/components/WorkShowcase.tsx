@@ -2,6 +2,7 @@ import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
+import { AnimatePresence } from "framer-motion";
 
 export const WorkShowcase = () => {
   const projects = [
@@ -51,10 +52,21 @@ export const WorkShowcase = () => {
 
     return (
       <div className="relative w-full h-full">
+        <AnimatePresence mode="wait">
+          {!isLoaded && (
+            <motion.div
+              key="loading"
+              initial={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.2 }}
+              className="absolute inset-0 bg-secondary/50 animate-pulse"
+            />
+          )}
+        </AnimatePresence>
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.3 }}
+          transition={{ duration: 0.2 }}
           src={src}
           alt={alt}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
@@ -66,9 +78,6 @@ export const WorkShowcase = () => {
             WebkitBackfaceVisibility: "hidden",
           }}
         />
-        {!isLoaded && (
-          <div className="absolute inset-0 bg-secondary/50 animate-pulse" />
-        )}
       </div>
     );
   };
