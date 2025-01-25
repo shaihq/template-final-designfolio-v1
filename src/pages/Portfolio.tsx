@@ -58,8 +58,35 @@ const Portfolio = () => {
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <motion.div 
+            className="flex items-center justify-between"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
+            <motion.div 
+              className="flex items-center gap-3"
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+            >
               <img
                 src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
                 alt="Profile"
@@ -68,12 +95,27 @@ const Portfolio = () => {
               <div>
                 <h2 className="text-foreground font-medium">Shai</h2>
               </div>
-            </div>
-            <Button variant="outline" size="sm" className="gap-2">
-              <Mail className="w-4 h-4" />
-              E-mail
-            </Button>
-          </div>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+            >
+              <Button variant="outline" size="sm" className="gap-2">
+                <Mail className="w-4 h-4" />
+                E-mail
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </header>
       
