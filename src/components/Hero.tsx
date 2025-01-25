@@ -24,21 +24,28 @@ export const Hero = () => {
     const scrollContent = scrollContainer.firstElementChild;
     if (!scrollContent) return;
 
+    let scrollPosition = 0;
+    const scrollSpeed = 1;
+
     const scroll = () => {
       if (!scrollContainer) return;
       
-      scrollContainer.scrollLeft += 1;
-      
-      // Reset scroll position when reaching halfway point
-      // This creates a seamless infinite scroll effect
-      if (scrollContainer.scrollLeft >= scrollContent.clientWidth / 2) {
-        scrollContainer.scrollLeft = 0;
+      scrollPosition += scrollSpeed;
+      scrollContainer.scrollLeft = scrollPosition;
+
+      // When we reach the end of the first set of items
+      if (scrollPosition >= scrollContent.clientWidth / 2) {
+        // Reset to the beginning of the first set
+        scrollPosition = 0;
+        scrollContainer.scrollLeft = scrollPosition;
       }
     };
 
     const scrollInterval = setInterval(scroll, 30);
 
-    return () => clearInterval(scrollInterval);
+    return () => {
+      clearInterval(scrollInterval);
+    };
   }, []);
 
   return (
