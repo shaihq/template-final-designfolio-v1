@@ -2,8 +2,23 @@ import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
+import { useState, useEffect } from "react";
 
 const Portfolio = () => {
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      setMousePosition({
+        x: e.clientX,
+        y: e.clientY,
+      });
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -31,7 +46,19 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Glow Effect */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[150px] h-[150px] rounded-full bg-tertiary/10 blur-[100px] pointer-events-none" />
+      <motion.div
+        className="fixed z-50 w-[150px] h-[150px] rounded-full bg-tertiary/20 blur-[100px] pointer-events-none"
+        animate={{
+          x: mousePosition.x - 75,
+          y: mousePosition.y - 75,
+        }}
+        transition={{
+          type: "spring",
+          stiffness: 150,
+          damping: 15,
+          mass: 0.1,
+        }}
+      />
       
       {/* Header Section */}
       <header className="border-b border-secondary-border py-6 relative">
