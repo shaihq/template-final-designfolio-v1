@@ -3,6 +3,79 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    /* landing page */
+    --landing-bg-color: #fafaf7;
+    --landing-header-bg-color: transparent;
+    --landng-header-border-color: #e8ecf2;
+    --landing-nav-link-color: #475569;
+    --landing-nav-link-hover-color: #35435a;
+    --landing-nav-link-bg-hover-color: #e0e0e0;
+    --landing-nav-link-base-color: #d6dce6;
+    --landing-heading-text-color: #202937;
+    --landing-description-text-color: #475569;
+    --landing-card-bg-color: #f2f2f0;
+    --landing-card-border-color: #eeeeec;
+    --landing-card-step-text-color: #475569;
+    --landing-card-step-bg-color: #ffffff;
+    --landing-card-step-border-color: #e7e7e7;
+    --landing-card-heading-color: #202937;
+    --landing-card-description-color: #475569;
+    --landing-footer-heading-color: #202937;
+    --landing-footer-link-color: #4d545f;
+
+    /* buttons */
+    --primary-btn-bg-color: #202937;
+    --primary-btn-text-color: #ffffff;
+    --primary-btn-bg-hover-color: #35435a;
+    --primary-btn-text-hover-color: #ffffff;
+
+    --secondary-btn-bg-color: #ffffff;
+    --secondary-btn-text-color: #202937;
+    --secondary-btn-bg-hover-color: #f9f9fb;
+    --secondary-btn-text-hover-color: #202937;
+    --secondary-btn-border-color: #e0e6eb;
+    --secondary-btn-border-hover-color: #e0e6eb;
+    --secondary-btn-shadow: inset 0px 0px 0px 2px #e0e6eb;
+
+    /* inputs */
+    --input-border-color: #e5e7eb;
+    --input-bg-color: #fff;
+    --input-text-color: #202937;
+    --input-border-focus-color: #6b7990;
+    --input-border-focus-shadow: 0px 0px 0px 4px rgba(225, 228, 232, 0.5);
+    --input-border-hover-shadow: 0px 0px 0px 4px rgba(225, 228, 232, 0.5);
+    --input-button-color: #475569;
+    --input-placeholder-color: #7a829d;
+  }
+
+  [data-theme="dark"] {
+    --landing-bg-color: #13151a;
+    --landing-heading-text-color: #e9eaeb;
+    --landing-description-text-color: #b4b8c6;
+    --landing-card-bg-color: #1d1f27;
+    --landing-card-heading-color: #e9eaeb;
+    
+    --primary-btn-bg-color: #262832;
+    --primary-btn-text-color: #f9f9fb;
+    --primary-btn-bg-hover-color: #4a4e5d;
+    --primary-btn-text-hover-color: #f9f9fb;
+
+    --secondary-btn-bg-color: #17181d;
+    --secondary-btn-text-color: #f9f9fb;
+    --secondary-btn-bg-hover-color: #22242b;
+    --secondary-btn-text-hover-color: #f9f9fb;
+    --secondary-btn-border-color: #262832;
+    --secondary-btn-border-hover-color: #565b6c;
+    --secondary-btn-shadow: inset 0px 0px 0px 2px #565b6c;
+
+    --input-border-color: #363a48;
+    --input-bg-color: #363a48;
+    --input-text-color: #ffffff;
+    --input-border-focus-color: #b4bace;
+    --input-placeholder-color: #383a47;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

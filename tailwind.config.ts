@@ -19,18 +19,22 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "#0A0A0B",
-        foreground: "#FFFFFF",
+        border: "var(--input-border-color)",
+        input: "var(--input-bg-color)",
+        ring: "var(--input-border-focus-color)",
+        background: "var(--landing-bg-color)",
+        foreground: "var(--landing-heading-text-color)",
         primary: {
-          DEFAULT: "#9b87f5",
-          foreground: "#FFFFFF",
+          DEFAULT: "var(--primary-btn-bg-color)",
+          foreground: "var(--primary-btn-text-color)",
+        },
+        secondary: {
+          DEFAULT: "var(--secondary-btn-bg-color)",
+          foreground: "var(--secondary-btn-text-color)",
         },
         card: {
-          DEFAULT: "#1A1A1B",
-          foreground: "#FFFFFF",
+          DEFAULT: "var(--landing-card-bg-color)",
+          foreground: "var(--landing-card-heading-color)",
         },
       },
       borderRadius: {
