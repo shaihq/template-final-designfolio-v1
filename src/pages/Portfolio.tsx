@@ -1,59 +1,103 @@
 import { Mail, Github, Linkedin, Twitter, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
 import { Figma, FileCode, Laptop } from "lucide-react";
 import { Footer } from "@/components/Footer";
 
 const Portfolio = () => {
-  const headerRef = useRef(null);
-  const experienceRef = useRef(null);
-  const toolsRef = useRef(null);
-  const projectsRef = useRef(null);
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        staggerChildren: 0.15,
+      },
+    },
+  };
 
-  const headerInView = useInView(headerRef, { once: true });
-  const experienceInView = useInView(experienceRef, { once: true, margin: "-100px" });
-  const toolsInView = useInView(toolsRef, { once: true, margin: "-100px" });
-  const projectsInView = useInView(projectsRef, { once: true, margin: "-100px" });
-
-  const fadeInUp = {
+  const item = {
     hidden: { opacity: 0, y: 20 },
-    visible: { 
+    show: { 
       opacity: 1, 
       y: 0,
       transition: {
-        duration: 0.5,
-        ease: [0.22, 1, 0.36, 1]
+        duration: 0.4,
+        ease: "easeOut",
+      }
+    },
+  };
+
+  const textReveal = {
+    initial: { y: 100, opacity: 0 },
+    animate: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1]  // Custom cubic-bezier for smooth reveal
       }
     }
   };
 
-  const staggerContainer = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
-      }
+  const tools = [
+    {
+      name: "Figma",
+      icon: Figma,
+      link: "#"
+    },
+    {
+      name: "VS Code",
+      icon: FileCode,
+      link: "#"
+    },
+    {
+      name: "Mockup",
+      icon: Laptop,
+      link: "#"
+    },
+    {
+      name: "Github",
+      icon: Github,
+      link: "#"
     }
-  };
+  ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <motion.div 
-            ref={headerRef}
-            initial="hidden"
-            animate={headerInView ? "visible" : "hidden"}
-            variants={staggerContainer}
             className="flex items-center justify-between"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
           >
             <motion.div 
-              variants={fadeInUp}
               className="flex items-center gap-3"
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
             >
               <img
                 src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
@@ -64,7 +108,20 @@ const Portfolio = () => {
                 <h2 className="text-foreground font-medium">Shai</h2>
               </div>
             </motion.div>
-            <motion.div variants={fadeInUp}>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+            >
               <Button variant="outline" size="sm" className="gap-2">
                 <Mail className="w-4 h-4" />
                 E-mail
@@ -78,20 +135,45 @@ const Portfolio = () => {
         <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
         <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
         
+        {/* Hero Section with Text Reveal */}
+        <section className="py-12 border-b border-secondary-border overflow-hidden">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: {
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
+            <motion.h1 
+              className="text-4xl font-bold mb-4"
+              variants={textReveal}
+            >
+              Product Designer with over 7+ years of experience.{" "}
+              <span className="text-gray-400">
+                A unicorn designer who can both design and code.
+              </span>
+            </motion.h1>
+            <motion.p 
+              className="text-gray-400 mb-6"
+              variants={textReveal}
+            >
+              Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
+            </motion.p>
+          </motion.div>
+        </section>
+
         {/* Experience Section */}
         <motion.section 
-          ref={experienceRef}
+          variants={container}
           initial="hidden"
-          animate={experienceInView ? "visible" : "hidden"}
-          variants={staggerContainer}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
-          <motion.h3 
-            variants={fadeInUp}
-            className="text-2xl font-bold mb-6"
-          >
-            Experience
-          </motion.h3>
+          <h3 className="text-2xl font-bold mb-6">Experience</h3>
           <div className="space-y-4">
             {[
               {
@@ -109,7 +191,7 @@ const Portfolio = () => {
             ].map((exp, index) => (
               <motion.div
                 key={index}
-                variants={fadeInUp}
+                variants={item}
                 className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex justify-between items-start">
@@ -125,47 +207,19 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
-        {/* Tools Section */}
         <motion.section 
-          ref={toolsRef}
+          variants={container}
           initial="hidden"
-          animate={toolsInView ? "visible" : "hidden"}
-          variants={staggerContainer}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
-          <motion.h3 
-            variants={fadeInUp}
-            className="text-2xl font-bold mb-8"
-          >
-            Tools I Use
-          </motion.h3>
+          <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
           <div className="grid grid-cols-2 gap-4">
-            {[
-              {
-                name: "Figma",
-                icon: Figma,
-                link: "#"
-              },
-              {
-                name: "VS Code",
-                icon: FileCode,
-                link: "#"
-              },
-              {
-                name: "Mockup",
-                icon: Laptop,
-                link: "#"
-              },
-              {
-                name: "Github",
-                icon: Github,
-                link: "#"
-              }
-            ].map((tool, index) => (
+            {tools.map((tool, index) => (
               <motion.a
                 key={index}
-                variants={fadeInUp}
                 href={tool.link}
+                variants={item}
                 className="group bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex items-center gap-3">
@@ -181,18 +235,12 @@ const Portfolio = () => {
 
         {/* Projects Section */}
         <motion.section 
-          ref={projectsRef}
+          variants={container}
           initial="hidden"
-          animate={projectsInView ? "visible" : "hidden"}
-          variants={staggerContainer}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
-          <motion.h3 
-            variants={fadeInUp}
-            className="text-3xl font-bold mb-12"
-          >
-            Featured Projects
-          </motion.h3>
+          <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
           <div className="flex flex-col gap-6">
             {[
               {
@@ -223,7 +271,7 @@ const Portfolio = () => {
               return (
                 <motion.div
                   key={index}
-                  variants={fadeInUp}
+                  variants={item}
                   ref={cardRef}
                   onMouseMove={handleMouseMove}
                   className="group bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors relative"
