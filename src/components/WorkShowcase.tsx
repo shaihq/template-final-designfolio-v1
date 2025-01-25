@@ -21,7 +21,7 @@ export const WorkShowcase = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="group rounded-3xl bg-card border border-border/50 overflow-hidden hover:border-primary/50 transition-colors"
+            className="group rounded-3xl bg-card overflow-hidden relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-transparent before:via-foreground/10 before:to-transparent before:rounded-3xl before:opacity-0 before:transition-opacity hover:before:opacity-100"
           >
             <div className="aspect-[4/3] overflow-hidden">
               <img
