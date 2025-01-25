@@ -213,112 +213,114 @@ const Portfolio = () => {
         >
           <h3 className="text-2xl font-bold mb-8 text-center">What People Say</h3>
           
-          <div className="relative w-full max-w-2xl mx-auto min-h-[200px]">
-            <AnimatePresence mode="wait">
-              {testimonials.map((testimonial, index) => {
-                const isActive = index === currentIndex;
-                const zIndex = testimonials.length - Math.abs(currentIndex - index);
-                
-                return (
-                  <motion.div
-                    key={testimonial.id}
-                    initial={{ 
-                      scale: 0.9, 
-                      opacity: 0,
-                      y: 50,
-                      rotateX: -15
-                    }}
-                    animate={{ 
-                      scale: isActive ? 1 : 0.9,
-                      opacity: isActive ? 1 : 0.5,
-                      y: isActive ? 0 : 25,
-                      rotateX: isActive ? 0 : -15,
-                      zIndex: zIndex
-                    }}
-                    exit={{ 
-                      scale: 0.9, 
-                      opacity: 0,
-                      y: -50,
-                      rotateX: 15
-                    }}
-                    transition={{
-                      duration: 0.5,
-                      ease: [0.4, 0, 0.2, 1]
-                    }}
-                    className="absolute top-0 left-0 w-full perspective-1000"
-                    style={{
-                      zIndex: zIndex,
-                      pointerEvents: isActive ? "auto" : "none",
-                      transformStyle: "preserve-3d"
-                    }}
-                  >
-                    <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg mb-12">
-                      <p className="text-gray-400">
-                        {testimonial.content}
-                        {!expandedCards.includes(testimonial.id) && (
-                          <button
-                            onClick={() => toggleExpand(testimonial.id)}
-                            className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
-                          >
-                            View More<ChevronDown className="h-3 w-3" />
-                          </button>
-                        )}
-                      </p>
+          <div className="relative w-full max-w-2xl mx-auto">
+            <div className="min-h-[200px] mb-16">
+              <AnimatePresence mode="wait">
+                {testimonials.map((testimonial, index) => {
+                  const isActive = index === currentIndex;
+                  const zIndex = testimonials.length - Math.abs(currentIndex - index);
+                  
+                  return (
+                    <motion.div
+                      key={testimonial.id}
+                      initial={{ 
+                        scale: 0.9, 
+                        opacity: 0,
+                        y: 50,
+                        rotateX: -15
+                      }}
+                      animate={{ 
+                        scale: isActive ? 1 : 0.9,
+                        opacity: isActive ? 1 : 0.5,
+                        y: isActive ? 0 : 25,
+                        rotateX: isActive ? 0 : -15,
+                        zIndex: zIndex
+                      }}
+                      exit={{ 
+                        scale: 0.9, 
+                        opacity: 0,
+                        y: -50,
+                        rotateX: 15
+                      }}
+                      transition={{
+                        duration: 0.5,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                      className="absolute top-0 left-0 w-full perspective-1000"
+                      style={{
+                        zIndex: zIndex,
+                        pointerEvents: isActive ? "auto" : "none",
+                        transformStyle: "preserve-3d"
+                      }}
+                    >
+                      <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg">
+                        <p className="text-gray-400">
+                          {testimonial.content}
+                          {!expandedCards.includes(testimonial.id) && (
+                            <button
+                              onClick={() => toggleExpand(testimonial.id)}
+                              className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
+                            >
+                              View More<ChevronDown className="h-3 w-3" />
+                            </button>
+                          )}
+                        </p>
 
-                      <AnimatePresence>
-                        {expandedCards.includes(testimonial.id) && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="overflow-hidden"
-                          >
-                            <p className="text-gray-400 mt-4">
-                              {testimonial.expandedContent}
-                              <button
-                                onClick={() => toggleExpand(testimonial.id)}
-                                className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
-                              >
-                                Show Less<ChevronUp className="h-3 w-3" />
-                              </button>
+                        <AnimatePresence>
+                          {expandedCards.includes(testimonial.id) && (
+                            <motion.div
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="overflow-hidden"
+                            >
+                              <p className="text-gray-400 mt-4">
+                                {testimonial.expandedContent}
+                                <button
+                                  onClick={() => toggleExpand(testimonial.id)}
+                                  className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
+                                >
+                                  Show Less<ChevronUp className="h-3 w-3" />
+                                </button>
+                              </p>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+
+                        <div className="flex items-center gap-2 mt-4">
+                          <div className="flex-1">
+                            <h4 className="font-semibold">{testimonial.name}</h4>
+                            <p className="text-sm text-gray-400">
+                              {testimonial.role} at {testimonial.company}
                             </p>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-
-                      <div className="flex items-center gap-2 mt-4">
-                        <div className="flex-1">
-                          <h4 className="font-semibold">{testimonial.name}</h4>
-                          <p className="text-sm text-gray-400">
-                            {testimonial.role} at {testimonial.company}
-                          </p>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
 
-          <div className="flex justify-center gap-2 mt-4">
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={handlePrev}
-              className="rounded-full"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={handleNext}
-              className="rounded-full"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
+            <div className="flex justify-center gap-2 absolute bottom-0 left-1/2 -translate-x-1/2">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrev}
+                className="rounded-full"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNext}
+                className="rounded-full"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
           </div>
         </motion.section>
 
