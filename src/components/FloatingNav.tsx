@@ -85,9 +85,9 @@ export const FloatingNav = () => {
                   activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
                   <Icon 
-                    className={`w-6 h-6 ${
+                    className={`w-5 h-5 ${
                       activeSection === id ? "text-white" : "text-foreground"
                     }`}
                   />
