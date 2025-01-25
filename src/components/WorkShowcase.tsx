@@ -58,25 +58,21 @@ export const WorkShowcase = () => {
               key="loading"
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="absolute inset-0 bg-secondary/50 animate-pulse"
+              transition={{ duration: 0.4 }}
+              className="absolute inset-0 bg-secondary/50"
             />
           )}
         </AnimatePresence>
         <motion.img
           initial={{ opacity: 0 }}
           animate={{ opacity: isLoaded ? 1 : 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.4 }}
           src={src}
           alt={alt}
           className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           loading="eager"
           decoding="async"
           onLoad={() => setIsLoaded(true)}
-          style={{
-            backfaceVisibility: "hidden",
-            WebkitBackfaceVisibility: "hidden",
-          }}
         />
       </div>
     );
