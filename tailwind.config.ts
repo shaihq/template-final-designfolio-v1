@@ -19,15 +19,29 @@ export default {
     },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
+        border: {
+          DEFAULT: "hsl(var(--border))",
+          light: "#e2e8f0",
+        },
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#13151a",
-        foreground: "#e9eaeb",
+        background: {
+          DEFAULT: "#13151a",
+          light: "#ffffff",
+        },
+        foreground: {
+          DEFAULT: "#e9eaeb",
+          light: "#0f172a",
+        },
         primary: {
           DEFAULT: "#262832",
           foreground: "#f9f9fb",
           hover: "#4a4e5d",
+          light: {
+            DEFAULT: "#f8fafc",
+            foreground: "#0f172a",
+            hover: "#f1f5f9",
+          },
         },
         secondary: {
           DEFAULT: "#17181d",
@@ -35,6 +49,13 @@ export default {
           hover: "#22242b",
           border: "#262832",
           "border-hover": "#565b6c",
+          light: {
+            DEFAULT: "#f8fafc",
+            foreground: "#0f172a",
+            hover: "#f1f5f9",
+            border: "#e2e8f0",
+            "border-hover": "#cbd5e1",
+          },
         },
         tertiary: {
           DEFAULT: "#ff553e",
@@ -47,6 +68,11 @@ export default {
           DEFAULT: "#1d1f27",
           foreground: "#e9eaeb",
           border: "#2f323d",
+          light: {
+            DEFAULT: "#ffffff",
+            foreground: "#0f172a",
+            border: "#e2e8f0",
+          },
         },
       },
       borderRadius: {
