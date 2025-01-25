@@ -1,6 +1,7 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { ToolStack } from "@/components/ToolStack";
 
 const Portfolio = () => {
   const container = {
@@ -152,6 +153,9 @@ const Portfolio = () => {
             ))}
           </div>
         </motion.section>
+
+        {/* Tool Stack Section */}
+        <ToolStack />
 
         {/* Footer */}
         <footer className="pt-8 border-t border-secondary-border">
