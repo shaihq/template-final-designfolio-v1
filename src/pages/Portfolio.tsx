@@ -1,6 +1,6 @@
 import { Mail, Github, Linkedin, Twitter, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
 import { Figma, FileCode, Laptop } from "lucide-react";
@@ -38,7 +38,7 @@ const Portfolio = () => {
       opacity: 1,
       transition: {
         duration: 0.8,
-        ease: [0.33, 1, 0.68, 1]
+        ease: [0.33, 1, 0.68, 1]  // Custom cubic-bezier for smooth reveal
       }
     }
   };
@@ -66,32 +66,39 @@ const Portfolio = () => {
     }
   ];
 
-  // Create refs for each section
-  const headerRef = useRef(null);
-  const heroRef = useRef(null);
-  const experienceRef = useRef(null);
-  const toolsRef = useRef(null);
-  const projectsRef = useRef(null);
-
-  // Setup useInView hooks for each section
-  const isHeaderInView = useInView(headerRef, { once: true, margin: "-100px" });
-  const isHeroInView = useInView(heroRef, { once: true, margin: "-100px" });
-  const isExperienceInView = useInView(experienceRef, { once: true, margin: "-100px" });
-  const isToolsInView = useInView(toolsRef, { once: true, margin: "-100px" });
-  const isProjectsInView = useInView(projectsRef, { once: true, margin: "-100px" });
-
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <motion.header 
-        ref={headerRef}
-        initial={{ opacity: 0, y: -20 }}
-        animate={isHeaderInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
-        transition={{ duration: 0.6 }}
-        className="border-b border-secondary-border py-6"
-      >
+      <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <motion.div 
+            className="flex items-center justify-between"
+            initial="hidden"
+            animate="visible"
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
+            <motion.div 
+              className="flex items-center gap-3"
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+            >
               <img
                 src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
                 alt="Profile"
@@ -100,27 +107,47 @@ const Portfolio = () => {
               <div>
                 <h2 className="text-foreground font-medium">Shai</h2>
               </div>
-            </div>
-            <Button variant="outline" size="sm" className="gap-2">
-              <Mail className="w-4 h-4" />
-              E-mail
-            </Button>
-          </div>
+            </motion.div>
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: -50 },
+                visible: { 
+                  opacity: 1, 
+                  y: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 15
+                  }
+                }
+              }}
+            >
+              <Button variant="outline" size="sm" className="gap-2">
+                <Mail className="w-4 h-4" />
+                E-mail
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
-      </motion.header>
+      </header>
       
       <div className="container max-w-3xl mx-auto px-4 relative">
         <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
         <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
         
-        <motion.section 
-          ref={heroRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
-          className="py-12 border-b border-secondary-border overflow-hidden"
-        >
-          <div>
+        {/* Hero Section with Text Reveal */}
+        <section className="py-12 border-b border-secondary-border overflow-hidden">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: {
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
             <motion.h1 
               className="text-4xl font-bold mb-4"
               variants={textReveal}
@@ -136,14 +163,14 @@ const Portfolio = () => {
             >
               Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
             </motion.p>
-          </div>
-        </motion.section>
+          </motion.div>
+        </section>
 
+        {/* Experience Section */}
         <motion.section 
-          ref={experienceRef}
           variants={container}
           initial="hidden"
-          animate={isExperienceInView ? "show" : "hidden"}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-6">Experience</h3>
@@ -181,10 +208,9 @@ const Portfolio = () => {
         </motion.section>
 
         <motion.section 
-          ref={toolsRef}
           variants={container}
           initial="hidden"
-          animate={isToolsInView ? "show" : "hidden"}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
@@ -207,11 +233,11 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
+        {/* Projects Section */}
         <motion.section 
-          ref={projectsRef}
           variants={container}
           initial="hidden"
-          animate={isProjectsInView ? "show" : "hidden"}
+          animate="show"
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
