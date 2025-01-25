@@ -78,6 +78,53 @@ export const WorkShowcase = () => {
     );
   };
 
+  const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <motion.div
+        variants={item}
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="group rounded-3xl bg-card overflow-hidden relative"
+      >
+        <div
+          className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
+          }}
+        />
+        <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
+          <ImageWithPreload src={project.image} alt={project.title} />
+        </div>
+        <div className="p-8">
+          <h3 className="text-2xl font-semibold mb-3 leading-tight">
+            {project.title}
+          </h3>
+          <p className="text-gray-400 mb-6 line-clamp-2">
+            {project.description}
+          </p>
+          <a
+            href={project.link}
+            className="inline-flex items-center text-lg text-muted-foreground hover:text-primary transition-colors"
+          >
+            View project <ArrowUpRight className="ml-2" />
+          </a>
+        </div>
+      </motion.div>
+    );
+  };
+
   return (
     <section className="pt-0 pb-16">
       <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
@@ -89,29 +136,7 @@ export const WorkShowcase = () => {
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            variants={item}
-            className="group rounded-3xl bg-card overflow-hidden relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-transparent before:via-foreground/10 before:to-transparent before:rounded-3xl before:opacity-0 before:transition-opacity hover:before:opacity-100"
-          >
-            <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
-              <ImageWithPreload src={project.image} alt={project.title} />
-            </div>
-            <div className="p-8">
-              <h3 className="text-2xl font-semibold mb-3 leading-tight">
-                {project.title}
-              </h3>
-              <p className="text-gray-400 mb-6 line-clamp-2">
-                {project.description}
-              </p>
-              <a
-                href={project.link}
-                className="inline-flex items-center text-lg text-muted-foreground hover:text-primary transition-colors"
-              >
-                View project <ArrowUpRight className="ml-2" />
-              </a>
-            </div>
-          </motion.div>
+          <ProjectCard key={index} project={project} index={index} />
         ))}
       </motion.div>
     </section>
