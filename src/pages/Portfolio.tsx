@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 const Portfolio = () => {
   const container = {
@@ -125,12 +126,14 @@ const Portfolio = () => {
               {
                 title: "MyCaptain Course Platform",
                 description: "Designed and developed the course overview page with interactive calendar and progress tracking features",
-                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png"
+                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png",
+                link: "#"
               },
               {
                 title: "MyCaptain Profile Builder",
                 description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
-                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png"
+                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png",
+                link: "#"
               }
             ].map((project, index) => {
               const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -154,16 +157,29 @@ const Portfolio = () => {
                   className="group bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors relative"
                 >
                   <div className="flex flex-col md:flex-row">
-                    <div className="w-full md:w-[400px] aspect-[4/3] overflow-hidden bg-secondary/50">
+                    <div className="w-[320px] h-[240px] shrink-0 overflow-hidden bg-secondary/50">
                       <img
                         src={project.image}
                         alt={project.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="p-8 flex flex-col justify-center">
-                      <h4 className="text-2xl font-semibold mb-3">{project.title}</h4>
-                      <p className="text-gray-400">{project.description}</p>
+                    <div className="p-8 flex flex-col justify-between flex-grow">
+                      <div>
+                        <h4 className="text-2xl font-semibold mb-3">{project.title}</h4>
+                        <p className="text-gray-400">{project.description}</p>
+                      </div>
+                      <Button 
+                        variant="tertiary" 
+                        size="sm"
+                        className="self-start mt-6"
+                        asChild
+                      >
+                        <a href={project.link}>
+                          View Project
+                          <ArrowRight className="w-4 h-4" />
+                        </a>
+                      </Button>
                     </div>
                   </div>
                   <div
