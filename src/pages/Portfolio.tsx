@@ -2,7 +2,7 @@ import { Mail, Github, Linkedin, Twitter, Download, ArrowRight } from "lucide-re
 import { Button } from "@/components/ui/button";
 import { motion, useInView } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Figma, FileCode, Laptop } from "lucide-react";
 import { Footer } from "@/components/Footer";
 
