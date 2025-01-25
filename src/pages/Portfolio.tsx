@@ -42,9 +42,6 @@ const Portfolio = () => {
               />
               <div>
                 <h2 className="text-foreground font-medium">Shai</h2>
-                <p className="text-sm text-gray-400">
-                  Product Designer
-                </p>
               </div>
             </div>
             <Button variant="outline" size="sm" className="gap-2">
