@@ -1,11 +1,38 @@
 import { Button } from "@/components/ui/button";
 import { Download, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 
 export const Footer = () => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    once: true,
+    margin: "-100px",
+  });
+
+  const containerVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1]
+      }
+    }
+  };
+
   return (
     <footer className="py-16 border-t border-gray-800">
       <div className="container max-w-3xl mx-auto px-4">
-        <div className="flex flex-col items-center gap-8">
+        <motion.div 
+          ref={ref}
+          variants={containerVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          className="flex flex-col items-center gap-8"
+        >
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground max-w-2xl text-center leading-tight">
             Let's work together
           </h2>
@@ -55,7 +82,7 @@ export const Footer = () => {
               <span className="sr-only">Github</span>
             </a>
           </div>
-        </div>
+        </motion.div>
       </div>
     </footer>
   );
