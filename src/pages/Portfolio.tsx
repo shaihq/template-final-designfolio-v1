@@ -66,6 +66,22 @@ const Portfolio = () => {
     }
   ];
 
+  const skills = [
+    "Product Design",
+    "UI/UX",
+    "Design Systems",
+    "Prototyping",
+    "User Research",
+    "Frontend Development",
+    "React",
+    "TypeScript",
+    "Figma",
+    "Design Thinking",
+  ];
+
+  // Duplicate skills for smooth infinite scroll
+  const scrollSkills = [...skills, ...skills];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <header className="border-b border-secondary-border py-6">
@@ -163,6 +179,31 @@ const Portfolio = () => {
             >
               Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
             </motion.p>
+
+            {/* Skills Infinite Scroll */}
+            <div className="w-full overflow-hidden relative py-4 before:absolute before:left-0 before:top-0 before:z-10 before:w-20 before:h-full before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:w-20 after:h-full after:bg-gradient-to-l after:from-background after:to-transparent">
+              <motion.div 
+                className="flex gap-4 whitespace-nowrap"
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  x: {
+                    repeat: Infinity,
+                    repeatType: "loop",
+                    duration: 20,
+                    ease: "linear",
+                  },
+                }}
+              >
+                {scrollSkills.map((skill, index) => (
+                  <span
+                    key={index}
+                    className="bg-card px-4 py-2 rounded-full text-sm"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </motion.div>
+            </div>
           </motion.div>
         </section>
 
