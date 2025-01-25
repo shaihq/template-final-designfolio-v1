@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
-import { Figma, FileCode, Laptop, Globe, Pencil } from "lucide-react";
+import { Figma, FileCode, Laptop } from "lucide-react";
 import { Footer } from "@/components/Footer";
 
 const Portfolio = () => {
@@ -124,7 +124,7 @@ const Portfolio = () => {
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-tertiary font-medium">{exp.role}</span>
+                    <span className="text-white font-medium">{exp.role}</span>
                     <p className="text-sm text-gray-400">{exp.company}</p>
                     <p className="text-gray-400 mt-2">{exp.description}</p>
                   </div>
@@ -134,8 +134,7 @@ const Portfolio = () => {
             ))}
           </div>
         </motion.section>
-        
-        {/* Tool Stack Section - Moved below Experience */}
+
         <motion.section 
           variants={container}
           initial="hidden"
