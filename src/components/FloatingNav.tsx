@@ -59,11 +59,7 @@ export const FloatingNav = () => {
     const element = document.getElementById(targetId);
     
     if (element) {
-      element.scrollIntoView({ 
-        behavior: "smooth",
-        block: "start",
-        inline: "nearest"
-      });
+      element.scrollIntoView({ behavior: "smooth" });
     }
   };
 
