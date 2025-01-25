@@ -1,9 +1,25 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
+import { useEffect, useState } from "react";
 
 const Portfolio = () => {
+  const mouseY = useMotionValue(0);
+  const smoothMouseY = useSpring(mouseY, {
+    damping: 50,
+    stiffness: 400,
+  });
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseY]);
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -29,7 +45,18 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      {/* Glow Effect */}
+      <motion.div
+        className="fixed top-0 left-0 w-full h-1 pointer-events-none z-50"
+        style={{
+          background: "linear-gradient(180deg, rgba(255,85,62,0.3) 0%, transparent 100%)",
+          boxShadow: "0 0 80px 40px rgba(255,85,62,0.15)",
+          opacity: 0.7,
+          y: smoothMouseY
+        }}
+      />
+
       {/* Header Section */}
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
