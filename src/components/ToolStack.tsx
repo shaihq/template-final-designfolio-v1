@@ -1,3 +1,7 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 export const ToolStack = () => {
   const tools = [
     { name: "Mockup (iPad)", icon: "📱" },
@@ -8,20 +12,45 @@ export const ToolStack = () => {
     { name: "Midbin", icon: "🤖" },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section className="py-16">
       <h2 className="text-2xl font-bold mb-8">Tool Stack</h2>
-      <div className="grid grid-cols-2 gap-4">
+      <motion.div
+        ref={ref}
+        variants={container}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="grid grid-cols-2 gap-4"
+      >
         {tools.map((tool, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={item}
             className="bg-card p-4 rounded-lg flex items-center gap-3 hover:bg-card/80 transition-colors"
           >
             <span className="text-2xl">{tool.icon}</span>
             <span>{tool.name}</span>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };

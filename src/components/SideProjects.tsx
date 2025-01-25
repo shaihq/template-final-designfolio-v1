@@ -1,3 +1,7 @@
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
+
 export const SideProjects = () => {
   const projects = [
     { name: "White Illustration Pack", icon: "🎨" },
@@ -6,13 +10,38 @@ export const SideProjects = () => {
     { name: "Clean Portfolio Template", icon: "🎨" },
   ];
 
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0 },
+  };
+
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
     <section className="py-16">
       <h2 className="text-2xl font-bold mb-8">Side Projects</h2>
-      <div className="space-y-4">
+      <motion.div
+        ref={ref}
+        variants={container}
+        initial="hidden"
+        animate={isInView ? "show" : "hidden"}
+        className="space-y-4"
+      >
         {projects.map((project, index) => (
-          <div
+          <motion.div
             key={index}
+            variants={item}
             className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 transition-colors cursor-pointer"
           >
             <div className="flex items-center gap-3">
@@ -20,9 +49,9 @@ export const SideProjects = () => {
               <span>{project.name}</span>
             </div>
             <span className="text-gray-400">→</span>
-          </div>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
