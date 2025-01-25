@@ -19,26 +19,18 @@ export default {
     },
     extend: {
       colors: {
-        border: "var(--df-add-card-border-color)",
-        input: "var(--input-border-color)",
-        ring: "var(--input-border-focus-color)",
-        background: "var(--df-bg-color)",
-        foreground: "var(--df-base-text-color)",
+        border: "hsl(var(--border))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+        background: "#0A0A0B",
+        foreground: "#FFFFFF",
         primary: {
-          DEFAULT: "var(--tertiary-btn-bg-color)",
-          foreground: "var(--tertiary-btn-text-color)",
-        },
-        secondary: {
-          DEFAULT: "var(--secondary-btn-bg-color)",
-          foreground: "var(--secondary-btn-text-color)",
+          DEFAULT: "#9b87f5",
+          foreground: "#FFFFFF",
         },
         card: {
-          DEFAULT: "var(--project-card-bg-color)",
-          foreground: "var(--project-card-heading-color)",
-        },
-        muted: {
-          DEFAULT: "var(--df-placeholder-color)",
-          foreground: "var(--df-secondary-text-color)",
+          DEFAULT: "#1A1A1B",
+          foreground: "#FFFFFF",
         },
       },
       borderRadius: {
