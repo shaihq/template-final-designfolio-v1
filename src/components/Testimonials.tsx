@@ -102,11 +102,15 @@ export const Testimonials = () => {
               <motion.div
                 key={currentIndex}
                 initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
+                animate={{ 
+                  scale: 1, 
+                  opacity: 1,
+                  rotate: 2 // Default tilt for mobile
+                }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ 
-                  rotate: 2,
+                  rotate: 4, // Slightly more tilt on hover
                   transition: { duration: 0.2 }
                 }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
@@ -180,10 +184,14 @@ export const Testimonials = () => {
               <motion.div
                 key={testimonial.id}
                 initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ 
+                  opacity: 1, 
+                  y: 0,
+                  rotate: index % 2 === 0 ? 2 : -2 // Default alternating tilt
+                }}
                 exit={{ opacity: 0, y: -20 }}
                 whileHover={{ 
-                  rotate: index % 2 === 0 ? 2 : -2,
+                  rotate: index % 2 === 0 ? 4 : -4, // Slightly more tilt on hover
                   transition: { duration: 0.2 }
                 }}
                 transition={{ 
