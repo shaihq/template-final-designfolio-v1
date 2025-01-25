@@ -112,9 +112,6 @@ export const WorkShowcase = () => {
           >
             <ArrowUpRight className="size-6 text-white" />
           </a>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full" />
-          </div>
         </div>
         <div className="p-8 pb-10">
           <h3 className="text-2xl font-semibold mb-3 leading-tight">
