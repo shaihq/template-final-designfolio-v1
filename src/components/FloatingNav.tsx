@@ -36,7 +36,16 @@ export const FloatingNav = () => {
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
+    // Map the navigation IDs to their corresponding section IDs
+    const sectionMapping: { [key: string]: string } = {
+      spotlight: "featured-projects",
+      work: "work-experience"
+    };
+
+    // Use the mapped ID if it exists, otherwise use the original ID
+    const targetId = sectionMapping[id] || id;
+    const element = document.getElementById(targetId);
+    
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
