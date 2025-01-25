@@ -92,178 +92,172 @@ export const Testimonials = () => {
   };
 
   return (
-    <section className="py-16">
-      <h2 className="text-3xl font-bold mb-12 text-center">What People Say</h2>
+    <section className="py-16 bg-secondary relative overflow-hidden">
+      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.05)_0%,rgba(0,0,0,0)_100%)]" />
       
-      <div className={`relative ${isMobile ? 'px-4' : 'grid grid-cols-2 gap-6 max-w-4xl mx-auto px-4'}`}>
-        {isMobile ? (
-          <>
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ 
-                  scale: 1, 
-                  opacity: 1,
-                  rotate: 2 // Default tilt for mobile
-                }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ 
-                  rotate: 4, // Slightly more tilt on hover
-                  transition: { duration: 0.2 }
-                }}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
-              >
-                <p className="text-gray-400">
-                  {visibleTestimonials[currentIndex].content}
-                  {!expandedCards.includes(visibleTestimonials[currentIndex].id) && (
-                    <button
-                      onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
-                      className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
-                    >
-                      View More<ChevronDown className="h-3 w-3" />
-                    </button>
-                  )}
-                </p>
-
-                <AnimatePresence>
-                  {expandedCards.includes(visibleTestimonials[currentIndex].id) && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-gray-400 mt-4">
-                        {visibleTestimonials[currentIndex].expandedContent}
+      <div className="container max-w-6xl mx-auto px-4">
+        <h2 className="text-4xl font-bold mb-12 text-center">What People Say</h2>
+        
+        <div className={`relative ${isMobile ? '' : 'grid grid-cols-2 lg:grid-cols-3 gap-8'}`}>
+          {isMobile ? (
+            <div className="relative">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentIndex}
+                  initial={{ opacity: 0, x: 100 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -100 }}
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                  className="bg-card p-8 rounded-xl shadow-lg"
+                >
+                  <div className="relative">
+                    <p className="text-lg text-gray-400 italic mb-6">
+                      "{visibleTestimonials[currentIndex].content}"
+                      {!expandedCards.includes(visibleTestimonials[currentIndex].id) && visibleTestimonials[currentIndex].expandedContent && (
                         <button
                           onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
-                          className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
+                          className="ml-2 text-tertiary hover:text-tertiary/80 inline-flex items-center gap-1"
                         >
-                          Show Less<ChevronUp className="h-3 w-3" />
+                          Read More<ChevronDown className="h-4 w-4" />
                         </button>
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <div className="flex items-center gap-2 mt-4">
-                  <div className="flex-1">
-                    <h4 className="font-semibold">{visibleTestimonials[currentIndex].name}</h4>
-                    <p className="text-sm text-gray-400">
-                      {visibleTestimonials[currentIndex].role} at {visibleTestimonials[currentIndex].company}
+                      )}
                     </p>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-            <div className="flex justify-center gap-4 mt-6">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handlePrev}
-                className="rounded-full"
-              >
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={handleNext}
-                className="rounded-full"
-              >
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </>
-        ) : (
-          <AnimatePresence mode="wait">
-            {visibleTestimonials.map((testimonial, index) => (
-              <motion.div
-                key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: 1, 
-                  y: 0,
-                  rotate: index % 2 === 0 ? 2 : -2 // Default alternating tilt
-                }}
-                exit={{ opacity: 0, y: -20 }}
-                whileHover={{ 
-                  rotate: index % 2 === 0 ? 4 : -4, // Slightly more tilt on hover
-                  transition: { duration: 0.2 }
-                }}
-                transition={{ 
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-              >
-                <p className="text-gray-400">
-                  {testimonial.content}
-                  {!expandedCards.includes(testimonial.id) && (
-                    <button
-                      onClick={() => toggleExpand(testimonial.id)}
-                      className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
-                    >
-                      View More<ChevronDown className="h-3 w-3" />
-                    </button>
-                  )}
-                </p>
 
-                <AnimatePresence>
-                  {expandedCards.includes(testimonial.id) && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p className="text-gray-400 mt-4">
-                        {testimonial.expandedContent}
+                    <AnimatePresence>
+                      {expandedCards.includes(visibleTestimonials[currentIndex].id) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-lg text-gray-400 italic mb-6">
+                            "{visibleTestimonials[currentIndex].expandedContent}"
+                            <button
+                              onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
+                              className="ml-2 text-tertiary hover:text-tertiary/80 inline-flex items-center gap-1"
+                            >
+                              Show Less<ChevronUp className="h-4 w-4" />
+                            </button>
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex items-center gap-4">
+                      <div>
+                        <h4 className="font-semibold text-lg">{visibleTestimonials[currentIndex].name}</h4>
+                        <p className="text-sm text-gray-400">
+                          {visibleTestimonials[currentIndex].role} at {visibleTestimonials[currentIndex].company}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+
+              <div className="flex justify-center gap-4 mt-8">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handlePrev}
+                  className="rounded-full hover:bg-tertiary hover:text-white transition-colors"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={handleNext}
+                  className="rounded-full hover:bg-tertiary hover:text-white transition-colors"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <AnimatePresence mode="wait">
+              {visibleTestimonials.map((testimonial, index) => (
+                <motion.div
+                  key={testimonial.id}
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -50 }}
+                  transition={{ 
+                    duration: 0.5,
+                    delay: index * 0.1,
+                    ease: "easeOut"
+                  }}
+                  className="bg-card p-8 rounded-xl shadow-lg transform hover:-translate-y-2 transition-transform duration-300"
+                >
+                  <div className="relative">
+                    <p className="text-lg text-gray-400 italic mb-6">
+                      "{testimonial.content}"
+                      {!expandedCards.includes(testimonial.id) && testimonial.expandedContent && (
                         <button
                           onClick={() => toggleExpand(testimonial.id)}
-                          className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
+                          className="ml-2 text-tertiary hover:text-tertiary/80 inline-flex items-center gap-1"
                         >
-                          Show Less<ChevronUp className="h-3 w-3" />
+                          Read More<ChevronDown className="h-4 w-4" />
                         </button>
-                      </p>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-
-                <div className="flex items-center gap-2 mt-4">
-                  <div className="flex-1">
-                    <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">
-                      {testimonial.role} at {testimonial.company}
+                      )}
                     </p>
+
+                    <AnimatePresence>
+                      {expandedCards.includes(testimonial.id) && (
+                        <motion.div
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          transition={{ duration: 0.3 }}
+                          className="overflow-hidden"
+                        >
+                          <p className="text-lg text-gray-400 italic mb-6">
+                            "{testimonial.expandedContent}"
+                            <button
+                              onClick={() => toggleExpand(testimonial.id)}
+                              className="ml-2 text-tertiary hover:text-tertiary/80 inline-flex items-center gap-1"
+                            >
+                              Show Less<ChevronUp className="h-4 w-4" />
+                            </button>
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+
+                    <div className="flex items-center gap-4">
+                      <div>
+                        <h4 className="font-semibold text-lg">{testimonial.name}</h4>
+                        <p className="text-sm text-gray-400">
+                          {testimonial.role} at {testimonial.company}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </motion.div>
-            ))}
-          </AnimatePresence>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          )}
+        </div>
+
+        {!isMobile && testimonials.length > 4 && (
+          <motion.div 
+            className="text-center mt-12"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+          >
+            <Button
+              variant="outline"
+              onClick={() => setShowMore(!showMore)}
+              className="hover:bg-tertiary hover:text-white transition-colors"
+            >
+              {showMore ? "Show Less" : "View More"}
+            </Button>
+          </motion.div>
         )}
       </div>
-
-      {!isMobile && testimonials.length > 4 && (
-        <motion.div 
-          className="text-center mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-        >
-          <Button
-            variant="outline"
-            onClick={() => setShowMore(!showMore)}
-          >
-            {showMore ? "Show Less" : "View More"}
-          </Button>
-        </motion.div>
-      )}
     </section>
   );
 };
