@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Figma, Framer, Slack, Miro } from "lucide-react";
+import { Figma, Framer, Slack, Layout } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 export const ToolStack = () => {
@@ -28,7 +28,7 @@ export const ToolStack = () => {
     },
     { 
       name: "Miro", 
-      icon: Miro, 
+      icon: Layout, 
       description: "Workshops",
       link: "#" 
     },
