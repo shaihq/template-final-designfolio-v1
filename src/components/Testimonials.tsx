@@ -1,8 +1,9 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Button } from "./ui/button";
 import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useRef } from "react";
 
 interface Testimonial {
   id: number;
@@ -70,6 +71,32 @@ export const Testimonials = () => {
   const [expandedCards, setExpandedCards] = useState<number[]>([]);
   const isMobile = useIsMobile();
   const visibleTestimonials = showMore ? testimonials : testimonials.slice(0, 4);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      }
+    },
+  };
 
   const handleNext = () => {
     setCurrentIndex((prev) => 
@@ -92,8 +119,19 @@ export const Testimonials = () => {
   };
 
   return (
-    <section className="py-16">
-      <h2 className="text-3xl font-bold mb-12 text-center">What People Say</h2>
+    <motion.section 
+      ref={sectionRef}
+      variants={container}
+      initial="hidden"
+      animate={isInView ? "show" : "hidden"}
+      className="py-16"
+    >
+      <motion.h2 
+        variants={item}
+        className="text-3xl font-bold mb-12 text-center"
+      >
+        What People Say
+      </motion.h2>
       
       <div className={`relative ${isMobile ? 'px-4' : 'grid grid-cols-2 gap-6 max-w-4xl mx-auto px-4'}`}>
         {isMobile ? (
@@ -101,18 +139,7 @@ export const Testimonials = () => {
             <AnimatePresence mode="wait">
               <motion.div
                 key={currentIndex}
-                initial={{ scale: 0.8, opacity: 0 }}
-                animate={{ 
-                  scale: 1, 
-                  opacity: 1,
-                  rotate: 2 // Default tilt for mobile
-                }}
-                exit={{ scale: 0.8, opacity: 0 }}
-                transition={{ duration: 0.3 }}
-                whileHover={{ 
-                  rotate: 4, // Slightly more tilt on hover
-                  transition: { duration: 0.2 }
-                }}
+                variants={item}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
               >
                 <p className="text-gray-400">
@@ -183,22 +210,7 @@ export const Testimonials = () => {
             {visibleTestimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ 
-                  opacity: 1, 
-                  y: 0,
-                  rotate: index % 2 === 0 ? 2 : -2 // Default alternating tilt
-                }}
-                exit={{ opacity: 0, y: -20 }}
-                whileHover={{ 
-                  rotate: index % 2 === 0 ? 4 : -4, // Slightly more tilt on hover
-                  transition: { duration: 0.2 }
-                }}
-                transition={{ 
-                  duration: 0.5,
-                  delay: index * 0.1,
-                  ease: "easeOut"
-                }}
+                variants={item}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
                 <p className="text-gray-400">
@@ -251,10 +263,8 @@ export const Testimonials = () => {
 
       {!isMobile && testimonials.length > 4 && (
         <motion.div 
+          variants={item}
           className="text-center mt-8"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
         >
           <Button
             variant="outline"
@@ -264,6 +274,6 @@ export const Testimonials = () => {
           </Button>
         </motion.div>
       )}
-    </section>
+    </motion.section>
   );
 };
