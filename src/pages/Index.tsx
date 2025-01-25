@@ -3,7 +3,6 @@ import { WorkShowcase } from "@/components/WorkShowcase";
 import { Spotlight } from "@/components/Spotlight";
 import { SideProjects } from "@/components/SideProjects";
 import { ToolStack } from "@/components/ToolStack";
-import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
 import { FloatingNav } from "@/components/FloatingNav";
 
@@ -25,9 +24,6 @@ const Index = () => {
         </section>
         <section id="tools">
           <ToolStack />
-        </section>
-        <section id="newsletter">
-          <Newsletter />
         </section>
         <Footer />
       </div>
