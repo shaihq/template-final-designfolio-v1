@@ -56,29 +56,23 @@ export const Hero = () => {
         into a refined design.
       </p>
       
-      {/* Scrolling Skills with blur effects */}
-      <div className="relative w-full max-w-4xl mt-8">
-        <div 
-          className="absolute left-0 top-0 w-16 h-full bg-gradient-to-r from-background to-transparent z-10"
-          aria-hidden="true"
-        />
-        <div 
-          className="absolute right-0 top-0 w-16 h-full bg-gradient-to-l from-background to-transparent z-10"
-          aria-hidden="true"
-        />
-        <div className="overflow-hidden" ref={scrollRef}>
-          <div className="flex gap-8 whitespace-nowrap">
-            {skills.map((skill, index) => (
-              <span
-                key={index}
-                className="text-primary px-4 py-2 rounded-full border border-primary/20"
-              >
-                {skill}
-              </span>
-            ))}
-          </div>
+      {/* Scrolling Skills */}
+      <div className="w-full max-w-4xl overflow-hidden mt-8" ref={scrollRef}>
+        <div className="flex gap-8 whitespace-nowrap">
+          {skills.map((skill, index) => (
+            <span
+              key={index}
+              className="text-primary px-4 py-2 rounded-full border border-primary/20"
+            >
+              {skill}
+            </span>
+          ))}
         </div>
       </div>
+
+      <button className="bg-primary px-6 py-2 rounded-full hover:opacity-90 transition-opacity mt-12">
+        Contact
+      </button>
     </section>
   );
 };
