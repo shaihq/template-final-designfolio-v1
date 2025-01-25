@@ -96,7 +96,7 @@ export const WorkShowcase = () => {
         variants={item}
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group rounded-3xl bg-card overflow-hidden relative flex flex-col md:flex-row mb-8 last:mb-0"
+        className="group rounded-3xl bg-card overflow-hidden relative"
       >
         <div
           className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -104,22 +104,22 @@ export const WorkShowcase = () => {
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
           }}
         />
-        <div className="md:w-[500px] aspect-[16/9] md:aspect-auto overflow-hidden bg-secondary/50 relative">
+        <div className="aspect-[4/3] overflow-hidden bg-secondary/50 relative">
           <ImageWithPreload src={project.image} alt={project.title} />
-        </div>
-        <div className="p-8 pb-10 flex-1 relative">
-          <h3 className="text-2xl font-semibold mb-3 leading-tight">
-            {project.title}
-          </h3>
-          <p className="text-gray-400 line-clamp-2">
-            {project.description}
-          </p>
           <a
             href={project.link}
             className="absolute top-6 right-6 size-14 rounded-full bg-tertiary flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 hover:bg-tertiary-hover"
           >
             <ArrowUpRight className="size-6 text-white" />
           </a>
+        </div>
+        <div className="p-8 pb-10">
+          <h3 className="text-2xl font-semibold mb-3 leading-tight">
+            {project.title}
+          </h3>
+          <p className="text-gray-400 line-clamp-2">
+            {project.description}
+          </p>
         </div>
       </motion.div>
     );
@@ -133,7 +133,7 @@ export const WorkShowcase = () => {
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="flex flex-col"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
