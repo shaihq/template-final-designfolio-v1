@@ -1,6 +1,6 @@
 import { Mail, Github, Linkedin, Twitter, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
 import { Figma, FileCode, Laptop } from "lucide-react";
@@ -65,6 +65,36 @@ const Portfolio = () => {
       link: "#"
     }
   ];
+
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.33, 1, 0.68, 1]
+      }
+    }
+  };
+
+  const staggerContainer = {
+    visible: {
+      transition: {
+        staggerChildren: 0.1
+      }
+    }
+  };
+
+  const experienceRef = useRef(null);
+  const toolsRef = useRef(null);
+  const projectsRef = useRef(null);
+  const testimonialsRef = useRef(null);
+
+  const isExperienceInView = useInView(experienceRef, { once: true, margin: "-100px" });
+  const isToolsInView = useInView(toolsRef, { once: true, margin: "-100px" });
+  const isProjectsInView = useInView(projectsRef, { once: true, margin: "-100px" });
+  const isTestimonialsInView = useInView(testimonialsRef, { once: true, margin: "-100px" });
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -168,12 +198,18 @@ const Portfolio = () => {
 
         {/* Experience Section */}
         <motion.section 
-          variants={container}
+          ref={experienceRef}
           initial="hidden"
-          animate="show"
+          animate={isExperienceInView ? "visible" : "hidden"}
+          variants={staggerContainer}
           className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-2xl font-bold mb-6">Experience</h3>
+          <motion.h3 
+            className="text-2xl font-bold mb-6"
+            variants={fadeInUp}
+          >
+            Experience
+          </motion.h3>
           <div className="space-y-4">
             {[
               {
@@ -191,7 +227,7 @@ const Portfolio = () => {
             ].map((exp, index) => (
               <motion.div
                 key={index}
-                variants={item}
+                variants={fadeInUp}
                 className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex justify-between items-start">
@@ -207,19 +243,26 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
+        {/* Tools Section */}
         <motion.section 
-          variants={container}
+          ref={toolsRef}
           initial="hidden"
-          animate="show"
+          animate={isToolsInView ? "visible" : "hidden"}
+          variants={staggerContainer}
           className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
+          <motion.h3 
+            className="text-2xl font-bold mb-8"
+            variants={fadeInUp}
+          >
+            Tools I Use
+          </motion.h3>
           <div className="grid grid-cols-2 gap-4">
             {tools.map((tool, index) => (
               <motion.a
                 key={index}
+                variants={fadeInUp}
                 href={tool.link}
-                variants={item}
                 className="group bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex items-center gap-3">
@@ -235,12 +278,18 @@ const Portfolio = () => {
 
         {/* Projects Section */}
         <motion.section 
-          variants={container}
+          ref={projectsRef}
           initial="hidden"
-          animate="show"
+          animate={isProjectsInView ? "visible" : "hidden"}
+          variants={staggerContainer}
           className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
+          <motion.h3 
+            className="text-3xl font-bold mb-12"
+            variants={fadeInUp}
+          >
+            Featured Projects
+          </motion.h3>
           <div className="flex flex-col gap-6">
             {[
               {
@@ -315,7 +364,16 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
-        <Testimonials />
+        {/* Testimonials Section */}
+        <motion.div
+          ref={testimonialsRef}
+          initial="hidden"
+          animate={isTestimonialsInView ? "visible" : "hidden"}
+          variants={fadeInUp}
+        >
+          <Testimonials />
+        </motion.div>
+
         <Footer />
       </div>
     </div>
