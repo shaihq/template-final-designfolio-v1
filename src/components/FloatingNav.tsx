@@ -75,7 +75,7 @@ export const FloatingNav = () => {
 
       {/* Mobile and Tablet Navigation */}
       <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden">
-        <div className="bg-card border border-card-border rounded-full p-2 shadow-lg">
+        <div className="bg-card border border-card-border rounded-xl p-2 shadow-lg">
           <div className="flex items-center gap-2">
             {mobileSections.map(({ id, label, icon: Icon }) => (
               <button
