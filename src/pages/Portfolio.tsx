@@ -141,9 +141,9 @@ const Portfolio = () => {
 
         <motion.section 
           ref={experienceRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isExperienceInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          variants={container}
+          initial="hidden"
+          animate={isExperienceInView ? "show" : "hidden"}
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-6">Experience</h3>
@@ -165,8 +165,6 @@ const Portfolio = () => {
               <motion.div
                 key={index}
                 variants={item}
-                initial="hidden"
-                animate={isExperienceInView ? "show" : "hidden"}
                 className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex justify-between items-start">
@@ -184,9 +182,9 @@ const Portfolio = () => {
 
         <motion.section 
           ref={toolsRef}
-          initial={{ opacity: 0, y: 20 }}
-          animate={isToolsInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.6 }}
+          variants={container}
+          initial="hidden"
+          animate={isToolsInView ? "show" : "hidden"}
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
@@ -196,8 +194,6 @@ const Portfolio = () => {
                 key={index}
                 href={tool.link}
                 variants={item}
-                initial="hidden"
-                animate={isToolsInView ? "show" : "hidden"}
                 className="group bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
                 <div className="flex items-center gap-3">
@@ -212,9 +208,10 @@ const Portfolio = () => {
         </motion.section>
 
         <motion.section 
+          ref={projectsRef}
           variants={container}
           initial="hidden"
-          animate="show"
+          animate={isProjectsInView ? "show" : "hidden"}
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
