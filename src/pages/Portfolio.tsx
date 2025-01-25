@@ -32,7 +32,6 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header Section with Border */}
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -53,8 +52,7 @@ const Portfolio = () => {
           </div>
         </div>
       </header>
-
-      {/* Main Content with Side Borders and Section Dividers */}
+      
       <div className="container max-w-3xl mx-auto px-4 relative">
         <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
         <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
@@ -71,7 +69,7 @@ const Portfolio = () => {
             Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
           </p>
         </section>
-
+        
         {/* Experience Section */}
         <motion.section 
           variants={container}
@@ -170,14 +168,15 @@ const Portfolio = () => {
                         <p className="text-gray-400">{project.description}</p>
                       </div>
                       <Button 
-                        variant="tertiary" 
+                        variant="outline"
                         size="sm"
-                        className="self-start mt-6"
+                        className="self-start mt-6 group/btn relative overflow-hidden"
                         asChild
                       >
-                        <a href={project.link}>
+                        <a href={project.link} className="relative z-10">
+                          <span className="absolute inset-0 group-hover/btn:bg-white/10 transition-colors duration-300" />
                           View Project
-                          <ArrowRight className="w-4 h-4" />
+                          <ArrowRight className="w-4 h-4 ml-2" />
                         </a>
                       </Button>
                     </div>
