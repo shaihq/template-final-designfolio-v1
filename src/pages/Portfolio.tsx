@@ -201,7 +201,7 @@ const Portfolio = () => {
         >
           <h3 className="text-2xl font-bold mb-8 text-center">What People Say</h3>
           
-          <div className="relative w-full max-w-2xl mx-auto">
+          <div className="relative w-full max-w-2xl mx-auto min-h-[200px]">
             <AnimatePresence mode="wait">
               {testimonials.map((testimonial, index) => {
                 const isActive = index === currentIndex;
@@ -257,7 +257,7 @@ const Portfolio = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-2 mt-4">
+          <div className="flex justify-center gap-2 mt-8">
             <Button
               variant="outline"
               size="icon"
