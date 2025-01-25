@@ -3,6 +3,52 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --radius: 0.75rem;
+    
+    /* Light theme defaults */
+    --df-bg-color: #fafaf7;
+    --df-base-text-color: #202937;
+    --df-secondary-text-color: #475569;
+    --df-placeholder-color: #eff0f0;
+    --tertiary-btn-bg-color: #ff553e;
+    --tertiary-btn-text-color: #ffffff;
+    --secondary-btn-bg-color: #ffffff;
+    --secondary-btn-text-color: #202937;
+    --project-card-bg-color: #fff;
+    --project-card-heading-color: #202937;
+    --input-border-color: #e5e7eb;
+    --input-border-focus-color: #6b7990;
+    --df-add-card-border-color: #e9eaeb;
+  }
+
+  [data-theme="dark"] {
+    /* Buttons */
+    --primary-btn-bg-color: #262832;
+    --primary-btn-text-color: #f9f9fb;
+    --primary-btn-bg-hover-color: #4a4e5d;
+    --primary-btn-text-hover-color: #f9f9fb;
+    --secondary-btn-bg-color: #17181d;
+    --secondary-btn-text-color: #f9f9fb;
+    --tertiary-btn-bg-color: #ff553e;
+    --tertiary-btn-text-color: #ffffff;
+
+    /* Application */
+    --df-bg-color: #13151a;
+    --df-base-text-color: #e9eaeb;
+    --df-secondary-text-color: #b4b8c6;
+    --df-placeholder-color: #383a47;
+    --df-add-card-border-color: #262832;
+
+    /* Cards */
+    --project-card-bg-color: #2f323d;
+    --project-card-heading-color: #e9eaeb;
+
+    /* Inputs */
+    --input-border-color: #363a48;
+    --input-border-focus-color: #b4bace;
+  }
+
   body {
     @apply bg-background text-foreground;
   }
