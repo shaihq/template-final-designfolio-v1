@@ -1,7 +1,7 @@
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 export const WorkShowcase = () => {
   const projects = [
@@ -62,11 +62,20 @@ export const WorkShowcase = () => {
             variants={item}
             className="group rounded-3xl bg-card overflow-hidden relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-transparent before:via-foreground/10 before:to-transparent before:rounded-3xl before:opacity-0 before:transition-opacity hover:before:opacity-100"
           >
-            <div className="aspect-[4/3] overflow-hidden">
-              <img
+            <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
+              <motion.img
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5 }}
                 src={project.image}
                 alt={project.title}
                 className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
+                decoding="async"
+                style={{
+                  backfaceVisibility: "hidden",
+                  WebkitBackfaceVisibility: "hidden",
+                }}
               />
             </div>
             <div className="p-8">
