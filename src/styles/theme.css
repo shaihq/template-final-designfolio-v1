@@ -1,0 +1,218 @@
+:root {
+  /* landing page */
+  --landing-bg-color: #fafaf7;
+  --landing-header-bg-color: transparent;
+  --landng-header-border-color: #e8ecf2;
+  --landing-nav-link-color: #475569;
+  --landing-nav-link-hover-color: #35435a;
+  --landing-nav-link-bg-hover-color: #e0e0e0;
+  --landing-nav-link-base-color: #d6dce6;
+  --landing-heading-text-color: #202937;
+  --landing-description-text-color: #475569;
+  --landing-card-bg-color: #f2f2f0;
+  --landing-card-border-color: #eeeeec;
+  --landing-card-step-text-color: #475569;
+  --landing-card-step-bg-color: #ffffff;
+  --landing-card-step-border-color: #e7e7e7;
+  --landing-card-heading-color: #202937;
+  --landing-card-description-color: #475569;
+  --landing-footer-heading-color: #202937;
+  --landing-footer-link-color: #4d545f;
+
+  /* buttons */
+  --primary-btn-bg-color: #202937;
+  --primary-btn-text-color: #ffffff;
+  --primary-btn-bg-hover-color: #35435a;
+  --primary-btn-text-hover-color: #ffffff;
+
+  --secondary-btn-bg-color: #ffffff;
+  --secondary-btn-text-color: #202937;
+  --secondary-btn-bg-hover-color: #f9f9fb;
+  --secondary-btn-text-hover-color: #202937;
+  --secondary-btn-border-color: #e0e6eb;
+  --secondary-btn-border-hover-color: #e0e6eb;
+  --secondary-btn-shadow: inset 0px 0px 0px 2px #e0e6eb;
+
+  --tertiary-btn-bg-color: #ff553e;
+  --tertiary-btn-text-color: #ffffff;
+  --tertiary-btn-bg-hover-color: #e84934;
+  --tertiary-btn-text-hover-color: #ffffff;
+  --tertiary-btn-border-color: #ff553e;
+  --tertiary-btn-border-hover-color: #e84934;
+
+  --normal-btn-text-color: #202937;
+  --normal-btn-bg-hover-color: #f9f9fb;
+
+  --modal-btn-text-color: #f9f9fb;
+  --modal-btn-bg-color: #202937;
+  --modal-btn-border-color: #202937;
+  --modal-btn-bg-hover-color: #35435a;
+  --modal-btn-border-hover-color: #35435a;
+
+  --ai-btn-text-color: #20294c;
+  --ai-btn-bg-color: linear-gradient(180deg, #ffffff 0.77%, #e8e8e8 100.77%);
+  --ai-btn-border-color: #e0e6eb;
+
+  --delete-btn-bg-color: #ffeeeb;
+  --delete-btn-bg-hover-color: #ffe5e0;
+  --delete-btn-icon-color: #ff3b30;
+  --delete-btn-border-color: #ffeeeb;
+  --delete-btn-border-hover-color: #ff3b30;
+  --delete-btn-shadow-color: inset 0px 0px 0px 1px #ff3b30;
+
+  --radio-btn-bg-color: #ffffff;
+  --radio-btn-border-color: #e9eaeb;
+  --radio-btn-text-color: #202937;
+  --radio-btn-bg-hover-color: #f6f7f9;
+  --radio-btn-bg-selected-color: #f6f7f9;
+  --radio-btn-selected-fill-color: #202937;
+  --radio-btn-selected-stroke-color: #ffffff;
+
+  /* application */
+  --df-bg-color: #f2f2f0;
+  --df-base-text-color: #202937;
+  --df-secondary-text-color: #4d545f;
+  --df-placeholder-color: #eff0f0;
+  --df-logo-text-color: #334155;
+  --df-header-bg-color: #ffffff;
+  --df-icon-color: #000000;
+  --df-section-card-bg-color: #ffffff;
+  --df-section-card-heading-color: #202937;
+  --df-section-card-shadow: rgba(0, 0, 0, 0.02) 0px 0px 16.4px;
+  --df-add-card-bg-color: #f2f2f0;
+  --df-add-card-border-color: #e9eaeb;
+  --df-add-card-heading-color: #202937;
+  --df-add-card-description-color: #989da3;
+  --df-add-item-shadow: inset 0px 0px 0px 2px #e9eaeb;
+  --df-orange-color: #ff553e;
+  --df-tip-color: #828282;
+
+  --credit-text-color: #7a829d;
+
+  /* profile card */
+  --profile-card-heading-color: #202937;
+  --profile-card-description-color: #788095;
+  --profile-card-skill-color: #788095;
+
+  /* project card */
+  --project-card-bg-color: #fff;
+  --project-card-border-color: #e9eaeb;
+  --project-card-heading-color: #202937;
+  --project-card-description-color: #9b9bac;
+  --project-card-reorder-btn-bg-color: #f9f9fb;
+  --project-card-reorder-btn-bg-hover-color: #eff0f0;
+  --project-card-reorder-btn-icon-color: #aebeca;
+
+  /* project Info card */
+  --project-info-card-heading-color: #202937;
+  --project-info-card-description-color: #8d98af;
+
+  /* review card */
+  --review-card-bg-color: #fff;
+  --review-card-border-color: #e9eaeb;
+  --review-card-heading-color: #202937;
+  --review-card-description-color: #9b9bac;
+  --review-card-text-color: #202937;
+
+  /* tool-box card */
+  --tools-card-item-bg-color: #fff;
+  --tools-card-item-border-color: #f0f1f4;
+  --tools-card-item-text-color: #202937;
+
+  /* work experience card */
+  --work-card-heading-color: #202937;
+  --work-card-description-color: #788095;
+  --work-card-company-color: #ff553e;
+  --work-card-sort-icon-color: #9b9bac;
+
+  /* modal */
+  --modal-heading-color: #202937;
+  --modal-bg-color: #ffffff;
+  --modal-footer-bg-color: #f5f7f9;
+
+  /* Popover */
+  --popover-bg-color: #ffffff;
+  --popover-border-color: #f0f1f4;
+  --popver-shadow: 0px 8.3px 33.2px 0px rgba(32, 41, 55, 0.15);
+  --popover-heading-color: #202937;
+
+  /* theme-popover */
+  --default-theme-box-bg-color: #f9f9fb;
+  --default-theme-box-border-color: #e0e6eb;
+  --default-theme-selected-color: #ff553e;
+  --default-theme-bg-hover-color: #f6f7f9;
+  --default-theme-shadow: inset 0px 0px 0px 2px #e0e6eb;
+
+  --theme-box-bg-color: transparent;
+  --theme-box-border-color: #e6e7e9;
+  --theme-selected-color: #ff553e;
+  --theme-bg-hover-color: #f6f7f9;
+  --theme-shadow: inset 0px 0px 0px 0px #565b6c;
+
+  /* cursor */
+  --default-cursor-box-bg-color: transparent;
+  --default-cursor-box-border-color: #e9eaeb;
+  --default-cursor-bg-hover-color: #f6f7f9;
+  --default-cursor-shadow: inset 0px 0px 0px 0px #e0e6eb;
+
+  --selected-cursor-bg-color: #f9f9fb;
+  --selected-cursor-shadow: inset 0px 0px 0px 2px #e0e6eb;
+
+  /* publish-popover */
+  --publish-popover-text-color: #202937;
+  --publish-popover-description-color: #475569;
+
+  /* task */
+  --progress-active-color: #ff9500;
+  --progress-text-color: #202937;
+  --progess-trail-color: #dddddd;
+  --checked-list-item-bg-color: transparent;
+  --checked-list-item-border-color: #e9eaeb;
+  --checked-list-item-bg-hover-color: #f6f7f9;
+  --checked-list-item-icon-color: #3f4358;
+  --checked-list-item-text-color: #202937;
+  --check-list-empty-border-color: #e9eaeb;
+
+  /* inputs */
+  --input-border-color: #e5e7eb;
+  --input-bg-color: #fff;
+  --input-text-color: #202937;
+  --input-border-focus-color: #6b7990;
+  --input-border-focus-shadow: 0px 0px 0px 4px rgba(225, 228, 232, 0.5);
+  --input-border-hover-shadow: 0px 0px 0px 4px rgba(225, 228, 232, 0.5);
+  --input-button-color: #475569;
+  --input-placeholder-color: #7a829d;
+  --input-success-color: #34c759;
+  --input-error-color: #ff3b30;
+  --input-error-shadow: 0px 0px 0px 4px #ff3a3029;
+  --input-upload-border-color: #6a7079;
+  --input-upload-bg-color: #f0f1f4;
+  --input-upload-heading-color: #6a7079;
+  --input-upload-description-color: #6a7079;
+  --input-upload-icon-color: #ff553e;
+  --input-password-bg-color: #f5f7f9;
+  --input-password-heading-color: #202937;
+  --input-password-description-color: #969cae;
+
+  --bottom-navigation-active-stroke: #202937;
+  --bottom-navigation-active-fill: #f3f4f7;
+  --bottom-navigation-inactive-stroke: #738096;
+  --bottom-navigation-inactive-fill: #f9fafb;
+
+  --used-credit-text-color: #8b919a;
+  --good-bg-color: #d3fae2;
+  --good-text-color: #124733;
+  --not-bad-bg-color: #fff4cc;
+  --not-bad-text-color: #784d00;
+  --bad-bg-color: #fdceda;
+  --bad-text-color: #a5022c;
+
+  --modal-analyze-bg-color: #fafafa;
+  --analytics-url-color: #007aff;
+  --analytics-last-updated-color: #596983;
+
+  --template-text-left-bg-color: #ffffff;
+  --template-text-left-text-color: #202937;
+  --template-text-right-bg-color: #278eff;
+  --template-text-right-text-color: #ffffff;
+}
