@@ -120,7 +120,7 @@ const Portfolio = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-all duration-300 hover:skew-x-1 hover:-skew-y-1 transform-gpu"
+                className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-transform duration-300 hover:skew-x-1 hover:-skew-y-1 transform-gpu hover:scale-[1.02]"
               >
                 <div className="flex justify-between items-start">
                   <div>
