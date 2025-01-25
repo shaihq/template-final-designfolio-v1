@@ -1,16 +1,48 @@
+import { ArrowUpRight } from "lucide-react";
+
 export const WorkShowcase = () => {
+  const projects = [
+    {
+      title: "Improved Onboarding, reducing drop-off by 30% for 1M learners",
+      image: "/lovable-uploads/811e1aed-257a-4113-b174-22ade0f7dfc8.png",
+      link: "#",
+    },
+    {
+      title: "Designing a scalable Design System to reduce development time by 40%",
+      image: "/lovable-uploads/811e1aed-257a-4113-b174-22ade0f7dfc8.png",
+      link: "#",
+    },
+  ];
+
   return (
     <section className="py-16">
-      <h2 className="text-2xl font-bold mb-8">Work</h2>
-      <div className="relative overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-1">
-        <div className="bg-card rounded-lg p-8">
-          <h3 className="text-xl mb-4">Your Canvas</h3>
-          <p className="text-gray-400 mb-4">Design Lead, Framer</p>
-          <div className="flex gap-2">
-            <button className="p-2 rounded-full bg-background/20">←</button>
-            <button className="p-2 rounded-full bg-background/20">→</button>
+      <h2 className="text-3xl font-bold mb-12">My works</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="group rounded-3xl bg-card border border-border/50 overflow-hidden hover:border-primary/50 transition-colors"
+          >
+            <div className="aspect-[4/3] overflow-hidden">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+              />
+            </div>
+            <div className="p-8">
+              <h3 className="text-2xl font-semibold mb-6 leading-tight">
+                {project.title}
+              </h3>
+              <a
+                href={project.link}
+                className="inline-flex items-center text-lg text-muted-foreground hover:text-primary transition-colors"
+              >
+                View project <ArrowUpRight className="ml-2" />
+              </a>
+            </div>
           </div>
-        </div>
+        ))}
       </div>
     </section>
   );
