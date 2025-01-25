@@ -1,4 +1,4 @@
-import { Download, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
@@ -45,16 +45,9 @@ const Portfolio = () => {
                 <h2 className="text-foreground font-medium">Shai</h2>
               </div>
             </div>
-            <Button 
-              variant="outline" 
-              size="sm" 
-              className="gap-2"
-              asChild
-            >
-              <a href="/resume.pdf" download>
-                <Download className="w-4 h-4" />
-                Download Resume
-              </a>
+            <Button variant="outline" size="sm" className="gap-2">
+              <Mail className="w-4 h-4" />
+              E-mail
             </Button>
           </div>
         </div>
