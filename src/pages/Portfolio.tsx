@@ -1,186 +1,195 @@
-import { Mail } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { motion } from "framer-motion";
 
 const Portfolio = () => {
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        duration: 0.3,
+        ease: "easeOut",
+        staggerChildren: 0.15,
+      },
+    },
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { 
+      opacity: 1, 
+      y: 0,
+      transition: {
+        duration: 0.4,
+        ease: "easeOut",
+      }
+    },
+  };
+
   return (
-    <div className="min-h-screen bg-background text-foreground p-8 max-w-3xl mx-auto">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
-      <header className="flex items-center justify-between mb-12">
-        <div className="flex items-center gap-3">
-          <img
-            src="/placeholder.svg"
-            alt="Profile"
-            className="w-10 h-10 rounded-full"
-          />
-          <div>
-            <h2 className="text-foreground font-medium">James Safford</h2>
-            <p className="text-sm text-[var(--landing-description-text-color)]">
-              Product Designer
-            </p>
+      <header className="border-b border-secondary-border py-6">
+        <div className="container max-w-3xl mx-auto px-4">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <img
+                src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
+                alt="Profile"
+                className="w-10 h-10 rounded-full"
+              />
+              <div>
+                <h2 className="text-foreground font-medium">Shai</h2>
+                <p className="text-sm text-gray-400">
+                  Product Designer
+                </p>
+              </div>
+            </div>
+            <Button variant="outline" size="sm" className="gap-2">
+              <Mail className="w-4 h-4" />
+              E-mail
+            </Button>
           </div>
         </div>
-        <Button variant="outline" size="sm" className="gap-2">
-          <Mail className="w-4 h-4" />
-          E-mail
-        </Button>
       </header>
 
-      {/* Hero Section */}
-      <section className="mb-16">
-        <h1 className="text-4xl font-bold mb-2 text-foreground">
-          I will turn your vision into a real digital product.{" "}
-          <span className="text-[var(--landing-description-text-color)]">
-            I'm open to collaboration.
-          </span>
-        </h1>
-        <p className="text-[var(--landing-description-text-color)] mb-6">
-          I'm James, a Product Designer currently based in Krakow. I specialize in creating and managing digital products, with a focus on clean design that emphasizes functionality and user needs.
-        </p>
-        <p className="text-[var(--landing-description-text-color)]">
-          My career in design began during my time at Stanford Law School in Ohio. I graduated with a master's degree from Lancaster University in the UK, achieving top marks. I continuously hone my skills through industry networking events, professional courses, and my current internship at Apple.
-        </p>
-      </section>
-
-      {/* Experience Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Experience</h3>
-        <div className="grid gap-4">
-          <div className="p-4 rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)]">
-            <div className="flex justify-between items-start">
-              <div>
-                <span className="text-[var(--df-orange-color)] font-medium">Lead Product Designer</span>
-                <p className="text-sm text-[var(--landing-description-text-color)]">Crunch Energy</p>
-              </div>
-              <span className="text-sm text-[var(--landing-description-text-color)]">2018 - Currently</span>
-            </div>
-          </div>
-          <div className="p-4 rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)]">
-            <div className="flex justify-between items-start">
-              <div>
-                <span className="text-[var(--df-orange-color)] font-medium">Junior UI/UX Designer</span>
-                <p className="text-sm text-[var(--landing-description-text-color)]">XYZ Studios</p>
-              </div>
-              <span className="text-sm text-[var(--landing-description-text-color)]">2014 - 2018</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Projects</h3>
-        <div className="grid grid-cols-2 gap-4">
-          {[1, 2, 3, 4].map((item) => (
-            <div
-              key={item}
-              className="aspect-video rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)] p-4"
-            >
-              <div className="h-full flex flex-col justify-between">
-                <h4 className="font-medium">Project Name</h4>
-                <p className="text-sm text-[var(--landing-description-text-color)]">
-                  Brief description
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Education Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Education</h3>
-        <div className="space-y-6">
-          <div className="p-4 rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)]">
-            <h4 className="font-medium mb-1">Master in Product Design</h4>
-            <p className="text-sm text-[var(--landing-description-text-color)] mb-3">
-              University of Lancaster, United Kingdom
-            </p>
-            <p className="text-sm text-[var(--landing-description-text-color)]">
-              I gained comprehensive knowledge in product design, focusing on innovative digital solutions, user experience, and project management. Enhanced skills through real-world design challenges.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Stack Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Stack</h3>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-          {['Figma', 'Framer', 'Miro', 'Slack'].map((tool) => (
-            <div
-              key={tool}
-              className="p-4 rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)] flex items-center gap-3"
-            >
-              <div className="w-8 h-8 rounded bg-primary/10" />
-              <div>
-                <p className="font-medium">{tool}</p>
-                <p className="text-sm text-[var(--landing-description-text-color)]">
-                  Design Tool
-                </p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Awards Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Awards</h3>
-        <div className="space-y-4">
-          {[
-            { award: "Framer Awards", type: "Site Of The Year", year: "2023" },
-            { award: "Awwwards", type: "Site Of The Month", year: "2022" },
-            { award: "CSSem", type: "Product Of The Year", year: "2022" },
-          ].map((item) => (
-            <div
-              key={item.award}
-              className="flex justify-between items-center p-4 rounded-lg border border-[var(--project-card-border-color)] bg-[var(--project-card-bg-color)]"
-            >
-              <div>
-                <span className="font-medium">{item.award}</span>
-                <p className="text-sm text-[var(--landing-description-text-color)]">
-                  {item.type}
-                </p>
-              </div>
-              <span className="text-sm text-[var(--landing-description-text-color)]">
-                {item.year}
-              </span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Summary Section */}
-      <section className="mb-16">
-        <h3 className="text-xl font-semibold mb-6">Summary</h3>
-        <div className="space-y-4">
-          <p className="text-[var(--landing-description-text-color)]">
-            As a product-focused Product Designer, I thrive on transforming ideas into impactful digital products that solve real-world user needs. With a comprehensive understanding of product management and design processes, I focus on building clean, intuitive solutions that solve real problems.
+      <div className="container max-w-3xl mx-auto px-4 py-12">
+        {/* Hero Section */}
+        <section className="mb-16">
+          <h1 className="text-4xl font-bold mb-4">
+            Product Designer with over 7+ years of experience.{" "}
+            <span className="text-gray-400">
+              A unicorn designer who can both design and code.
+            </span>
+          </h1>
+          <p className="text-gray-400 mb-6">
+            Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
           </p>
-          <p className="text-[var(--landing-description-text-color)]">
-            I'm always eager to evolve and learn fresh perspectives to the table, constantly refining my skills through hands-on experience, ongoing learning, and active participation in industry events. If you're looking for someone who's not only technically skilled but also dedicated to crafting products that truly make a difference, I'd love to connect and discuss how I can contribute to your team.
-          </p>
-        </div>
-      </section>
+        </section>
 
-      {/* Footer */}
-      <footer className="flex justify-between items-center pt-8 border-t border-[var(--project-card-border-color)]">
-        <div className="flex gap-4">
-          <Button variant="outline" size="sm">
-            Email
-          </Button>
-          <Button variant="outline" size="sm">
-            LinkedIn
-          </Button>
-          <Button variant="outline" size="sm">
-            Twitter
-          </Button>
-        </div>
-        <div className="flex items-center gap-2 text-sm text-[var(--landing-description-text-color)]">
-          <span>Built in</span>
-          <span className="font-medium">Framer</span>
-        </div>
-      </footer>
+        {/* Experience Section */}
+        <motion.section 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-16"
+        >
+          <h3 className="text-2xl font-bold mb-6">Experience</h3>
+          <div className="space-y-4">
+            {[
+              {
+                role: "Senior Product Designer",
+                company: "Design Studio X",
+                period: "2023 - Present",
+                description: "Leading the design team in creating innovative digital products. Collaborated with cross-functional teams to deliver user-centered solutions."
+              },
+              {
+                role: "UX Designer",
+                company: "Tech Innovations Inc",
+                period: "2020 - 2022",
+                description: "Spearheaded the redesign of core products resulting in a 30% increase in user satisfaction."
+              }
+            ].map((exp, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
+              >
+                <div className="flex justify-between items-start">
+                  <div>
+                    <span className="text-tertiary font-medium">{exp.role}</span>
+                    <p className="text-sm text-gray-400">{exp.company}</p>
+                    <p className="text-gray-400 mt-2">{exp.description}</p>
+                  </div>
+                  <span className="text-sm text-gray-400">{exp.period}</span>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Projects Section */}
+        <motion.section 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-16"
+        >
+          <h3 className="text-2xl font-bold mb-6">Projects</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {[
+              {
+                title: "MyCaptain Course Platform",
+                description: "Designed and developed the course overview page with interactive calendar and progress tracking features",
+                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png"
+              },
+              {
+                title: "MyCaptain Profile Builder",
+                description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
+                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png"
+              }
+            ].map((project, index) => (
+              <motion.div
+                key={index}
+                variants={item}
+                className="bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors"
+              >
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-medium mb-2">{project.title}</h4>
+                  <p className="text-sm text-gray-400">
+                    {project.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.section>
+
+        {/* Footer */}
+        <footer className="pt-8 border-t border-secondary-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex gap-4">
+              <a
+                href="https://github.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-foreground transition-colors"
+              >
+                <Github className="w-5 h-5" />
+              </a>
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-foreground transition-colors"
+              >
+                <Linkedin className="w-5 h-5" />
+              </a>
+              <a
+                href="https://twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-foreground transition-colors"
+              >
+                <Twitter className="w-5 h-5" />
+              </a>
+            </div>
+            <div className="flex items-center gap-2 text-sm text-gray-400">
+              <span>Chennai, IN</span>
+              <span className="w-1 h-1 rounded-full bg-gray-400"></span>
+              <span>3:30 AM</span>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
   );
 };
