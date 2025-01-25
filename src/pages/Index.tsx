@@ -5,19 +5,33 @@ import { SideProjects } from "@/components/SideProjects";
 import { ToolStack } from "@/components/ToolStack";
 import { Newsletter } from "@/components/Newsletter";
 import { Footer } from "@/components/Footer";
+import { FloatingNav } from "@/components/FloatingNav";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="container max-w-3xl mx-auto px-4">
-        <Hero />
-        <WorkShowcase />
-        <Spotlight />
-        <SideProjects />
-        <ToolStack />
-        <Newsletter />
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="work">
+          <WorkShowcase />
+        </section>
+        <section id="spotlight">
+          <Spotlight />
+        </section>
+        <section id="projects">
+          <SideProjects />
+        </section>
+        <section id="tools">
+          <ToolStack />
+        </section>
+        <section id="newsletter">
+          <Newsletter />
+        </section>
         <Footer />
       </div>
+      <FloatingNav />
     </div>
   );
 };
