@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ChevronDown, ChevronUp } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Testimonial {
@@ -10,6 +10,7 @@ interface Testimonial {
   role: string;
   company: string;
   content: string;
+  expandedContent?: string;
 }
 
 const testimonials: Testimonial[] = [
@@ -19,6 +20,7 @@ const testimonials: Testimonial[] = [
     role: "Product Manager",
     company: "TechCorp",
     content: "Working with Shai was an absolute pleasure. Their attention to detail and innovative approach to design challenges truly set them apart.",
+    expandedContent: "The project was delivered ahead of schedule and exceeded all our expectations. Shai's ability to understand our business needs and translate them into beautiful, functional designs was remarkable. They brought fresh perspectives and creative solutions to every challenge we faced.",
   },
   {
     id: 2,
@@ -26,6 +28,7 @@ const testimonials: Testimonial[] = [
     role: "CEO",
     company: "StartupX",
     content: "Shai's ability to balance user needs with business objectives resulted in a product that exceeded our expectations.",
+    expandedContent: "Their strategic thinking and user-centered approach helped us achieve a 40% increase in user engagement. The redesigned interface not only looks beautiful but has significantly improved our conversion rates and user satisfaction scores.",
   },
   {
     id: 3,
@@ -33,6 +36,7 @@ const testimonials: Testimonial[] = [
     role: "Design Director",
     company: "DesignLab",
     content: "The design system Shai created has become the foundation of our product's visual language. Exceptional work!",
+    expandedContent: "The implementation of the design system reduced our design-to-development time by 60% and ensured consistency across all our products. Shai's documentation and training sessions made the adoption process smooth for our entire team.",
   },
   {
     id: 4,
@@ -40,6 +44,7 @@ const testimonials: Testimonial[] = [
     role: "Engineering Lead",
     company: "InnovateTech",
     content: "Rare to find a designer who understands both design and development. Shai bridges that gap perfectly.",
+    expandedContent: "Their technical understanding made collaboration with our development team seamless. The component specifications were precise, and their ability to discuss technical constraints while maintaining design quality was invaluable.",
   },
   {
     id: 5,
@@ -47,6 +52,7 @@ const testimonials: Testimonial[] = [
     role: "UX Research Lead",
     company: "UserFirst",
     content: "Shai's research-driven approach to design challenges helped us create truly user-centered solutions.",
+    expandedContent: "The depth of user research and analysis they conducted provided invaluable insights that shaped our product strategy. Their ability to synthesize complex user feedback into actionable design decisions was impressive.",
   },
   {
     id: 6,
@@ -54,12 +60,14 @@ const testimonials: Testimonial[] = [
     role: "Product Owner",
     company: "FinTech Solutions",
     content: "The impact of Shai's work on our user engagement metrics was remarkable. A true professional.",
+    expandedContent: "We saw a 45% increase in user retention within the first month after launch. Their understanding of financial products and user behavior in the fintech space brought unique value to our project.",
   },
 ];
 
 export const Testimonials = () => {
   const [showMore, setShowMore] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
   const isMobile = useIsMobile();
   const visibleTestimonials = showMore ? testimonials : testimonials.slice(0, 4);
 
@@ -72,6 +80,14 @@ export const Testimonials = () => {
   const handlePrev = () => {
     setCurrentIndex((prev) => 
       prev - 1 < 0 ? visibleTestimonials.length - 1 : prev - 1
+    );
+  };
+
+  const toggleExpand = (id: number) => {
+    setExpandedCards(prev => 
+      prev.includes(id) 
+        ? prev.filter(cardId => cardId !== id)
+        : [...prev, id]
     );
   };
 
@@ -92,6 +108,23 @@ export const Testimonials = () => {
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
               >
                 <p className="text-gray-400 mb-4">{visibleTestimonials[currentIndex].content}</p>
+                
+                <AnimatePresence>
+                  {expandedCards.includes(visibleTestimonials[currentIndex].id) && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-gray-400 mb-4">
+                        {visibleTestimonials[currentIndex].expandedContent}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className="flex items-center gap-2">
                   <div className="flex-1">
                     <h4 className="font-semibold">{visibleTestimonials[currentIndex].name}</h4>
@@ -100,6 +133,25 @@ export const Testimonials = () => {
                     </p>
                   </div>
                 </div>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
+                  className="mt-4 w-full flex items-center justify-center gap-2"
+                >
+                  {expandedCards.includes(visibleTestimonials[currentIndex].id) ? (
+                    <>
+                      Show Less
+                      <ChevronUp className="h-4 w-4" />
+                    </>
+                  ) : (
+                    <>
+                      View More
+                      <ChevronDown className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
               </motion.div>
             </AnimatePresence>
             <div className="flex justify-center gap-4 mt-6">
@@ -140,6 +192,23 @@ export const Testimonials = () => {
                 }}
               >
                 <p className="text-gray-400 mb-4">{testimonial.content}</p>
+
+                <AnimatePresence>
+                  {expandedCards.includes(testimonial.id) && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="text-gray-400 mb-4">
+                        {testimonial.expandedContent}
+                      </p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <div className="flex items-center gap-2">
                   <div className="flex-1">
                     <h4 className="font-semibold">{testimonial.name}</h4>
@@ -148,6 +217,25 @@ export const Testimonials = () => {
                     </p>
                   </div>
                 </div>
+
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => toggleExpand(testimonial.id)}
+                  className="mt-4 w-full flex items-center justify-center gap-2"
+                >
+                  {expandedCards.includes(testimonial.id) ? (
+                    <>
+                      Show Less
+                      <ChevronUp className="h-4 w-4" />
+                    </>
+                  ) : (
+                    <>
+                      View More
+                      <ChevronDown className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
               </motion.div>
             ))}
           </AnimatePresence>
