@@ -73,7 +73,44 @@ export default {
         "fade-in-right": "fade-in-right 0.5s ease-out",
         shimmer: "shimmer 1.5s ease-in-out infinite",
       },
+      rotate: {
+        'y-90': 'rotateY(90deg)',
+      },
+      perspective: {
+        '1000': '1000px',
+      },
+      transformStyle: {
+        '3d': 'preserve-3d',
+      },
+      writingMode: {
+        'vertical': 'vertical-rl',
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"),
+    function({ addUtilities }) {
+      const newUtilities = {
+        '.perspective-1000': {
+          perspective: '1000px',
+        },
+        '.transform-style-3d': {
+          transformStyle: 'preserve-3d',
+        },
+        '.rotate-y-10': {
+          transform: 'rotateY(10deg)',
+        },
+        '.rotate-y-90': {
+          transform: 'rotateY(90deg)',
+        },
+        '.-rotate-x-10': {
+          transform: 'rotateX(-10deg)',
+        },
+        '.writing-vertical': {
+          writingMode: 'vertical-rl',
+        },
+      }
+      addUtilities(newUtilities)
+    }
+  ],
 } satisfies Config;

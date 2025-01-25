@@ -1,7 +1,6 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Testimonials } from "@/components/Testimonials";
 
 const Portfolio = () => {
   const container = {
@@ -118,44 +117,76 @@ const Portfolio = () => {
           className="mb-16"
         >
           <h3 className="text-2xl font-bold mb-6">Projects</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 gap-8">
             {[
               {
                 title: "MyCaptain Course Platform",
                 description: "Designed and developed the course overview page with interactive calendar and progress tracking features",
-                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png"
+                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png",
+                tag: "3D"
               },
               {
                 title: "MyCaptain Profile Builder",
                 description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
-                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png"
+                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png",
+                tag: "3D"
               }
             ].map((project, index) => (
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors"
+                className="group relative w-full aspect-square max-w-[500px] mx-auto perspective-1000"
               >
-                <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-6">
-                  <h4 className="font-medium mb-2">{project.title}</h4>
-                  <p className="text-sm text-gray-400">
-                    {project.description}
-                  </p>
+                <div className="w-full h-full transition-transform duration-500 transform-style-3d group-hover:rotate-y-10 group-hover:-rotate-x-10">
+                  <div className="absolute inset-0 bg-[#1A1F2C] rounded-lg shadow-2xl">
+                    {/* Vent lines at the top */}
+                    <div className="absolute top-4 right-4 left-4 flex space-x-1">
+                      {[...Array(5)].map((_, i) => (
+                        <div key={i} className="h-1 flex-1 bg-[#403E43] rounded-full opacity-50" />
+                      ))}
+                    </div>
+                    
+                    {/* Side label */}
+                    <div className="absolute -left-1 top-20 bottom-20 w-8 bg-gradient-to-r from-[#2A2E3B] to-[#1A1F2C] flex items-center justify-center rotate-y-90 origin-left">
+                      <span className="text-gray-400 text-sm font-mono transform rotate-180 writing-vertical">
+                        {project.title}
+                      </span>
+                    </div>
+
+                    {/* Tag in top right */}
+                    <div className="absolute top-4 right-4 bg-gradient-to-br from-pink-500 to-purple-500 text-white text-xs font-bold px-2 py-1 rounded">
+                      {project.tag}
+                    </div>
+
+                    {/* Main content */}
+                    <div className="p-8 pt-16">
+                      <h4 className="text-xl font-bold mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+                        {project.title}
+                      </h4>
+                      <p className="text-gray-400 text-sm mb-6">
+                        {project.description}
+                      </p>
+                      <div className="aspect-video rounded-lg overflow-hidden bg-black/20">
+                        <img 
+                          src={project.image} 
+                          alt={project.title}
+                          className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Bottom arrow */}
+                    <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                      <svg width="20" height="12" viewBox="0 0 20 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 12L0 2L2 0L10 8L18 0L20 2L10 12Z" fill="#403E43"/>
+                      </svg>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.section>
-
-        {/* Testimonials Section */}
-        <Testimonials />
 
         {/* Footer */}
         <footer className="pt-8 border-t border-secondary-border">
