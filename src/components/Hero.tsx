@@ -29,6 +29,8 @@ export const Hero = () => {
       
       scrollContainer.scrollLeft += 1;
       
+      // Reset scroll position when reaching halfway point
+      // This creates a seamless infinite scroll effect
       if (scrollContainer.scrollLeft >= scrollContent.clientWidth / 2) {
         scrollContainer.scrollLeft = 0;
       }
@@ -60,7 +62,7 @@ export const Hero = () => {
         <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10" />
         <div className="w-full overflow-hidden" ref={scrollRef}>
           <div className="flex whitespace-nowrap">
-            {skills.map((skill, index) => (
+            {[...skills, ...skills].map((skill, index) => (
               <span
                 key={index}
                 className="text-primary px-4 py-2 rounded-full border border-primary/20 mx-4"
