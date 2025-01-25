@@ -1,7 +1,6 @@
 import { Hero } from "@/components/Hero";
 import { WorkShowcase } from "@/components/WorkShowcase";
 import { Spotlight } from "@/components/Spotlight";
-import { SideProjects } from "@/components/SideProjects";
 import { ToolStack } from "@/components/ToolStack";
 import { Footer } from "@/components/Footer";
 import { FloatingNav } from "@/components/FloatingNav";
@@ -25,9 +24,6 @@ const Minimal = () => {
         </section>
         <section id="testimonials">
           <Testimonials />
-        </section>
-        <section id="projects">
-          <SideProjects />
         </section>
         <Footer />
       </div>
