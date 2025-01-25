@@ -55,7 +55,7 @@ const Portfolio = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-white">
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -66,10 +66,10 @@ const Portfolio = () => {
                 className="w-10 h-10 rounded-full"
               />
               <div>
-                <h2 className="text-foreground font-medium">Shai</h2>
+                <h2 className="text-white font-medium">Shai</h2>
               </div>
             </div>
-            <Button variant="outline" size="sm" className="gap-2">
+            <Button variant="outline" size="sm" className="gap-2 text-white">
               <Mail className="w-4 h-4" />
               E-mail
             </Button>
@@ -101,7 +101,7 @@ const Portfolio = () => {
           animate="show"
           className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-2xl font-bold mb-6">Experience</h3>
+          <h3 className="text-2xl font-bold mb-6 text-white">Experience</h3>
           <div className="space-y-4">
             {[
               {
@@ -142,7 +142,7 @@ const Portfolio = () => {
           animate="show"
           className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
+          <h3 className="text-2xl font-bold mb-8 text-white">Tools I Use</h3>
           <div className="grid grid-cols-2 gap-4">
             {tools.map((tool, index) => (
               <motion.a
@@ -153,9 +153,9 @@ const Portfolio = () => {
               >
                 <div className="flex items-center gap-3">
                   <div className="p-2 bg-secondary rounded-lg">
-                    <tool.icon className="w-5 h-5" />
+                    <tool.icon className="w-5 h-5 text-white" />
                   </div>
-                  <span className="text-sm">{tool.name}</span>
+                  <span className="text-sm text-white">{tool.name}</span>
                 </div>
               </motion.a>
             ))}
