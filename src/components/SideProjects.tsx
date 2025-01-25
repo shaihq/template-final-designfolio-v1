@@ -38,7 +38,7 @@ export const SideProjects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16">
+    <section className="py-12">
       <h2 className="text-2xl font-bold mb-8">Side Projects</h2>
       <motion.div
         ref={ref}
