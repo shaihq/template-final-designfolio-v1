@@ -31,6 +31,18 @@ const Portfolio = () => {
     },
   };
 
+  const textReveal = {
+    initial: { y: 100, opacity: 0 },
+    animate: { 
+      y: 0, 
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.33, 1, 0.68, 1]  // Custom cubic-bezier for smooth reveal
+      }
+    }
+  };
+
   const tools = [
     {
       name: "Figma",
@@ -123,17 +135,35 @@ const Portfolio = () => {
         <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
         <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
         
-        {/* Hero Section */}
-        <section className="py-12 border-b border-secondary-border">
-          <h1 className="text-4xl font-bold mb-4">
-            Product Designer with over 7+ years of experience.{" "}
-            <span className="text-gray-400">
-              A unicorn designer who can both design and code.
-            </span>
-          </h1>
-          <p className="text-gray-400 mb-6">
-            Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
-          </p>
+        {/* Hero Section with Text Reveal */}
+        <section className="py-12 border-b border-secondary-border overflow-hidden">
+          <motion.div
+            initial="initial"
+            animate="animate"
+            variants={{
+              animate: {
+                transition: {
+                  staggerChildren: 0.2
+                }
+              }
+            }}
+          >
+            <motion.h1 
+              className="text-4xl font-bold mb-4"
+              variants={textReveal}
+            >
+              Product Designer with over 7+ years of experience.{" "}
+              <span className="text-gray-400">
+                A unicorn designer who can both design and code.
+              </span>
+            </motion.h1>
+            <motion.p 
+              className="text-gray-400 mb-6"
+              variants={textReveal}
+            >
+              Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
+            </motion.p>
+          </motion.div>
         </section>
 
         {/* Experience Section */}
