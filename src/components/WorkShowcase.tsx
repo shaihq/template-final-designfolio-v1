@@ -3,20 +3,22 @@ import { ArrowUpRight } from "lucide-react";
 export const WorkShowcase = () => {
   const projects = [
     {
-      title: "Improved Onboarding, reducing drop-off by 30% for 1M learners",
-      image: "/lovable-uploads/811e1aed-257a-4113-b174-22ade0f7dfc8.png",
+      title: "MyCaptain Course Platform",
+      description: "Designed and developed the course overview page with interactive calendar, project submission, and progress tracking features",
+      image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png",
       link: "#",
     },
     {
-      title: "Designing a scalable Design System to reduce development time by 40%",
-      image: "/lovable-uploads/811e1aed-257a-4113-b174-22ade0f7dfc8.png",
+      title: "MyCaptain Profile Builder",
+      description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
+      image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png",
       link: "#",
     },
   ];
 
   return (
     <section className="py-16">
-      <h2 className="text-3xl font-bold mb-12">My works</h2>
+      <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {projects.map((project, index) => (
           <div
@@ -31,9 +33,12 @@ export const WorkShowcase = () => {
               />
             </div>
             <div className="p-8">
-              <h3 className="text-2xl font-semibold mb-6 leading-tight">
+              <h3 className="text-2xl font-semibold mb-3 leading-tight">
                 {project.title}
               </h3>
+              <p className="text-muted-foreground mb-6">
+                {project.description}
+              </p>
               <a
                 href={project.link}
                 className="inline-flex items-center text-lg text-muted-foreground hover:text-primary transition-colors"
