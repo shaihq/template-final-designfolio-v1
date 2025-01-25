@@ -1,14 +1,14 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Github, Figma, Laptop, Browser, FileCode, Pencil } from "lucide-react";
+import { Github, Figma, Laptop, Globe, FileCode, Pencil } from "lucide-react";
 
 export const ToolStack = () => {
   const tools = [
     { name: "Github", icon: Github, link: "#" },
     { name: "Figma", icon: Figma, link: "#" },
     { name: "Mockup", icon: Laptop, link: "#" },
-    { name: "Arc Browser", icon: Browser, link: "#" },
+    { name: "Arc Browser", icon: Globe, link: "#" },
     { name: "Code Editor", icon: FileCode, link: "#" },
     { name: "Design", icon: Pencil, link: "#" },
   ];
