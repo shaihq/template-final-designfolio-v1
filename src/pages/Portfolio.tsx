@@ -1,9 +1,10 @@
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { Footer } from "@/components/Footer";
 
 const Portfolio = () => {
   const container = {
@@ -197,41 +198,7 @@ const Portfolio = () => {
         <Testimonials />
 
         {/* Footer */}
-        <footer className="py-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex gap-4">
-              <a
-                href="https://github.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-foreground transition-colors"
-              >
-                <Github className="w-5 h-5" />
-              </a>
-              <a
-                href="https://linkedin.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-foreground transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-foreground transition-colors"
-              >
-                <Twitter className="w-5 h-5" />
-              </a>
-            </div>
-            <div className="flex items-center gap-2 text-sm text-gray-400">
-              <span>Chennai, IN</span>
-              <span className="w-1 h-1 rounded-full bg-gray-400"></span>
-              <span>3:30 AM</span>
-            </div>
-          </div>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
