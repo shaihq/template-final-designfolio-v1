@@ -2,6 +2,7 @@ import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
+import { useRef, useState } from "react";
 
 const Portfolio = () => {
   const container = {
@@ -119,7 +120,7 @@ const Portfolio = () => {
           className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="flex flex-col gap-6">
             {[
               {
                 title: "MyCaptain Course Platform",
@@ -131,25 +132,49 @@ const Portfolio = () => {
                 description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
                 image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png"
               }
-            ].map((project, index) => (
-              <motion.div
-                key={index}
-                variants={item}
-                className="bg-card border border-card-border rounded-lg overflow-hidden"
-              >
-                <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
+            ].map((project, index) => {
+              const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+              const cardRef = useRef<HTMLDivElement>(null);
+
+              const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+                if (!cardRef.current) return;
+                const rect = cardRef.current.getBoundingClientRect();
+                setMousePosition({
+                  x: e.clientX - rect.left,
+                  y: e.clientY - rect.top,
+                });
+              };
+
+              return (
+                <motion.div
+                  key={index}
+                  variants={item}
+                  ref={cardRef}
+                  onMouseMove={handleMouseMove}
+                  className="group bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors relative"
+                >
+                  <div className="flex flex-col md:flex-row">
+                    <div className="w-full md:w-[400px] aspect-[4/3] overflow-hidden bg-secondary/50">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    </div>
+                    <div className="p-8 flex flex-col justify-center">
+                      <h4 className="text-2xl font-semibold mb-3">{project.title}</h4>
+                      <p className="text-gray-400">{project.description}</p>
+                    </div>
+                  </div>
+                  <div
+                    className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
+                    }}
                   />
-                </div>
-                <div className="p-6">
-                  <h4 className="text-xl font-semibold mb-2">{project.title}</h4>
-                  <p className="text-gray-400">{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
         </motion.section>
 
