@@ -1,18 +1,76 @@
 import { Avatar } from "@/components/ui/avatar";
+import { useEffect, useRef } from "react";
 
 export const Hero = () => {
+  const skills = [
+    "Product Design",
+    "UI/UX",
+    "Prototyping",
+    "Web Design",
+    "Mobile Design",
+    "User Research",
+    "Design Systems",
+    "Figma",
+    "Adobe XD",
+    "Sketch",
+  ];
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollRef.current;
+    if (!scrollContainer) return;
+
+    const scrollContent = scrollContainer.firstElementChild;
+    if (!scrollContent) return;
+
+    // Clone the content for seamless scrolling
+    scrollContainer.appendChild(scrollContent.cloneNode(true));
+
+    const scroll = () => {
+      if (scrollContainer.scrollLeft >= scrollContent.scrollWidth) {
+        scrollContainer.scrollLeft = 0;
+      } else {
+        scrollContainer.scrollLeft += 1;
+      }
+    };
+
+    const scrollInterval = setInterval(scroll, 30);
+
+    return () => clearInterval(scrollInterval);
+  }, []);
+
   return (
     <section className="flex flex-col items-center text-center py-20 animate-fade-in">
       <Avatar className="w-24 h-24 mb-6">
-        <img src="/lovable-uploads/84412779-0539-4904-9377-f71b15d378f7.png" alt="Profile" className="rounded-full" />
+        <img
+          src="/lovable-uploads/84412779-0539-4904-9377-f71b15d378f7.png"
+          alt="Profile"
+          className="rounded-full"
+        />
       </Avatar>
       <h1 className="text-4xl font-bold mb-4">Howdy, Ronnie here</h1>
       <p className="text-gray-400 max-w-xl mb-8">
         I'm Ron, a senior UX product designer based out of New York, specialized in
-        launching high-delivery prototypes for in-progress websites. Building this into a refined
-        design.
+        launching high-delivery prototypes for in-progress websites. Building this
+        into a refined design.
       </p>
-      <button className="bg-primary px-6 py-2 rounded-full hover:opacity-90 transition-opacity">
+      
+      {/* Scrolling Skills */}
+      <div className="w-full max-w-4xl overflow-hidden mt-8" ref={scrollRef}>
+        <div className="flex gap-8 whitespace-nowrap">
+          {skills.map((skill, index) => (
+            <span
+              key={index}
+              className="text-primary px-4 py-2 rounded-full border border-primary/20"
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      <button className="bg-primary px-6 py-2 rounded-full hover:opacity-90 transition-opacity mt-12">
         Contact
       </button>
     </section>
