@@ -37,11 +37,9 @@ export const Hero = () => {
           />
         </div>
       </Avatar>
-      <h1 className="text-4xl font-bold mb-4">Howdy, Ronnie here</h1>
+      <h1 className="text-4xl font-bold mb-4">Hey there! I'm Shai</h1>
       <p className="text-gray-400 max-w-xl mb-8">
-        I'm Ron, a senior UX product designer based out of New York, specialized in
-        launching high-delivery prototypes for in-progress websites. Building this
-        into a refined design.
+        Product Designer with over 7+ years of experience. A unicorn designer who can both design and code. Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
       </p>
     </section>
   );
