@@ -61,7 +61,7 @@ export const Hero = () => {
         <div className="absolute left-0 top-0 w-32 h-full bg-gradient-to-r from-background to-transparent z-10" />
         <div className="absolute right-0 top-0 w-32 h-full bg-gradient-to-l from-background to-transparent z-10" />
         <div className="w-full overflow-hidden" ref={scrollRef}>
-          <div className="flex gap-8 whitespace-nowrap">
+          <div className="inline-flex gap-8 whitespace-nowrap">
             {skills.map((skill, index) => (
               <span
                 key={index}
