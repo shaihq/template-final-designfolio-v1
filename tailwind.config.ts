@@ -69,10 +69,13 @@ export default {
         },
         "star-shimmer": {
           "0%, 100%": {
-            "background-image": "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 0%)",
+            backgroundImage: "radial-gradient(2px circle at 20% 20%, rgba(255,255,255,0.7) 0%, transparent 0%), radial-gradient(2px circle at 40% 70%, rgba(255,255,255,0.5) 0%, transparent 0%), radial-gradient(2px circle at 60% 30%, rgba(255,255,255,0.7) 0%, transparent 0%), radial-gradient(2px circle at 80% 80%, rgba(255,255,255,0.5) 0%, transparent 0%)",
           },
-          "50%": {
-            "background-image": "radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%)",
+          "33%": {
+            backgroundImage: "radial-gradient(2px circle at 20% 20%, rgba(255,255,255,0.5) 0%, transparent 0%), radial-gradient(2px circle at 40% 70%, rgba(255,255,255,0.7) 0%, transparent 0%), radial-gradient(2px circle at 60% 30%, rgba(255,255,255,0.5) 0%, transparent 0%), radial-gradient(2px circle at 80% 80%, rgba(255,255,255,0.7) 0%, transparent 0%)",
+          },
+          "66%": {
+            backgroundImage: "radial-gradient(2px circle at 20% 20%, rgba(255,255,255,0.7) 0%, transparent 0%), radial-gradient(2px circle at 40% 70%, rgba(255,255,255,0.5) 0%, transparent 0%), radial-gradient(2px circle at 60% 30%, rgba(255,255,255,0.7) 0%, transparent 0%), radial-gradient(2px circle at 80% 80%, rgba(255,255,255,0.5) 0%, transparent 0%)",
           }
         }
       },
@@ -80,7 +83,7 @@ export default {
         "fade-in": "fade-in 0.5s ease-out",
         "fade-in-right": "fade-in-right 0.5s ease-out",
         shimmer: "shimmer 1.5s ease-in-out infinite",
-        "star-shimmer": "star-shimmer 3s ease-in-out infinite",
+        "star-shimmer": "star-shimmer 4s ease-in-out infinite",
       },
     },
   },
