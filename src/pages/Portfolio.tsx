@@ -123,75 +123,31 @@ const Portfolio = () => {
               {
                 title: "MyCaptain Course Platform",
                 description: "Designed and developed the course overview page with interactive calendar and progress tracking features",
-                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png",
-                status: "SOON",
-                badge: "NEW"
+                image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png"
               },
               {
                 title: "MyCaptain Profile Builder",
                 description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
-                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png",
-                status: "LIVE",
-                badge: "NEW"
+                image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png"
               }
             ].map((project, index) => (
               <motion.div
                 key={index}
                 variants={item}
-                className="group relative"
+                className="bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors"
               >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/50 rounded-[24px]" />
-                <div className="relative bg-[#151515] rounded-[24px] overflow-hidden border border-zinc-800/50">
-                  {/* Top Vents */}
-                  <div className="absolute top-0 left-6 right-6 h-4 bg-[#0c0c0c] flex space-x-1 items-center px-2">
-                    {[...Array(6)].map((_, i) => (
-                      <div key={i} className="flex-1 h-0.5 bg-zinc-800/50 rounded-full" />
-                    ))}
-                  </div>
-                  
-                  {/* Side Label */}
-                  <div className="absolute left-0 top-8 bottom-8 w-8 bg-[#0c0c0c] writing-mode-vertical flex items-center justify-center">
-                    <span className="text-zinc-600 text-xs font-mono rotate-180 tracking-wider" style={{ writingMode: 'vertical-rl' }}>
-                      FIGMA PLUGIN
-                    </span>
-                  </div>
-
-                  <div className="pl-8 pr-4 pt-8 pb-6">
-                    <div className="flex justify-between items-start mb-4">
-                      <h3 className="text-xl font-mono text-zinc-200">
-                        {project.title.toUpperCase()}
-                      </h3>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-mono text-yellow-400/80">
-                          {project.status}
-                        </span>
-                        {project.badge && (
-                          <span className="bg-red-500/20 text-red-500 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                            {project.badge}
-                          </span>
-                        )}
-                      </div>
-                    </div>
-                    
-                    <p className="text-sm text-zinc-400 font-mono mb-6">
-                      {project.description}
-                    </p>
-
-                    <div className="aspect-video rounded-lg overflow-hidden bg-gradient-to-br from-purple-500/20 via-pink-500/20 to-orange-500/20">
-                      <img 
-                        src={project.image} 
-                        alt={project.title}
-                        className="w-full h-full object-cover object-center rounded-lg group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Bottom Vents */}
-                  <div className="absolute bottom-0 left-6 right-6 h-4 bg-[#0c0c0c] flex space-x-1 items-center px-2">
-                    {[...Array(6)].map((_, i) => (
-                      <div key={i} className="flex-1 h-0.5 bg-zinc-800/50 rounded-full" />
-                    ))}
-                  </div>
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-6">
+                  <h4 className="font-medium mb-2">{project.title}</h4>
+                  <p className="text-sm text-gray-400">
+                    {project.description}
+                  </p>
                 </div>
               </motion.div>
             ))}

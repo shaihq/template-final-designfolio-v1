@@ -11,16 +11,12 @@ export const WorkShowcase = () => {
       description: "Designed and developed the course overview page with interactive calendar, project submission, and progress tracking features",
       image: "/lovable-uploads/583822bc-e5e5-4852-ac18-b8b612b58f88.png",
       link: "#",
-      badge: "NEW",
-      status: "SOON",
     },
     {
       title: "MyCaptain Profile Builder",
       description: "Built a responsive profile creation flow with multi-step form validation and real-time preview",
       image: "/lovable-uploads/a74665b6-a9d5-449a-8d53-68ecf5d99e46.png",
       link: "#",
-      badge: "NEW",
-      status: "LIVE",
     },
   ];
 
@@ -73,12 +69,59 @@ export const WorkShowcase = () => {
           transition={{ duration: 0.4 }}
           src={src}
           alt={alt}
-          className="w-full h-full object-cover object-center rounded-lg group-hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
           loading="eager"
           decoding="async"
           onLoad={() => setIsLoaded(true)}
         />
       </div>
+    );
+  };
+
+  const ProjectCard = ({ project, index }: { project: typeof projects[0]; index: number }) => {
+    const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+    const cardRef = useRef<HTMLDivElement>(null);
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - rect.left,
+        y: e.clientY - rect.top,
+      });
+    };
+
+    return (
+      <motion.div
+        variants={item}
+        ref={cardRef}
+        onMouseMove={handleMouseMove}
+        className="group rounded-3xl bg-card overflow-hidden relative"
+      >
+        <div
+          className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
+          }}
+        />
+        <div className="aspect-[4/3] overflow-hidden bg-secondary/50 relative">
+          <ImageWithPreload src={project.image} alt={project.title} />
+          <a
+            href={project.link}
+            className="absolute top-6 right-6 size-14 rounded-full bg-tertiary flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 hover:bg-tertiary-hover"
+          >
+            <ArrowUpRight className="size-6 text-white" />
+          </a>
+        </div>
+        <div className="p-8 pb-10">
+          <h3 className="text-2xl font-semibold mb-3 leading-tight">
+            {project.title}
+          </h3>
+          <p className="text-gray-400 line-clamp-2">
+            {project.description}
+          </p>
+        </div>
+      </motion.div>
     );
   };
 
@@ -90,40 +133,10 @@ export const WorkShowcase = () => {
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
         {projects.map((project, index) => (
-          <motion.div
-            key={index}
-            variants={item}
-            className="group relative bg-card hover:bg-card/80 border border-card-border rounded-lg overflow-hidden transition-colors"
-          >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h3 className="text-xl font-medium">
-                  {project.title}
-                </h3>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-mono text-yellow-400/80">
-                    {project.status}
-                  </span>
-                  {project.badge && (
-                    <span className="bg-red-500/20 text-red-500 text-[10px] px-2 py-0.5 rounded-full font-mono">
-                      {project.badge}
-                    </span>
-                  )}
-                </div>
-              </div>
-              
-              <p className="text-sm text-gray-400 mb-6">
-                {project.description}
-              </p>
-
-              <div className="aspect-video rounded-lg overflow-hidden">
-                <ImageWithPreload src={project.image} alt={project.title} />
-              </div>
-            </div>
-          </motion.div>
+          <ProjectCard key={index} project={project} index={index} />
         ))}
       </motion.div>
     </section>
