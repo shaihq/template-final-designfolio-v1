@@ -67,11 +67,20 @@ export default {
           "0%": { transform: "translateX(-100%)" },
           "100%": { transform: "translateX(200%)" },
         },
+        "star-shimmer": {
+          "0%, 100%": {
+            "background-image": "radial-gradient(circle at center, rgba(255,255,255,0.1) 0%, transparent 0%)",
+          },
+          "50%": {
+            "background-image": "radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 50%)",
+          }
+        }
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out",
         "fade-in-right": "fade-in-right 0.5s ease-out",
         shimmer: "shimmer 1.5s ease-in-out infinite",
+        "star-shimmer": "star-shimmer 3s ease-in-out infinite",
       },
     },
   },
