@@ -151,7 +151,6 @@ const Portfolio = () => {
           </p>
         </section>
 
-        {/* Experience Section */}
         <motion.section 
           className="mb-16"
         >
@@ -207,7 +206,7 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
-        {/* Testimonials Section */}
+        {/* Testimonials Section - New Design */}
         <motion.section 
           className="mb-16 relative py-8"
         >
@@ -215,7 +214,7 @@ const Portfolio = () => {
           
           <div className="relative w-full max-w-2xl mx-auto">
             <div className="min-h-[200px] mb-16">
-              <AnimatePresence mode="wait">
+              <AnimatePresence mode="sync">
                 {testimonials.map((testimonial, index) => {
                   const isActive = index === currentIndex;
                   const zIndex = testimonials.length - Math.abs(currentIndex - index);
@@ -324,7 +323,6 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
-        {/* Footer */}
         <footer className="pt-8 border-t border-secondary-border">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex gap-4">
