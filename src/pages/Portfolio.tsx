@@ -1,8 +1,35 @@
-import { Mail, Github, Linkedin, Twitter } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+
+const testimonials = [
+  {
+    id: 1,
+    name: "Sarah Johnson",
+    role: "Product Manager",
+    company: "TechCorp",
+    content: "Working with Shai was an absolute pleasure. Their attention to detail and innovative approach to design challenges truly set them apart.",
+  },
+  {
+    id: 2,
+    name: "Michael Chen",
+    role: "CEO",
+    company: "StartupX",
+    content: "Shai's ability to balance user needs with business objectives resulted in a product that exceeded our expectations.",
+  },
+  {
+    id: 3,
+    name: "Emily Rodriguez",
+    role: "Design Director",
+    company: "DesignLab",
+    content: "The design system Shai created has become the foundation of our product's visual language. Exceptional work!",
+  }
+];
 
 const Portfolio = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -25,6 +52,18 @@ const Portfolio = () => {
         ease: "easeOut",
       }
     },
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => 
+      prev + 1 >= testimonials.length ? 0 : prev + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => 
+      prev - 1 < 0 ? testimonials.length - 1 : prev - 1
+    );
   };
 
   return (
@@ -150,6 +189,91 @@ const Portfolio = () => {
                 </div>
               </motion.div>
             ))}
+          </div>
+        </motion.section>
+
+        {/* Testimonials Section */}
+        <motion.section 
+          variants={container}
+          initial="hidden"
+          animate="show"
+          className="mb-16 relative py-8"
+        >
+          <h3 className="text-2xl font-bold mb-8 text-center">What People Say</h3>
+          
+          <div className="relative h-[300px] w-full max-w-2xl mx-auto">
+            <AnimatePresence mode="wait">
+              {testimonials.map((testimonial, index) => {
+                const isActive = index === currentIndex;
+                const zIndex = testimonials.length - Math.abs(currentIndex - index);
+                
+                return (
+                  <motion.div
+                    key={testimonial.id}
+                    initial={{ 
+                      scale: 0.9, 
+                      opacity: 0,
+                      y: 50,
+                      rotateX: -15
+                    }}
+                    animate={{ 
+                      scale: isActive ? 1 : 0.9,
+                      opacity: isActive ? 1 : 0.5,
+                      y: isActive ? 0 : 25,
+                      rotateX: isActive ? 0 : -15,
+                      zIndex: zIndex
+                    }}
+                    exit={{ 
+                      scale: 0.9, 
+                      opacity: 0,
+                      y: -50,
+                      rotateX: 15
+                    }}
+                    transition={{
+                      duration: 0.5,
+                      ease: [0.4, 0, 0.2, 1]
+                    }}
+                    className="absolute top-0 left-0 w-full perspective-1000"
+                    style={{
+                      zIndex: zIndex,
+                      pointerEvents: isActive ? "auto" : "none",
+                      transformStyle: "preserve-3d"
+                    }}
+                  >
+                    <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg">
+                      <p className="text-gray-400 mb-4">{testimonial.content}</p>
+                      <div className="flex items-center gap-2">
+                        <div className="flex-1">
+                          <h4 className="font-semibold">{testimonial.name}</h4>
+                          <p className="text-sm text-gray-400">
+                            {testimonial.role} at {testimonial.company}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+
+          <div className="flex justify-center gap-2 mt-4">
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handlePrev}
+              className="rounded-full"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              onClick={handleNext}
+              className="rounded-full"
+            >
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
         </motion.section>
 
