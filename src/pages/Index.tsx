@@ -6,16 +6,11 @@ import { ToolStack } from "@/components/ToolStack";
 import { Footer } from "@/components/Footer";
 import { FloatingNav } from "@/components/FloatingNav";
 import { Testimonials } from "@/components/Testimonials";
-import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <div className="container max-w-3xl mx-auto px-4">
-        <div className="lg:hidden flex justify-center py-4">
-          <ThemeToggle />
-        </div>
-        <ThemeToggle />
         <section id="hero">
           <Hero />
         </section>
