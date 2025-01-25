@@ -59,29 +59,31 @@ export const ToolStack = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-16 overflow-hidden">
+    <section className="py-16">
       <h2 className="text-2xl font-bold mb-8 text-center">Tool Stack</h2>
       {isMobile ? (
-        <div className="relative w-full">
-          <motion.div 
-            className="flex gap-4 px-4"
-            animate={scrollAnimation}
-          >
-            {scrollTools.map((Tool, index) => (
-              <a
-                key={index}
-                href={Tool.link}
-                className="flex flex-col items-center gap-2 min-w-[100px]"
-              >
-                <div className="bg-card p-4 rounded-2xl flex items-center justify-center transition-colors hover:bg-card/80">
-                  <Tool.icon className="size-8" />
-                </div>
-                <span className="text-sm whitespace-nowrap">
-                  {Tool.name}
-                </span>
-              </a>
-            ))}
-          </motion.div>
+        <div className="relative w-full overflow-hidden">
+          <div className="mx-[-1rem]">
+            <motion.div 
+              className="flex gap-4"
+              animate={scrollAnimation}
+            >
+              {scrollTools.map((Tool, index) => (
+                <a
+                  key={index}
+                  href={Tool.link}
+                  className="flex flex-col items-center gap-2 min-w-[100px] first:ml-4 last:mr-4"
+                >
+                  <div className="bg-card p-4 rounded-2xl flex items-center justify-center transition-colors hover:bg-card/80">
+                    <Tool.icon className="size-8" />
+                  </div>
+                  <span className="text-sm whitespace-nowrap">
+                    {Tool.name}
+                  </span>
+                </a>
+              ))}
+            </motion.div>
+          </div>
         </div>
       ) : (
         <motion.div
