@@ -197,9 +197,9 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mb-16 relative py-12"
+          className="mb-16 relative py-8"
         >
-          <h3 className="text-2xl font-bold mb-12 text-center">What People Say</h3>
+          <h3 className="text-2xl font-bold mb-8 text-center">What People Say</h3>
           
           <div className="relative h-[300px] w-full max-w-2xl mx-auto">
             <AnimatePresence mode="wait">
