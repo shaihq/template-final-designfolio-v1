@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "./ui/button";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 interface Testimonial {
   id: number;
@@ -57,45 +59,102 @@ const testimonials: Testimonial[] = [
 
 export const Testimonials = () => {
   const [showMore, setShowMore] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isMobile = useIsMobile();
   const visibleTestimonials = showMore ? testimonials : testimonials.slice(0, 4);
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => 
+      prev + 1 >= visibleTestimonials.length ? 0 : prev + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => 
+      prev - 1 < 0 ? visibleTestimonials.length - 1 : prev - 1
+    );
+  };
 
   return (
     <section className="py-16">
       <h2 className="text-3xl font-bold mb-12 text-center">What People Say</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-4">
-        <AnimatePresence>
-          {visibleTestimonials.map((testimonial, index) => (
-            <motion.div
-              key={testimonial.id}
-              initial={{ opacity: 0, y: 20, rotateZ: -2 }}
-              animate={{ opacity: 1, y: 0, rotateZ: index % 2 === 0 ? 2 : -2 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ 
-                duration: 0.5,
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-              style={{
-                transformOrigin: "center",
-              }}
-            >
-              <p className="text-gray-400 mb-4">{testimonial.content}</p>
-              <div className="flex items-center gap-2">
-                <div className="flex-1">
-                  <h4 className="font-semibold">{testimonial.name}</h4>
-                  <p className="text-sm text-gray-400">
-                    {testimonial.role} at {testimonial.company}
-                  </p>
+      <div className={`relative ${isMobile ? 'px-4' : 'grid grid-cols-2 gap-6 max-w-4xl mx-auto px-4'}`}>
+        {isMobile ? (
+          <>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ scale: 0.8, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.8, opacity: 0 }}
+                transition={{ duration: 0.3 }}
+                className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
+              >
+                <p className="text-gray-400 mb-4">{visibleTestimonials[currentIndex].content}</p>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1">
+                    <h4 className="font-semibold">{visibleTestimonials[currentIndex].name}</h4>
+                    <p className="text-sm text-gray-400">
+                      {visibleTestimonials[currentIndex].role} at {visibleTestimonials[currentIndex].company}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </AnimatePresence>
+              </motion.div>
+            </AnimatePresence>
+            <div className="flex justify-center gap-4 mt-6">
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handlePrev}
+                className="rounded-full"
+              >
+                <ChevronLeft className="h-4 w-4" />
+              </Button>
+              <Button
+                variant="outline"
+                size="icon"
+                onClick={handleNext}
+                className="rounded-full"
+              >
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
+          </>
+        ) : (
+          <AnimatePresence mode="wait">
+            {visibleTestimonials.map((testimonial, index) => (
+              <motion.div
+                key={testimonial.id}
+                initial={{ opacity: 0, y: 20, rotateZ: -2 }}
+                animate={{ opacity: 1, y: 0, rotateZ: index % 2 === 0 ? 2 : -2 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ 
+                  duration: 0.5,
+                  delay: index * 0.1,
+                  ease: "easeOut"
+                }}
+                className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                style={{
+                  transformOrigin: "center",
+                }}
+              >
+                <p className="text-gray-400 mb-4">{testimonial.content}</p>
+                <div className="flex items-center gap-2">
+                  <div className="flex-1">
+                    <h4 className="font-semibold">{testimonial.name}</h4>
+                    <p className="text-sm text-gray-400">
+                      {testimonial.role} at {testimonial.company}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        )}
       </div>
 
-      {testimonials.length > 4 && (
+      {!isMobile && testimonials.length > 4 && (
         <motion.div 
           className="text-center mt-8"
           initial={{ opacity: 0 }}
