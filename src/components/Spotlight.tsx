@@ -110,16 +110,14 @@ export const Spotlight = () => {
                 <div className="text-base text-foreground/80">{experience.company}</div>
                 <p className="text-sm text-foreground/60 mt-2">
                   {experience.description}
-                  <button
-                    onClick={() => toggleExpand(index)}
-                    className="ml-1 text-tertiary hover:text-tertiary-hover inline-flex items-center gap-1"
-                  >
-                    {expandedCards.includes(index) ? (
-                      <>Show Less<ChevronUp className="h-3 w-3" /></>
-                    ) : (
-                      <>View More<ChevronDown className="h-3 w-3" /></>
-                    )}
-                  </button>
+                  {!expandedCards.includes(index) && (
+                    <button
+                      onClick={() => toggleExpand(index)}
+                      className="ml-1 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                    >
+                      View More<ChevronDown className="h-3 w-3" />
+                    </button>
+                  )}
                 </p>
                 
                 <motion.div
@@ -130,6 +128,14 @@ export const Spotlight = () => {
                 >
                   <div className="mt-4 text-sm text-foreground/60 whitespace-pre-line">
                     {experience.expandedContent}
+                    {expandedCards.includes(index) && (
+                      <button
+                        onClick={() => toggleExpand(index)}
+                        className="ml-1 block mt-2 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                      >
+                        Show Less<ChevronUp className="h-3 w-3" />
+                      </button>
+                    )}
                   </div>
                 </motion.div>
               </div>
