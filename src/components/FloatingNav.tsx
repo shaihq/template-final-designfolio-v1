@@ -42,27 +42,29 @@ export const FloatingNav = () => {
 
   return (
     <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="flex flex-col gap-4">
-        {sections.map(({ id, label, icon: Icon }) => (
-          <button
-            key={id}
-            onClick={() => scrollToSection(id)}
-            className={`group flex items-center gap-4 transition-all ${
-              activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
-            }`}
-          >
-            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-card hover:bg-primary/10 transition-colors">
-              <Icon 
-                className={`w-5 h-5 ${
-                  activeSection === id ? "text-white" : "text-foreground"
-                }`}
-              />
-            </div>
-            <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
-              {label}
-            </span>
-          </button>
-        ))}
+      <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
+        <div className="flex flex-col gap-4">
+          {sections.map(({ id, label, icon: Icon }) => (
+            <button
+              key={id}
+              onClick={() => scrollToSection(id)}
+              className={`group flex items-center gap-4 transition-all ${
+                activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
+              }`}
+            >
+              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                <Icon 
+                  className={`w-5 h-5 ${
+                    activeSection === id ? "text-white" : "text-foreground"
+                  }`}
+                />
+              </div>
+              <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
+                {label}
+              </span>
+            </button>
+          ))}
+        </div>
       </div>
     </nav>
   );
