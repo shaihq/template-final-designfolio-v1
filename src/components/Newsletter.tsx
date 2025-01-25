@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 
 export const Newsletter = () => {
   return (
-    <section className="py-12">
+    <section className="py-16">
       <h2 className="text-2xl font-bold mb-8">Newsletter</h2>
       <p className="text-gray-400 mb-6">
         I share clean dev tips once a month & I would love to share them with you. Give me a
