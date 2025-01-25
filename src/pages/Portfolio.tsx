@@ -47,16 +47,16 @@ const Portfolio = () => {
     <div className="min-h-screen bg-background text-foreground relative">
       {/* Glow Effect */}
       <motion.div
-        className="fixed z-50 w-[150px] h-[150px] rounded-full bg-tertiary/20 blur-[100px] pointer-events-none"
+        className="fixed top-0 z-50 w-[200px] h-[200px] rounded-full bg-tertiary/10 blur-[120px] pointer-events-none"
         animate={{
-          x: mousePosition.x - 75,
-          y: 50, // Fixed vertical position at the top
+          x: mousePosition.x - 100,
+          y: -50, // Fixed position slightly above the top
         }}
         transition={{
           type: "spring",
-          stiffness: 150,
-          damping: 15,
-          mass: 0.1,
+          stiffness: 100,
+          damping: 20,
+          mass: 0.5,
         }}
       />
       
