@@ -105,6 +105,10 @@ export const Testimonials = () => {
                 animate={{ scale: 1, opacity: 1 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.3 }}
+                whileHover={{ 
+                  rotate: 2,
+                  transition: { duration: 0.2 }
+                }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
               >
                 <p className="text-gray-400">
@@ -112,7 +116,7 @@ export const Testimonials = () => {
                   {!expandedCards.includes(visibleTestimonials[currentIndex].id) && (
                     <button
                       onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
-                      className="ml-1 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                      className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
                     >
                       View More<ChevronDown className="h-3 w-3" />
                     </button>
@@ -132,7 +136,7 @@ export const Testimonials = () => {
                         {visibleTestimonials[currentIndex].expandedContent}
                         <button
                           onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
-                          className="ml-1 block mt-2 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                          className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
                         >
                           Show Less<ChevronUp className="h-3 w-3" />
                         </button>
@@ -175,25 +179,26 @@ export const Testimonials = () => {
             {visibleTestimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                initial={{ opacity: 0, y: 20, rotateZ: index % 2 === 0 ? 2 : -2 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
+                whileHover={{ 
+                  rotate: index % 2 === 0 ? 2 : -2,
+                  transition: { duration: 0.2 }
+                }}
                 transition={{ 
                   duration: 0.5,
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
-                style={{
-                  transformOrigin: "center",
-                }}
               >
                 <p className="text-gray-400">
                   {testimonial.content}
                   {!expandedCards.includes(testimonial.id) && (
                     <button
                       onClick={() => toggleExpand(testimonial.id)}
-                      className="ml-1 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                      className="ml-1 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
                     >
                       View More<ChevronDown className="h-3 w-3" />
                     </button>
@@ -213,7 +218,7 @@ export const Testimonials = () => {
                         {testimonial.expandedContent}
                         <button
                           onClick={() => toggleExpand(testimonial.id)}
-                          className="ml-1 block mt-2 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                          className="ml-1 block mt-2 text-foreground/80 hover:text-foreground inline-flex items-center gap-1"
                         >
                           Show Less<ChevronUp className="h-3 w-3" />
                         </button>
