@@ -1,7 +1,6 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Testimonials } from "@/components/Testimonials";
 
 const Portfolio = () => {
   const container = {
@@ -30,7 +29,7 @@ const Portfolio = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      {/* Header Section */}
+      {/* Header Section with Border */}
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
@@ -55,9 +54,13 @@ const Portfolio = () => {
         </div>
       </header>
 
-      <div className="container max-w-3xl mx-auto px-4 py-12">
+      {/* Main Content with Side Borders and Section Dividers */}
+      <div className="container max-w-3xl mx-auto px-4 relative">
+        <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
+        <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
+        
         {/* Hero Section */}
-        <section className="mb-16">
+        <section className="py-12 border-b border-secondary-border">
           <h1 className="text-4xl font-bold mb-4">
             Product Designer with over 7+ years of experience.{" "}
             <span className="text-gray-400">
@@ -74,7 +77,7 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mb-16"
+          className="py-12 border-b border-secondary-border"
         >
           <h3 className="text-2xl font-bold mb-6">Experience</h3>
           <div className="space-y-4">
@@ -115,9 +118,9 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="mb-16"
+          className="py-12 border-b border-secondary-border"
         >
-          <h3 className="text-2xl font-bold mb-6">Projects</h3>
+          <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {[
               {
@@ -134,31 +137,26 @@ const Portfolio = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors"
+                className="bg-card border border-card-border rounded-lg overflow-hidden"
               >
-                <div className="aspect-video relative overflow-hidden">
-                  <img 
-                    src={project.image} 
+                <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
+                  <img
+                    src={project.image}
                     alt={project.title}
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
-                  <h4 className="font-medium mb-2">{project.title}</h4>
-                  <p className="text-sm text-gray-400">
-                    {project.description}
-                  </p>
+                  <h4 className="text-xl font-semibold mb-2">{project.title}</h4>
+                  <p className="text-gray-400">{project.description}</p>
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.section>
 
-        {/* Testimonials Section */}
-        <Testimonials />
-
         {/* Footer */}
-        <footer className="pt-8 border-t border-secondary-border">
+        <footer className="py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex gap-4">
               <a
