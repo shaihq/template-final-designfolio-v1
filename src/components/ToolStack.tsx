@@ -42,7 +42,7 @@ export const ToolStack = () => {
 
   return (
     <section className="py-16">
-      <h2 className="text-2xl font-bold mb-8">Tool Stack</h2>
+      <h2 className="text-2xl font-bold mb-8 text-center">Tool Stack</h2>
       <motion.div
         ref={ref}
         variants={container}

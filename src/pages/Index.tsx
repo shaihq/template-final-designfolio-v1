@@ -16,14 +16,14 @@ const Index = () => {
         <section id="work">
           <WorkShowcase />
         </section>
+        <section id="tools">
+          <ToolStack />
+        </section>
         <section id="spotlight">
           <Spotlight />
         </section>
         <section id="projects">
           <SideProjects />
-        </section>
-        <section id="tools">
-          <ToolStack />
         </section>
         <Footer />
       </div>
