@@ -140,7 +140,7 @@ export const Testimonials = () => {
               <motion.div
                 key={currentIndex}
                 variants={item}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
+                className="bg-card border border-card-border p-6 rounded-lg shadow-lg transform rotate-2"
               >
                 <p className="text-gray-400">
                   {visibleTestimonials[currentIndex].content}
@@ -211,7 +211,7 @@ export const Testimonials = () => {
               <motion.div
                 key={testimonial.id}
                 variants={item}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-card border border-card-border p-6 rounded-lg shadow-lg transform rotate-2 transition-transform duration-300 hover:rotate-0"
               >
                 <p className="text-gray-400">
                   {testimonial.content}
