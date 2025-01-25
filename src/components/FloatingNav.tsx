@@ -12,6 +12,9 @@ export const FloatingNav = () => {
     { id: "tools", label: "Tools", icon: Wrench },
   ];
 
+  // Filter sections for mobile view (excluding tools)
+  const mobileSections = sections.filter(section => section.id !== "tools");
+
   useEffect(() => {
     const handleScroll = () => {
       const sectionElements = sections.map(({ id }) => 
@@ -41,31 +44,62 @@ export const FloatingNav = () => {
   };
 
   return (
-    <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-      <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
-        <div className="flex flex-col gap-4">
-          {sections.map(({ id, label, icon: Icon }) => (
-            <button
-              key={id}
-              onClick={() => scrollToSection(id)}
-              className={`group flex items-center gap-4 transition-all ${
-                activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
-              }`}
-            >
-              <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
-                <Icon 
-                  className={`w-5 h-5 ${
-                    activeSection === id ? "text-white" : "text-foreground"
-                  }`}
-                />
-              </div>
-              <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
-                {label}
-              </span>
-            </button>
-          ))}
+    <>
+      {/* Desktop Navigation */}
+      <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+        <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
+          <div className="flex flex-col gap-4">
+            {sections.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className={`group flex items-center gap-4 transition-all ${
+                  activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
+                }`}
+              >
+                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                  <Icon 
+                    className={`w-5 h-5 ${
+                      activeSection === id ? "text-white" : "text-foreground"
+                    }`}
+                  />
+                </div>
+                <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
+                  {label}
+                </span>
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-    </nav>
+      </nav>
+
+      {/* Mobile and Tablet Navigation */}
+      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden">
+        <div className="bg-card border border-card-border rounded-full p-2 shadow-lg">
+          <div className="flex items-center gap-2">
+            {mobileSections.map(({ id, label, icon: Icon }) => (
+              <button
+                key={id}
+                onClick={() => scrollToSection(id)}
+                className={`group flex flex-col items-center p-2 transition-all ${
+                  activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
+                }`}
+              >
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                  <Icon 
+                    className={`w-4 h-4 ${
+                      activeSection === id ? "text-white" : "text-foreground"
+                    }`}
+                  />
+                </div>
+                <span className="text-xs mt-1 whitespace-nowrap">
+                  {label}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </nav>
+    </>
   );
 };
