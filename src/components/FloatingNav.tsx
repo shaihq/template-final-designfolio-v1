@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
-import { Home, Award, Wrench, Briefcase } from "lucide-react";
+import { Home, Briefcase, Award, Code, Wrench } from "lucide-react";
 
 export const FloatingNav = () => {
   const [activeSection, setActiveSection] = useState("hero");
 
   const sections = [
     { id: "hero", label: "Home", icon: Home },
-    { id: "work", label: "Projects", icon: Award },
+    { id: "work", label: "Work", icon: Briefcase },
+    { id: "spotlight", label: "Spotlight", icon: Award },
+    { id: "projects", label: "Projects", icon: Code },
     { id: "tools", label: "Tools", icon: Wrench },
-    { id: "spotlight", label: "Work", icon: Briefcase },
   ];
 
   // Filter sections for mobile view (excluding tools)
