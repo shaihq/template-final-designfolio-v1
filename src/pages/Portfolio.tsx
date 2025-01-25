@@ -213,27 +213,31 @@ const Portfolio = () => {
                     initial={{ 
                       scale: 0.9, 
                       opacity: 0,
-                      y: 50 
+                      y: 50,
+                      rotateX: -15
                     }}
                     animate={{ 
                       scale: isActive ? 1 : 0.9,
                       opacity: isActive ? 1 : 0.5,
                       y: isActive ? 0 : 25,
+                      rotateX: isActive ? 0 : -15,
                       zIndex: zIndex
                     }}
                     exit={{ 
                       scale: 0.9, 
                       opacity: 0,
-                      y: -50 
+                      y: -50,
+                      rotateX: 15
                     }}
                     transition={{
                       duration: 0.5,
-                      ease: "easeInOut"
+                      ease: [0.4, 0, 0.2, 1]
                     }}
-                    className="absolute top-0 left-0 w-full"
+                    className="absolute top-0 left-0 w-full perspective-1000"
                     style={{
                       zIndex: zIndex,
-                      pointerEvents: isActive ? "auto" : "none"
+                      pointerEvents: isActive ? "auto" : "none",
+                      transformStyle: "preserve-3d"
                     }}
                   >
                     <div className="bg-card border border-card-border p-6 rounded-lg shadow-lg">
@@ -253,7 +257,7 @@ const Portfolio = () => {
             </AnimatePresence>
           </div>
 
-          <div className="flex justify-center gap-4 mt-8">
+          <div className="flex justify-center gap-2 mt-4">
             <Button
               variant="outline"
               size="icon"
