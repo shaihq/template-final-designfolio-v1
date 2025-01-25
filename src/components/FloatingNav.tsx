@@ -74,20 +74,20 @@ export const FloatingNav = () => {
       </nav>
 
       {/* Mobile and Tablet Navigation */}
-      <nav className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 lg:hidden">
-        <div className="bg-card border border-card-border rounded-xl p-2 shadow-lg">
-          <div className="flex items-center gap-2">
+      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 lg:hidden">
+        <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
+          <div className="flex items-center gap-4">
             {mobileSections.map(({ id, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`group flex flex-col items-center p-2 transition-all ${
+                className={`group flex flex-col items-center transition-all ${
                   activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                <div className="flex items-center justify-center w-12 h-12 rounded-full bg-primary hover:bg-primary/10 transition-colors">
                   <Icon 
-                    className={`w-4 h-4 ${
+                    className={`w-6 h-6 ${
                       activeSection === id ? "text-white" : "text-foreground"
                     }`}
                   />
