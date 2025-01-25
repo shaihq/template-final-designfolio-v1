@@ -29,35 +29,7 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      {/* Glowing Star Effect */}
-      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-8 h-8">
-        <div className="relative w-full h-full animate-pulse">
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-500 opacity-75 blur-lg" />
-          <div className="relative w-full h-full">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              className="w-full h-full"
-            >
-              <path
-                d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"
-                fill="url(#star-gradient)"
-                stroke="white"
-                strokeWidth="0.5"
-              />
-              <defs>
-                <linearGradient id="star-gradient" x1="2" y1="2" x2="22" y2="21.02" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#7EE7FC" />
-                  <stop offset="0.5" stopColor="#FF72E1" />
-                  <stop offset="1" stopColor="#FFE147" />
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
-        </div>
-      </div>
-
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
       <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
