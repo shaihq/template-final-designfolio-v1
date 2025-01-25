@@ -5,6 +5,7 @@ import { SideProjects } from "@/components/SideProjects";
 import { ToolStack } from "@/components/ToolStack";
 import { Footer } from "@/components/Footer";
 import { FloatingNav } from "@/components/FloatingNav";
+import { Testimonials } from "@/components/Testimonials";
 
 const Index = () => {
   return (
@@ -21,6 +22,9 @@ const Index = () => {
         </section>
         <section id="spotlight">
           <Spotlight />
+        </section>
+        <section id="testimonials">
+          <Testimonials />
         </section>
         <section id="projects">
           <SideProjects />
