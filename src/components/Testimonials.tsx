@@ -63,29 +63,18 @@ export const Testimonials = () => {
     <section className="py-16">
       <h2 className="text-3xl font-bold mb-12 text-center">What People Say</h2>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-4 relative">
-        <AnimatePresence mode="wait">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto px-4">
+        <AnimatePresence>
           {visibleTestimonials.map((testimonial, index) => (
             <motion.div
               key={testimonial.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ 
-                opacity: 1, 
-                y: 0,
-                rotateZ: index % 2 === 0 ? 2 : -2,
-                transition: {
-                  duration: 0.4,
-                  delay: index * 0.1,
-                  ease: [0.23, 1, 0.32, 1]
-                }
-              }}
-              exit={{ 
-                opacity: 0,
-                y: 20,
-                transition: {
-                  duration: 0.3,
-                  ease: [0.23, 1, 0.32, 1]
-                }
+              initial={{ opacity: 0, y: 20, rotateZ: -2 }}
+              animate={{ opacity: 1, y: 0, rotateZ: index % 2 === 0 ? 2 : -2 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ 
+                duration: 0.5,
+                delay: index * 0.1,
+                ease: "easeOut"
               }}
               className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
               style={{
