@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Button } from "./ui/button";
 import { ChevronDown, ChevronUp } from "lucide-react";
 
 export const Spotlight = () => {
@@ -109,7 +108,19 @@ export const Spotlight = () => {
                   <span className="text-sm text-foreground/60">{experience.date}</span>
                 </div>
                 <div className="text-base text-foreground/80">{experience.company}</div>
-                <p className="text-sm text-foreground/60 mt-2">{experience.description}</p>
+                <p className="text-sm text-foreground/60 mt-2">
+                  {experience.description}
+                  <button
+                    onClick={() => toggleExpand(index)}
+                    className="ml-1 text-tertiary hover:text-tertiary-hover inline-flex items-center gap-1"
+                  >
+                    {expandedCards.includes(index) ? (
+                      <>Show Less<ChevronUp className="h-3 w-3" /></>
+                    ) : (
+                      <>View More<ChevronDown className="h-3 w-3" /></>
+                    )}
+                  </button>
+                </p>
                 
                 <motion.div
                   variants={expandContent}
@@ -121,25 +132,6 @@ export const Spotlight = () => {
                     {experience.expandedContent}
                   </div>
                 </motion.div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleExpand(index)}
-                  className="mt-4 w-full flex items-center justify-center gap-2"
-                >
-                  {expandedCards.includes(index) ? (
-                    <>
-                      Show Less
-                      <ChevronUp className="h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      View More
-                      <ChevronDown className="h-4 w-4" />
-                    </>
-                  )}
-                </Button>
               </div>
             </div>
           </motion.div>

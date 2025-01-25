@@ -107,8 +107,20 @@ export const Testimonials = () => {
                 transition={{ duration: 0.3 }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
               >
-                <p className="text-gray-400 mb-4">{visibleTestimonials[currentIndex].content}</p>
-                
+                <p className="text-gray-400">
+                  {visibleTestimonials[currentIndex].content}
+                  <button
+                    onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
+                    className="ml-1 text-tertiary hover:text-tertiary-hover inline-flex items-center gap-1"
+                  >
+                    {expandedCards.includes(visibleTestimonials[currentIndex].id) ? (
+                      <>Show Less<ChevronUp className="h-3 w-3" /></>
+                    ) : (
+                      <>View More<ChevronDown className="h-3 w-3" /></>
+                    )}
+                  </button>
+                </p>
+
                 <AnimatePresence>
                   {expandedCards.includes(visibleTestimonials[currentIndex].id) && (
                     <motion.div
@@ -118,14 +130,14 @@ export const Testimonials = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 mb-4">
+                      <p className="text-gray-400 mt-4">
                         {visibleTestimonials[currentIndex].expandedContent}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1">
                     <h4 className="font-semibold">{visibleTestimonials[currentIndex].name}</h4>
                     <p className="text-sm text-gray-400">
@@ -133,25 +145,6 @@ export const Testimonials = () => {
                     </p>
                   </div>
                 </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
-                  className="mt-4 w-full flex items-center justify-center gap-2"
-                >
-                  {expandedCards.includes(visibleTestimonials[currentIndex].id) ? (
-                    <>
-                      Show Less
-                      <ChevronUp className="h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      View More
-                      <ChevronDown className="h-4 w-4" />
-                    </>
-                  )}
-                </Button>
               </motion.div>
             </AnimatePresence>
             <div className="flex justify-center gap-4 mt-6">
@@ -178,8 +171,8 @@ export const Testimonials = () => {
             {visibleTestimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
-                initial={{ opacity: 0, y: 20, rotateZ: -2 }}
-                animate={{ opacity: 1, y: 0, rotateZ: index % 2 === 0 ? 2 : -2 }}
+                initial={{ opacity: 0, y: 20, rotateZ: index % 2 === 0 ? 2 : -2 }}
+                animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ 
                   duration: 0.5,
@@ -191,7 +184,19 @@ export const Testimonials = () => {
                   transformOrigin: "center",
                 }}
               >
-                <p className="text-gray-400 mb-4">{testimonial.content}</p>
+                <p className="text-gray-400">
+                  {testimonial.content}
+                  <button
+                    onClick={() => toggleExpand(testimonial.id)}
+                    className="ml-1 text-tertiary hover:text-tertiary-hover inline-flex items-center gap-1"
+                  >
+                    {expandedCards.includes(testimonial.id) ? (
+                      <>Show Less<ChevronUp className="h-3 w-3" /></>
+                    ) : (
+                      <>View More<ChevronDown className="h-3 w-3" /></>
+                    )}
+                  </button>
+                </p>
 
                 <AnimatePresence>
                   {expandedCards.includes(testimonial.id) && (
@@ -202,14 +207,14 @@ export const Testimonials = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 mb-4">
+                      <p className="text-gray-400 mt-4">
                         {testimonial.expandedContent}
                       </p>
                     </motion.div>
                   )}
                 </AnimatePresence>
 
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1">
                     <h4 className="font-semibold">{testimonial.name}</h4>
                     <p className="text-sm text-gray-400">
@@ -217,25 +222,6 @@ export const Testimonials = () => {
                     </p>
                   </div>
                 </div>
-
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => toggleExpand(testimonial.id)}
-                  className="mt-4 w-full flex items-center justify-center gap-2"
-                >
-                  {expandedCards.includes(testimonial.id) ? (
-                    <>
-                      Show Less
-                      <ChevronUp className="h-4 w-4" />
-                    </>
-                  ) : (
-                    <>
-                      View More
-                      <ChevronDown className="h-4 w-4" />
-                    </>
-                  )}
-                </Button>
               </motion.div>
             ))}
           </AnimatePresence>
@@ -252,7 +238,6 @@ export const Testimonials = () => {
           <Button
             variant="outline"
             onClick={() => setShowMore(!showMore)}
-            className="mx-auto"
           >
             {showMore ? "Show Less" : "View More"}
           </Button>
