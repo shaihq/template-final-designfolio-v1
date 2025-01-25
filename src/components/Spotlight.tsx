@@ -1,38 +1,34 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
-import { Card } from "./ui/card";
+import { useRef, useState } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 export const Spotlight = () => {
   const experiences = [
     {
-      company: "Athon",
-      logo: "/lovable-uploads/39d21fd8-9ce5-4f07-9db6-5d89fead0e4f.png",
-      website: "athon.com",
-      role: "UI/UX Designer",
-      type: "Tech Start-up",
-      date: "2020 - 2022",
-      description: "Led UI/UX design projects from concept to delivery, conducted user testing, and iterated designs for optimal user experience.",
-    },
-    {
+      title: "Senior Product Designer",
       company: "Design Studio X",
-      logo: "/placeholder.svg",
-      website: "designstudiox.com",
-      role: "Senior Product Designer",
-      type: "Design Agency",
-      date: "2022 - 2023",
+      date: "Jan 2023 - Present",
       description: "Leading the design team in creating innovative digital products. Collaborated with cross-functional teams to deliver user-centered solutions that increased customer engagement by 45%.",
+      expandedContent: "• Implemented design system that reduced design inconsistencies by 60%\n• Led workshops with stakeholders to align on product vision\n• Mentored junior designers and improved team productivity by 30%",
     },
     {
+      title: "UX Designer",
       company: "Tech Innovations Inc",
-      logo: "/placeholder.svg",
-      website: "techinnovations.com",
-      role: "UX Designer",
-      type: "Technology",
-      date: "2019 - 2020",
+      date: "Mar 2020 - Dec 2022",
       description: "Spearheaded the redesign of core products resulting in a 30% increase in user satisfaction. Mentored junior designers and established design system guidelines.",
+      expandedContent: "• Conducted user research with over 200 participants\n• Created and maintained component library used across 5 products\n• Reduced design-to-development handoff time by 40%",
+    },
+    {
+      title: "UI/UX Designer",
+      company: "Creative Agency",
+      date: "Jun 2018 - Feb 2020",
+      description: "Designed and delivered web and mobile applications for various clients across fintech and healthcare sectors. Implemented user research methodologies to inform design decisions.",
+      expandedContent: "• Successfully delivered 12+ client projects on time and within budget\n• Increased client satisfaction scores by 25%\n• Introduced usability testing practices to the agency",
     },
   ];
+
+  const [expandedCards, setExpandedCards] = useState<number[]>([]);
 
   const container = {
     hidden: { opacity: 0 },
@@ -58,8 +54,33 @@ export const Spotlight = () => {
     },
   };
 
+  const expandContent = {
+    hidden: { height: 0, opacity: 0 },
+    show: { 
+      height: "auto", 
+      opacity: 1,
+      transition: {
+        height: {
+          duration: 0.3,
+        },
+        opacity: {
+          duration: 0.2,
+          delay: 0.1,
+        },
+      },
+    },
+  };
+
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  const toggleExpand = (index: number) => {
+    setExpandedCards(prev => 
+      prev.includes(index) 
+        ? prev.filter(i => i !== index)
+        : [...prev, index]
+    );
+  };
 
   return (
     <section className="py-16">
@@ -75,42 +96,50 @@ export const Spotlight = () => {
           <motion.div
             key={index}
             variants={item}
-            className="relative"
+            className="group bg-card p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden"
           >
-            <Card className="group bg-secondary hover:bg-secondary/80 transition-colors duration-300 border-secondary-border hover:border-secondary-border-hover overflow-hidden">
-              <div className="absolute inset-0 overflow-hidden">
-                <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full" />
-              </div>
-              <div className="relative z-10 p-8 space-y-8">
-                <div className="flex items-start justify-between">
-                  <div className="flex gap-4 items-start">
-                    <div className="w-12 h-12 rounded-lg bg-background/50 p-2 flex items-center justify-center">
-                      <img 
-                        src={experience.logo} 
-                        alt={`${experience.company} logo`}
-                        className="w-full h-full object-contain"
-                      />
-                    </div>
-                    <div className="space-y-1">
-                      <div className="flex items-center gap-3">
-                        <h3 className="text-xl font-semibold">{experience.company}</h3>
-                        <span className="text-sm text-foreground/60">{experience.website}</span>
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-lg text-foreground/80">{experience.type}</p>
-                      </div>
-                    </div>
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full" />
+            </div>
+            <div className="relative z-10">
+              <div className="flex flex-col gap-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-semibold text-lg">{experience.title}</h3>
+                  <span className="text-sm text-foreground/60">{experience.date}</span>
+                </div>
+                <div className="text-base text-foreground/80">{experience.company}</div>
+                <p className="text-sm text-foreground/60 mt-2">
+                  {experience.description}
+                  {!expandedCards.includes(index) && (
+                    <button
+                      onClick={() => toggleExpand(index)}
+                      className="ml-1 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                    >
+                      View More<ChevronDown className="h-3 w-3" />
+                    </button>
+                  )}
+                </p>
+                
+                <motion.div
+                  variants={expandContent}
+                  initial="hidden"
+                  animate={expandedCards.includes(index) ? "show" : "hidden"}
+                  className="overflow-hidden"
+                >
+                  <div className="mt-4 text-sm text-foreground/60 whitespace-pre-line">
+                    {experience.expandedContent}
+                    {expandedCards.includes(index) && (
+                      <button
+                        onClick={() => toggleExpand(index)}
+                        className="ml-1 block mt-2 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                      >
+                        Show Less<ChevronUp className="h-3 w-3" />
+                      </button>
+                    )}
                   </div>
-                  <span className="text-lg font-medium">{experience.date}</span>
-                </div>
-                <div className="space-y-2">
-                  <h4 className="text-xl font-semibold">{experience.role}</h4>
-                  <p className="text-foreground/60 leading-relaxed">
-                    {experience.description}
-                  </p>
-                </div>
+                </motion.div>
               </div>
-            </Card>
+            </div>
           </motion.div>
         ))}
       </motion.div>
