@@ -1,15 +1,16 @@
 import { useState, useEffect } from "react";
+import { Home, Briefcase, Award, Code, Wrench, Mail } from "lucide-react";
 
 export const FloatingNav = () => {
   const [activeSection, setActiveSection] = useState("hero");
 
   const sections = [
-    { id: "hero", label: "Home" },
-    { id: "work", label: "Work" },
-    { id: "spotlight", label: "Spotlight" },
-    { id: "projects", label: "Projects" },
-    { id: "tools", label: "Tools" },
-    { id: "newsletter", label: "Newsletter" },
+    { id: "hero", label: "Home", icon: Home },
+    { id: "work", label: "Work", icon: Briefcase },
+    { id: "spotlight", label: "Spotlight", icon: Award },
+    { id: "projects", label: "Projects", icon: Code },
+    { id: "tools", label: "Tools", icon: Wrench },
+    { id: "newsletter", label: "Newsletter", icon: Mail },
   ];
 
   useEffect(() => {
@@ -43,7 +44,7 @@ export const FloatingNav = () => {
   return (
     <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
       <div className="flex flex-col gap-4">
-        {sections.map(({ id, label }) => (
+        {sections.map(({ id, label, icon: Icon }) => (
           <button
             key={id}
             onClick={() => scrollToSection(id)}
@@ -51,8 +52,14 @@ export const FloatingNav = () => {
               activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
             }`}
           >
-            <div className="w-2 h-2 rounded-full bg-primary"></div>
-            <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+            <div className="flex items-center justify-center w-10 h-10 rounded-full bg-card hover:bg-primary/10 transition-colors">
+              <Icon 
+                className={`w-5 h-5 ${
+                  activeSection === id ? "text-primary" : "text-foreground"
+                }`}
+              />
+            </div>
+            <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
               {label}
             </span>
           </button>
