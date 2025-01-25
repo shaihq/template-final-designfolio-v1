@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Twitter, Download } from "lucide-react";
+import { Mail, Github, Linkedin, Twitter, Download, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
@@ -251,9 +251,7 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
-        {/* Testimonials Section */}
         <Testimonials />
-
         <Footer />
       </div>
     </div>
