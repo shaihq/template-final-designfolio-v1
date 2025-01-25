@@ -5,20 +5,20 @@ import { Testimonials } from "@/components/Testimonials";
 import { useEffect, useState } from "react";
 
 const Portfolio = () => {
-  const mouseY = useMotionValue(0);
-  const smoothMouseY = useSpring(mouseY, {
+  const mouseX = useMotionValue(0);
+  const smoothMouseX = useSpring(mouseX, {
     damping: 50,
     stiffness: 400,
   });
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseY.set(e.clientY);
+      mouseX.set(e.clientX);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
     return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseY]);
+  }, [mouseX]);
 
   const container = {
     hidden: { opacity: 0 },
@@ -48,12 +48,12 @@ const Portfolio = () => {
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
       {/* Glow Effect */}
       <motion.div
-        className="fixed top-0 left-0 w-full h-1 pointer-events-none z-50"
+        className="fixed top-0 left-0 w-1 h-1 pointer-events-none z-50"
         style={{
           background: "linear-gradient(180deg, rgba(255,85,62,0.3) 0%, transparent 100%)",
           boxShadow: "0 0 80px 40px rgba(255,85,62,0.15)",
           opacity: 0.7,
-          y: smoothMouseY
+          x: smoothMouseX
         }}
       />
 
