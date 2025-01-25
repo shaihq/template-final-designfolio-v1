@@ -13,7 +13,16 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
+      const heroSection = document.querySelector('.hero-section');
+      if (heroSection) {
+        const rect = heroSection.getBoundingClientRect();
+        // Only update mouseX if mouse is within the hero section's bounds
+        if (e.clientY >= rect.top && e.clientY <= rect.bottom) {
+          // Calculate relative X position within the hero section
+          const relativeX = e.clientX - rect.left;
+          mouseX.set(relativeX);
+        }
+      }
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -73,7 +82,7 @@ const Portfolio = () => {
 
       <div className="container max-w-3xl mx-auto px-4 py-12">
         {/* Hero Section with Glow Effect */}
-        <section className="mb-16 relative">
+        <section className="hero-section mb-16 relative overflow-hidden">
           {/* Glow Effect */}
           <motion.div
             className="absolute top-0 left-0 w-1 h-1 pointer-events-none z-50"
