@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Home, Briefcase, Award, Code, Wrench, Mail } from "lucide-react";
+import { Home, Briefcase, Award, Code, Wrench } from "lucide-react";
 
 export const FloatingNav = () => {
   const [activeSection, setActiveSection] = useState("hero");
@@ -10,7 +10,6 @@ export const FloatingNav = () => {
     { id: "spotlight", label: "Spotlight", icon: Award },
     { id: "projects", label: "Projects", icon: Code },
     { id: "tools", label: "Tools", icon: Wrench },
-    { id: "newsletter", label: "Newsletter", icon: Mail },
   ];
 
   useEffect(() => {
