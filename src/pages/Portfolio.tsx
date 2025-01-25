@@ -2,23 +2,8 @@ import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Testimonials } from "@/components/Testimonials";
-import { useState, useEffect } from "react";
 
 const Portfolio = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -44,25 +29,9 @@ const Portfolio = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground relative">
-      {/* Glow Effect */}
-      <motion.div
-        className="fixed top-0 z-50 w-[300px] h-[300px] rounded-[50%] bg-tertiary/5 blur-[150px] pointer-events-none backdrop-blur-3xl"
-        animate={{
-          x: mousePosition.x - 150,
-          y: -100, // Fixed position slightly above the top
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 50,
-          damping: 30,
-          mass: 1,
-          restDelta: 0.001,
-        }}
-      />
-
+    <div className="min-h-screen bg-background text-foreground">
       {/* Header Section */}
-      <header className="border-b border-secondary-border py-6 relative">
+      <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
