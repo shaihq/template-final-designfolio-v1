@@ -55,7 +55,7 @@ export const FloatingNav = () => {
             <div className="flex items-center justify-center w-10 h-10 rounded-full bg-card hover:bg-primary/10 transition-colors">
               <Icon 
                 className={`w-5 h-5 ${
-                  activeSection === id ? "text-primary" : "text-foreground"
+                  activeSection === id ? "text-white" : "text-foreground"
                 }`}
               />
             </div>
