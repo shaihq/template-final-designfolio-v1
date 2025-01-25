@@ -5,6 +5,22 @@ import { motion, AnimatePresence } from "framer-motion";
 export const Hero = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const skills = [
+    "Product Design",
+    "UI/UX",
+    "Design Systems",
+    "Prototyping",
+    "User Research",
+    "Frontend Development",
+    "React",
+    "TypeScript",
+    "Figma",
+    "Design Thinking",
+  ];
+
+  // Duplicate skills for smooth infinite scroll
+  const scrollSkills = [...skills, ...skills];
+
   return (
     <section className="flex flex-col items-center text-center py-12 animate-fade-in">
       <Avatar className="w-24 h-24 mb-6 relative rounded-2xl">
@@ -41,6 +57,31 @@ export const Hero = () => {
       <p className="text-gray-400 max-w-xl mb-8">
         Product Designer with over 7+ years of experience. A unicorn designer who can both design and code. Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
       </p>
+      
+      {/* Skills Infinite Scroll */}
+      <div className="w-full overflow-hidden relative py-4 before:absolute before:left-0 before:top-0 before:z-10 before:w-20 before:h-full before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:w-20 after:h-full after:bg-gradient-to-l after:from-background after:to-transparent">
+        <motion.div 
+          className="flex gap-4 whitespace-nowrap"
+          animate={{ x: ["0%", "-50%"] }}
+          transition={{
+            x: {
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 20,
+              ease: "linear",
+            },
+          }}
+        >
+          {scrollSkills.map((skill, index) => (
+            <span
+              key={index}
+              className="bg-card px-4 py-2 rounded-full text-sm"
+            >
+              {skill}
+            </span>
+          ))}
+        </motion.div>
+      </div>
     </section>
   );
 };
