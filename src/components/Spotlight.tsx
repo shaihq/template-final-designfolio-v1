@@ -65,15 +65,20 @@ export const Spotlight = () => {
           <motion.div
             key={index}
             variants={item}
-            className="bg-card p-6 rounded-lg hover:bg-card/80 transition-colors"
+            className="group bg-card p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden"
           >
-            <div className="flex flex-col gap-1">
-              <div className="flex justify-between items-start">
-                <h3 className="font-semibold text-lg">{experience.title}</h3>
-                <span className="text-sm text-foreground/60">{experience.date}</span>
+            <div className="absolute inset-0 overflow-hidden">
+              <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full" />
+            </div>
+            <div className="relative z-10">
+              <div className="flex flex-col gap-1">
+                <div className="flex justify-between items-start">
+                  <h3 className="font-semibold text-lg">{experience.title}</h3>
+                  <span className="text-sm text-foreground/60">{experience.date}</span>
+                </div>
+                <div className="text-base text-foreground/80">{experience.company}</div>
+                <p className="text-sm text-foreground/60 mt-2">{experience.description}</p>
               </div>
-              <div className="text-base text-foreground/80">{experience.company}</div>
-              <p className="text-sm text-foreground/60 mt-2">{experience.description}</p>
             </div>
           </motion.div>
         ))}
