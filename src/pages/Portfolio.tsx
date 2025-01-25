@@ -31,10 +31,7 @@ const Portfolio = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header Section with Border */}
-      <header className="border-b border-secondary-border py-6 relative overflow-hidden">
-        <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-secondary-border to-transparent">
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-shimmer" />
-        </div>
+      <header className="border-b border-secondary-border py-6">
         <div className="container max-w-3xl mx-auto px-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -60,20 +57,11 @@ const Portfolio = () => {
 
       {/* Main Content with Side Borders and Section Dividers */}
       <div className="container max-w-3xl mx-auto px-4 relative">
-        {/* Left Border with Animation */}
-        <div className="absolute left-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-secondary-border to-transparent">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent animate-shimmer" />
-        </div>
-        {/* Right Border with Animation */}
-        <div className="absolute right-0 top-0 w-px h-full bg-gradient-to-b from-transparent via-secondary-border to-transparent">
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white to-transparent animate-shimmer" />
-        </div>
+        <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
+        <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
         
         {/* Hero Section */}
-        <section className="py-12 border-b border-secondary-border relative">
-          <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-secondary-border to-transparent">
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white to-transparent animate-shimmer" />
-          </div>
+        <section className="py-12 border-b border-secondary-border">
           <h1 className="text-4xl font-bold mb-4">
             Product Designer with over 7+ years of experience.{" "}
             <span className="text-gray-400">
@@ -85,6 +73,7 @@ const Portfolio = () => {
           </p>
         </section>
 
+        {/* Experience Section */}
         <motion.section 
           variants={container}
           initial="hidden"
@@ -125,6 +114,7 @@ const Portfolio = () => {
           </div>
         </motion.section>
 
+        {/* Projects Section */}
         <motion.section 
           variants={container}
           initial="hidden"

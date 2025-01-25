@@ -64,14 +64,14 @@ export default {
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
         shimmer: {
-          "0%": { transform: "translateY(-100%)" },
-          "100%": { transform: "translateY(100%)" },
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(200%)" },
         },
       },
       animation: {
         "fade-in": "fade-in 0.5s ease-out",
         "fade-in-right": "fade-in-right 0.5s ease-out",
-        shimmer: "shimmer 2s linear infinite",
+        shimmer: "shimmer 1.5s ease-in-out infinite",
       },
     },
   },
