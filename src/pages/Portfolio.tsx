@@ -1,6 +1,7 @@
 import { Mail, Github, Linkedin, Twitter } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { Testimonials } from "@/components/Testimonials";
 
 const Portfolio = () => {
   const container = {
@@ -154,6 +155,9 @@ const Portfolio = () => {
             ))}
           </div>
         </motion.section>
+
+        {/* Testimonials Section */}
+        <Testimonials />
 
         {/* Footer */}
         <footer className="py-8">
