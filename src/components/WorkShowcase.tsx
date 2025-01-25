@@ -46,6 +46,33 @@ export const WorkShowcase = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
+  const ImageWithPreload = ({ src, alt }: { src: string; alt: string }) => {
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    return (
+      <div className="relative w-full h-full">
+        <motion.img
+          initial={{ opacity: 0 }}
+          animate={{ opacity: isLoaded ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+          src={src}
+          alt={alt}
+          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+          loading="eager"
+          decoding="async"
+          onLoad={() => setIsLoaded(true)}
+          style={{
+            backfaceVisibility: "hidden",
+            WebkitBackfaceVisibility: "hidden",
+          }}
+        />
+        {!isLoaded && (
+          <div className="absolute inset-0 bg-secondary/50 animate-pulse" />
+        )}
+      </div>
+    );
+  };
+
   return (
     <section className="py-16">
       <h2 className="text-3xl font-bold mb-12">Featured Projects</h2>
@@ -63,20 +90,7 @@ export const WorkShowcase = () => {
             className="group rounded-3xl bg-card overflow-hidden relative before:absolute before:inset-0 before:p-[1px] before:bg-gradient-to-r before:from-transparent before:via-foreground/10 before:to-transparent before:rounded-3xl before:opacity-0 before:transition-opacity hover:before:opacity-100"
           >
             <div className="aspect-[4/3] overflow-hidden bg-secondary/50">
-              <motion.img
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                loading="lazy"
-                decoding="async"
-                style={{
-                  backfaceVisibility: "hidden",
-                  WebkitBackfaceVisibility: "hidden",
-                }}
-              />
+              <ImageWithPreload src={project.image} alt={project.title} />
             </div>
             <div className="p-8">
               <h3 className="text-2xl font-semibold mb-3 leading-tight">
