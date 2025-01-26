@@ -44,10 +44,10 @@ export const Footer = () => {
             </Button>
           </div>
 
-          <div className="flex items-center gap-8 text-gray-400">
+          <div className="flex items-center gap-8 text-foreground/60 dark:text-gray-400">
             <a
               href="https://instagram.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-foreground dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -56,7 +56,7 @@ export const Footer = () => {
             </a>
             <a
               href="https://twitter.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-foreground dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -65,7 +65,7 @@ export const Footer = () => {
             </a>
             <a
               href="https://linkedin.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-foreground dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -74,7 +74,7 @@ export const Footer = () => {
             </a>
             <a
               href="https://github.com"
-              className="hover:text-white transition-colors"
+              className="hover:text-foreground dark:hover:text-white transition-colors"
               target="_blank"
               rel="noopener noreferrer"
             >
