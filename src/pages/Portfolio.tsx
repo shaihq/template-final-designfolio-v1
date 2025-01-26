@@ -172,12 +172,12 @@ const Portfolio = () => {
               variants={textReveal}
             >
               Product Designer with over 7+ years of experience.{" "}
-              <span className="text-gray-400">
+              <span className="text-gray-600">
                 A unicorn designer who can both design and code.
               </span>
             </motion.h1>
             <motion.p 
-              className="text-gray-400 mb-6"
+              className="text-gray-600 mb-6"
               variants={textReveal}
             >
               Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
