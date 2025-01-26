@@ -80,14 +80,14 @@ export const FloatingNav = () => {
                 <div 
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
-                      ? "bg-foreground dark:bg-[#2A2D37]" 
+                      ? "bg-foreground dark:bg-primary-hover" 
                       : "bg-primary dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
                     className={`w-5 h-5 ${
                       activeSection === id 
-                        ? "text-background dark:text-white" 
+                        ? "text-background dark:text-background" 
                         : "text-foreground dark:text-foreground-dark"
                     }`}
                   />
@@ -116,14 +116,14 @@ export const FloatingNav = () => {
                 <div 
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
-                      ? "bg-foreground dark:bg-[#2A2D37]" 
+                      ? "bg-foreground dark:bg-primary-hover" 
                       : "bg-primary dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
                     className={`w-5 h-5 ${
                       activeSection === id 
-                        ? "text-background dark:text-white" 
+                        ? "text-background dark:text-background" 
                         : "text-foreground dark:text-foreground-dark"
                     }`}
                   />
