@@ -241,10 +241,10 @@ const Portfolio = () => {
                 <div className="flex justify-between items-start">
                   <div>
                     <span className="text-white font-medium">{exp.role}</span>
-                    <p className="text-sm text-gray-400">{exp.company}</p>
-                    <p className="text-gray-400 mt-2">{exp.description}</p>
+                    <p className="text-sm dark:text-gray-400 text-gray-600">{exp.company}</p>
+                    <p className="dark:text-gray-400 text-gray-600 mt-2">{exp.description}</p>
                   </div>
-                  <span className="text-sm text-gray-400">{exp.period}</span>
+                  <span className="text-sm dark:text-gray-400 text-gray-600">{exp.period}</span>
                 </div>
               </motion.div>
             ))}
@@ -331,7 +331,7 @@ const Portfolio = () => {
                     <div className="p-8 flex flex-col justify-between flex-grow">
                       <div>
                         <h4 className="text-2xl font-semibold mb-3">{project.title}</h4>
-                        <p className="text-gray-400">{project.description}</p>
+                        <p className="dark:text-gray-400 text-gray-600">{project.description}</p>
                       </div>
                       <Button 
                         variant="outline"
