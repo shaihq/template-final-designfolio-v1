@@ -42,6 +42,6 @@
   }
 
   body {
-    @apply bg-background text-foreground transition-colors duration-300;
+    @apply template-ds-bg-background template-ds-text-foreground template-ds-transition-colors template-ds-duration-300;
   }
 }
