@@ -51,7 +51,7 @@ export const SideProjects = () => {
           <motion.div
             key={index}
             variants={item}
-            className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 transition-colors cursor-pointer"
+            className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 transition-colors cursor-pointer shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
           >
             <div className="flex items-center gap-3">
               <span className="text-2xl">{project.icon}</span>

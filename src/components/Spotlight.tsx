@@ -96,7 +96,7 @@ export const Spotlight = () => {
           <motion.div
             key={index}
             variants={item}
-            className="group bg-card p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden"
+            className="group bg-card p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
           >
             <div className="absolute inset-0 overflow-hidden">
               <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full" />

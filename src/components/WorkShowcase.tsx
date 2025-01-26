@@ -96,7 +96,7 @@ export const WorkShowcase = () => {
         variants={item}
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group rounded-3xl bg-card overflow-hidden relative"
+        className="group rounded-3xl bg-card overflow-hidden relative shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
       >
         <div
           className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
