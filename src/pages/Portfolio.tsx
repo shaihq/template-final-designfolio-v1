@@ -5,6 +5,7 @@ import { Testimonials } from "@/components/Testimonials";
 import { useRef, useState } from "react";
 import { Figma, FileCode, Laptop } from "lucide-react";
 import { Footer } from "@/components/Footer";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Portfolio = () => {
   const container = {
@@ -83,8 +84,8 @@ const Portfolio = () => {
   const scrollSkills = [...skills, ...skills];
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <header className="border-b border-secondary-border py-6">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <header className="border-b border-secondary-border py-6 bg-background transition-colors duration-300">
         <div className="container max-w-3xl mx-auto px-4">
           <motion.div 
             className="flex items-center justify-between"
@@ -125,6 +126,7 @@ const Portfolio = () => {
               </div>
             </motion.div>
             <motion.div
+              className="flex items-center gap-3"
               variants={{
                 hidden: { opacity: 0, y: -50 },
                 visible: { 
@@ -138,6 +140,7 @@ const Portfolio = () => {
                 }
               }}
             >
+              <ThemeToggle />
               <Button variant="outline" size="sm" className="gap-2">
                 <Mail className="w-4 h-4" />
                 E-mail

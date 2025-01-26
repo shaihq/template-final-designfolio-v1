@@ -22,19 +22,31 @@ export default {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
-        background: "#13151a",
-        foreground: "#e9eaeb",
+        background: {
+          DEFAULT: "var(--background)",
+          dark: "#13151a",
+          light: "#ffffff"
+        },
+        foreground: {
+          DEFAULT: "var(--foreground)",
+          dark: "#e9eaeb",
+          light: "#1a1a1a"
+        },
         primary: {
-          DEFAULT: "#262832",
-          foreground: "#f9f9fb",
-          hover: "#4a4e5d",
+          DEFAULT: "var(--primary)",
+          foreground: "var(--primary-foreground)",
+          hover: "var(--primary-hover)",
+          dark: "#262832",
+          light: "#f5f5f7"
         },
         secondary: {
-          DEFAULT: "#17181d",
-          foreground: "#f9f9fb",
-          hover: "#22242b",
-          border: "#262832",
-          "border-hover": "#565b6c",
+          DEFAULT: "var(--secondary)",
+          foreground: "var(--secondary-foreground)",
+          hover: "var(--secondary-hover)",
+          border: "var(--secondary-border)",
+          "border-hover": "var(--secondary-border-hover)",
+          dark: "#17181d",
+          light: "#fafafa"
         },
         tertiary: {
           DEFAULT: "#ff553e",
@@ -44,9 +56,11 @@ export default {
           "border-hover": "#e84934",
         },
         card: {
-          DEFAULT: "#1d1f27",
-          foreground: "#e9eaeb",
-          border: "#2f323d",
+          DEFAULT: "var(--card)",
+          foreground: "var(--card-foreground)",
+          border: "var(--card-border)",
+          dark: "#1d1f27",
+          light: "#ffffff"
         },
       },
       borderRadius: {
