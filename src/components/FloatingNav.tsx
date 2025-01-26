@@ -67,7 +67,7 @@ export const FloatingNav = () => {
     <>
       {/* Desktop Navigation */}
       <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
-        <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
+        <div className="bg-card border border-card-border rounded-xl p-3 shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
           <div className="flex flex-col gap-4">
             {sections.map(({ id, label, icon: Icon }) => (
               <button
@@ -77,10 +77,16 @@ export const FloatingNav = () => {
                   activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                <div 
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
+                    activeSection === id 
+                      ? "bg-foreground" 
+                      : "bg-primary hover:bg-primary-hover"
+                  }`}
+                >
                   <Icon 
                     className={`w-5 h-5 ${
-                      activeSection === id ? "text-white" : "text-foreground"
+                      activeSection === id ? "text-background" : "text-foreground"
                     }`}
                   />
                 </div>
@@ -95,7 +101,7 @@ export const FloatingNav = () => {
 
       {/* Mobile and Tablet Navigation */}
       <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 lg:hidden">
-        <div className="bg-card border border-card-border rounded-xl p-3 shadow-lg">
+        <div className="bg-card border border-card-border rounded-xl p-3 shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
           <div className="flex items-center gap-4">
             {mobileSections.map(({ id, icon: Icon }) => (
               <button
@@ -105,10 +111,16 @@ export const FloatingNav = () => {
                   activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
-                <div className="flex items-center justify-center w-10 h-10 rounded-full bg-primary hover:bg-primary/10 transition-colors">
+                <div 
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
+                    activeSection === id 
+                      ? "bg-foreground" 
+                      : "bg-primary hover:bg-primary-hover"
+                  }`}
+                >
                   <Icon 
                     className={`w-5 h-5 ${
-                      activeSection === id ? "text-white" : "text-foreground"
+                      activeSection === id ? "text-background" : "text-foreground"
                     }`}
                   />
                 </div>
