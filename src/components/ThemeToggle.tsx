@@ -3,14 +3,39 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 
 export const ThemeToggle = () => {
-  const [theme, setTheme] = useState<"light" | "dark">("dark");
-
-  useEffect(() => {
+  // Get initial theme from localStorage or system preference
+  const getInitialTheme = () => {
     const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
     if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.toggle("dark", savedTheme === "dark");
+      return savedTheme;
     }
+    // Check system preference
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+      return "dark";
+    }
+    return "light";
+  };
+
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    // Run this synchronously during component initialization
+    const initialTheme = getInitialTheme();
+    // Apply theme immediately
+    document.documentElement.classList.toggle("dark", initialTheme === "dark");
+    return initialTheme;
+  });
+
+  // Listen for system theme changes
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const handleChange = (e: MediaQueryListEvent) => {
+      const newTheme = e.matches ? "dark" : "light";
+      setTheme(newTheme);
+      localStorage.setItem("theme", newTheme);
+      document.documentElement.classList.toggle("dark", newTheme === "dark");
+    };
+
+    mediaQuery.addEventListener("change", handleChange);
+    return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
 
   const toggleTheme = () => {
