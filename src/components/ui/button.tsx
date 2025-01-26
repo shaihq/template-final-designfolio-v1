@@ -5,26 +5,25 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "template-ds-inline-flex template-ds-items-center template-ds-justify-center template-ds-whitespace-nowrap template-ds-rounded-md template-ds-text-sm template-ds-font-medium template-ds-ring-offset-background template-ds-transition-colors focus-visible:template-ds-outline-none focus-visible:template-ds-ring-2 focus-visible:template-ds-ring-ring focus-visible:template-ds-ring-offset-2 disabled:template-ds-pointer-events-none disabled:template-ds-opacity-50",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary-hover",
+        default: "template-ds-bg-primary template-ds-text-primary-foreground hover:template-ds-bg-primary/90",
         destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+          "template-ds-bg-destructive template-ds-text-destructive-foreground hover:template-ds-bg-destructive/90",
         outline:
-          "border border-secondary-border bg-secondary text-secondary-foreground hover:bg-secondary-hover hover:border-secondary-border-hover",
+          "template-ds-border template-ds-border-input template-ds-bg-background hover:template-ds-bg-accent hover:template-ds-text-accent-foreground",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary-hover",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "text-primary underline-offset-4 hover:underline",
-        tertiary: "bg-tertiary text-tertiary-foreground hover:bg-tertiary-hover border-tertiary hover:border-tertiary-border-hover",
+          "template-ds-bg-secondary template-ds-text-secondary-foreground hover:template-ds-bg-secondary/80",
+        ghost: "hover:template-ds-bg-accent hover:template-ds-text-accent-foreground",
+        link: "template-ds-text-primary template-ds-underline-offset-4 hover:template-ds-underline",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 rounded-md px-3",
-        lg: "h-11 rounded-md px-8",
-        icon: "h-10 w-10",
+        default: "template-ds-h-10 template-ds-px-4 template-ds-py-2",
+        sm: "template-ds-h-9 template-ds-rounded-md template-ds-px-3",
+        lg: "template-ds-h-11 template-ds-rounded-md template-ds-px-8",
+        icon: "template-ds-h-10 template-ds-w-10",
       },
     },
     defaultVariants: {
