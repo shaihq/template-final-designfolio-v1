@@ -115,7 +115,7 @@ export const Testimonials = () => {
                 }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
               >
-                <p className="text-gray-400">
+                <p className="dark:text-gray-400 text-gray-600">
                   {visibleTestimonials[currentIndex].content}
                   {!expandedCards.includes(visibleTestimonials[currentIndex].id) && (
                     <button
@@ -136,7 +136,7 @@ export const Testimonials = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 mt-4">
+                      <p className="dark:text-gray-400 text-gray-600 mt-4">
                         {visibleTestimonials[currentIndex].expandedContent}
                         <button
                           onClick={() => toggleExpand(visibleTestimonials[currentIndex].id)}
@@ -152,7 +152,7 @@ export const Testimonials = () => {
                 <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1">
                     <h4 className="font-semibold">{visibleTestimonials[currentIndex].name}</h4>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm dark:text-gray-400 text-gray-600">
                       {visibleTestimonials[currentIndex].role} at {visibleTestimonials[currentIndex].company}
                     </p>
                   </div>
@@ -201,7 +201,7 @@ export const Testimonials = () => {
                 }}
                 className="bg-card border border-card-border p-6 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] transition-shadow duration-300"
               >
-                <p className="text-gray-400">
+                <p className="dark:text-gray-400 text-gray-600">
                   {testimonial.content}
                   {!expandedCards.includes(testimonial.id) && (
                     <button
@@ -222,7 +222,7 @@ export const Testimonials = () => {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="text-gray-400 mt-4">
+                      <p className="dark:text-gray-400 text-gray-600 mt-4">
                         {testimonial.expandedContent}
                         <button
                           onClick={() => toggleExpand(testimonial.id)}
@@ -238,7 +238,7 @@ export const Testimonials = () => {
                 <div className="flex items-center gap-2 mt-4">
                   <div className="flex-1">
                     <h4 className="font-semibold">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">
+                    <p className="text-sm dark:text-gray-400 text-gray-600">
                       {testimonial.role} at {testimonial.company}
                     </p>
                   </div>
