@@ -81,7 +81,7 @@ export const FloatingNav = () => {
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
                       ? "bg-foreground dark:bg-[#2A2D37]" 
-                      : "bg-primary dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
+                      : "bg-[#e5e5e7] dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
@@ -117,7 +117,7 @@ export const FloatingNav = () => {
                   className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
                       ? "bg-foreground dark:bg-[#2A2D37]" 
-                      : "bg-primary dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
+                      : "bg-[#e5e5e7] dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
