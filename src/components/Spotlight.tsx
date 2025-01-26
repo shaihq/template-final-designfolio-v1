@@ -108,7 +108,7 @@ export const Spotlight = () => {
                   <span className="text-sm text-foreground/60">{experience.date}</span>
                 </div>
                 <div className="text-base text-foreground/80">{experience.company}</div>
-                <p className="text-sm text-foreground/40 mt-2">
+                <p className="text-sm text-foreground/60 mt-2">
                   {experience.description}
                   {!expandedCards.includes(index) && (
                     <button
@@ -126,7 +126,7 @@ export const Spotlight = () => {
                   animate={expandedCards.includes(index) ? "show" : "hidden"}
                   className="overflow-hidden"
                 >
-                  <div className="mt-4 text-sm text-foreground/40 whitespace-pre-line">
+                  <div className="mt-4 text-sm text-foreground/60 whitespace-pre-line">
                     {experience.expandedContent}
                     {expandedCards.includes(index) && (
                       <button
