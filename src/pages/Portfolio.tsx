@@ -240,7 +240,7 @@ const Portfolio = () => {
               >
                 <div className="flex justify-between items-start">
                   <div>
-                    <span className="text-white font-medium">{exp.role}</span>
+                    <span className="text-primary-foreground dark:text-white font-medium">{exp.role}</span>
                     <p className="text-sm dark:text-gray-400 text-gray-600">{exp.company}</p>
                     <p className="dark:text-gray-400 text-gray-600 mt-2">{exp.description}</p>
                   </div>
