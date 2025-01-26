@@ -60,7 +60,7 @@ export default {
           foreground: "var(--card-foreground)",
           border: "var(--card-border)",
           dark: "#1d1f27",
-          light: "#f2f2f0"
+          light: "#ffffff"
         },
       },
       borderRadius: {
