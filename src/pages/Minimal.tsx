@@ -9,11 +9,11 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Minimal = () => {
   return (
-    <div className="template-ds-min-h-screen template-ds-bg-background template-ds-text-foreground">
-      <div className="template-ds-fixed template-ds-top-8 template-ds-left-8 template-ds-z-50">
+    <div className="min-h-screen bg-background text-foreground">
+      <div className="fixed top-8 left-8 z-50">
         <ThemeToggle />
       </div>
-      <div className="template-ds-container template-ds-max-w-3xl template-ds-mx-auto template-ds-px-4">
+      <div className="container max-w-3xl mx-auto px-4">
         <section id="hero">
           <Hero />
         </section>

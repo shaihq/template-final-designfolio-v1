@@ -66,33 +66,33 @@ export const FloatingNav = () => {
   return (
     <>
       {/* Desktop Navigation */}
-      <nav className="template-ds-fixed template-ds-left-8 template-ds-top-1/2 template-ds--translate-y-1/2 template-ds-z-50 template-ds-hidden lg:template-ds-block">
-        <div className="template-ds-bg-card dark:template-ds-bg-secondary template-ds-border template-ds-border-card-border dark:template-ds-border-secondary-border template-ds-rounded-xl template-ds-p-3 template-ds-shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
-          <div className="template-ds-flex template-ds-flex-col template-ds-gap-4">
+      <nav className="fixed left-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
+        <div className="bg-card dark:bg-secondary border border-card-border dark:border-secondary-border rounded-xl p-3 shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
+          <div className="flex flex-col gap-4">
             {sections.map(({ id, label, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`template-ds-group template-ds-flex template-ds-items-center template-ds-gap-4 template-ds-transition-all ${
-                  activeSection === id ? "template-ds-opacity-100" : "template-ds-opacity-50 hover:template-ds-opacity-100"
+                className={`group flex items-center gap-4 transition-all ${
+                  activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
                 <div 
-                  className={`template-ds-flex template-ds-items-center template-ds-justify-center template-ds-w-10 template-ds-h-10 template-ds-rounded-full template-ds-transition-colors ${
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
-                      ? "template-ds-bg-foreground dark:template-ds-bg-[#2A2D37]" 
-                      : "template-ds-bg-[#e5e5e7] dark:template-ds-bg-secondary-hover hover:template-ds-bg-primary-hover dark:hover:template-ds-bg-primary-hover"
+                      ? "bg-foreground dark:bg-[#2A2D37]" 
+                      : "bg-[#e5e5e7] dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
-                    className={`template-ds-w-5 template-ds-h-5 ${
+                    className={`w-5 h-5 ${
                       activeSection === id 
-                        ? "template-ds-text-background dark:template-ds-text-white" 
-                        : "template-ds-text-foreground dark:template-ds-text-foreground-dark"
+                        ? "text-background dark:text-white" 
+                        : "text-foreground dark:text-foreground-dark"
                     }`}
                   />
                 </div>
-                <span className="template-ds-text-sm template-ds-opacity-0 group-hover:template-ds-opacity-100 template-ds-transition-opacity template-ds-absolute template-ds-left-full template-ds-pl-4 template-ds-whitespace-nowrap">
+                <span className="text-sm opacity-0 group-hover:opacity-100 transition-opacity absolute left-full pl-4 whitespace-nowrap">
                   {label}
                 </span>
               </button>
@@ -102,29 +102,29 @@ export const FloatingNav = () => {
       </nav>
 
       {/* Mobile and Tablet Navigation */}
-      <nav className="template-ds-fixed template-ds-bottom-8 template-ds-left-1/2 template-ds--translate-x-1/2 template-ds-z-50 lg:template-ds-hidden">
-        <div className="template-ds-bg-card dark:template-ds-bg-secondary template-ds-border template-ds-border-card-border dark:template-ds-border-secondary-border template-ds-rounded-xl template-ds-p-3 template-ds-shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
-          <div className="template-ds-flex template-ds-items-center template-ds-gap-4">
+      <nav className="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 lg:hidden">
+        <div className="bg-card dark:bg-secondary border border-card-border dark:border-secondary-border rounded-xl p-3 shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]">
+          <div className="flex items-center gap-4">
             {mobileSections.map(({ id, icon: Icon }) => (
               <button
                 key={id}
                 onClick={() => scrollToSection(id)}
-                className={`template-ds-group template-ds-flex template-ds-flex-col template-ds-items-center template-ds-transition-all ${
-                  activeSection === id ? "template-ds-opacity-100" : "template-ds-opacity-50 hover:template-ds-opacity-100"
+                className={`group flex flex-col items-center transition-all ${
+                  activeSection === id ? "opacity-100" : "opacity-50 hover:opacity-100"
                 }`}
               >
                 <div 
-                  className={`template-ds-flex template-ds-items-center template-ds-justify-center template-ds-w-10 template-ds-h-10 template-ds-rounded-full template-ds-transition-colors ${
+                  className={`flex items-center justify-center w-10 h-10 rounded-full transition-colors ${
                     activeSection === id 
-                      ? "template-ds-bg-foreground dark:template-ds-bg-[#2A2D37]" 
-                      : "template-ds-bg-[#e5e5e7] dark:template-ds-bg-secondary-hover hover:template-ds-bg-primary-hover dark:hover:template-ds-bg-primary-hover"
+                      ? "bg-foreground dark:bg-[#2A2D37]" 
+                      : "bg-[#e5e5e7] dark:bg-secondary-hover hover:bg-primary-hover dark:hover:bg-primary-hover"
                   }`}
                 >
                   <Icon 
-                    className={`template-ds-w-5 template-ds-h-5 ${
+                    className={`w-5 h-5 ${
                       activeSection === id 
-                        ? "template-ds-text-background dark:template-ds-text-white" 
-                        : "template-ds-text-foreground dark:template-ds-text-foreground-dark"
+                        ? "text-background dark:text-white" 
+                        : "text-foreground dark:text-foreground-dark"
                     }`}
                   />
                 </div>

@@ -8,7 +8,7 @@ export default {
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
   ],
-  prefix: "template-ds-",
+  prefix: "",
   theme: {
     container: {
       center: true,

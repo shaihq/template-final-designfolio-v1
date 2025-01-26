@@ -84,11 +84,11 @@ const Portfolio = () => {
   const scrollSkills = [...skills, ...skills];
 
   return (
-    <div className="template-ds-min-h-screen template-ds-bg-background template-ds-text-foreground template-ds-transition-colors template-ds-duration-300">
-      <header className="template-ds-border-b template-ds-border-secondary-border template-ds-py-6 template-ds-bg-background template-ds-transition-colors template-ds-duration-300">
-        <div className="template-ds-container template-ds-max-w-3xl template-ds-mx-auto template-ds-px-4">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+      <header className="border-b border-secondary-border py-6 bg-background transition-colors duration-300">
+        <div className="container max-w-3xl mx-auto px-4">
           <motion.div 
-            className="template-ds-flex template-ds-items-center template-ds-justify-between"
+            className="flex items-center justify-between"
             initial="hidden"
             animate="visible"
             variants={{
@@ -102,7 +102,7 @@ const Portfolio = () => {
             }}
           >
             <motion.div 
-              className="template-ds-flex template-ds-items-center template-ds-gap-3"
+              className="flex items-center gap-3"
               variants={{
                 hidden: { opacity: 0, y: -50 },
                 visible: { 
@@ -119,14 +119,14 @@ const Portfolio = () => {
               <img
                 src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
                 alt="Profile"
-                className="template-ds-w-10 template-ds-h-10 template-ds-rounded-full"
+                className="w-10 h-10 rounded-full"
               />
               <div>
-                <h2 className="template-ds-text-foreground template-ds-font-medium">Shai</h2>
+                <h2 className="text-foreground font-medium">Shai</h2>
               </div>
             </motion.div>
             <motion.div
-              className="template-ds-flex template-ds-items-center template-ds-gap-3"
+              className="flex items-center gap-3"
               variants={{
                 hidden: { opacity: 0, y: -50 },
                 visible: { 
@@ -141,8 +141,8 @@ const Portfolio = () => {
               }}
             >
               <ThemeToggle />
-              <Button variant="outline" size="sm" className="template-ds-gap-2">
-                <Mail className="template-ds-w-4 template-ds-h-4" />
+              <Button variant="outline" size="sm" className="gap-2">
+                <Mail className="w-4 h-4" />
                 E-mail
               </Button>
             </motion.div>
@@ -150,12 +150,12 @@ const Portfolio = () => {
         </div>
       </header>
       
-      <div className="template-ds-container template-ds-max-w-3xl template-ds-mx-auto template-ds-px-4 template-ds-relative">
-        <div className="template-ds-absolute template-ds-left-0 template-ds-top-0 template-ds-w-px template-ds-h-full template-ds-bg-secondary-border" />
-        <div className="template-ds-absolute template-ds-right-0 template-ds-top-0 template-ds-w-px template-ds-h-full template-ds-bg-secondary-border" />
+      <div className="container max-w-3xl mx-auto px-4 relative">
+        <div className="absolute left-0 top-0 w-px h-full bg-secondary-border" />
+        <div className="absolute right-0 top-0 w-px h-full bg-secondary-border" />
         
         {/* Hero Section with Text Reveal */}
-        <section className="template-ds-py-12 template-ds-border-b template-ds-border-secondary-border template-ds-overflow-hidden">
+        <section className="py-12 border-b border-secondary-border overflow-hidden">
           <motion.div
             initial="initial"
             animate="animate"
@@ -168,25 +168,25 @@ const Portfolio = () => {
             }}
           >
             <motion.h1 
-              className="template-ds-text-4xl template-ds-font-bold template-ds-mb-4"
+              className="text-4xl font-bold mb-4"
               variants={textReveal}
             >
               Product Designer with over 7+ years of experience.{" "}
-              <span className="template-ds-dark:text-gray-400 template-ds-text-gray-600">
+              <span className="dark:text-gray-400 text-gray-600">
                 A unicorn designer who can both design and code.
               </span>
             </motion.h1>
             <motion.p 
-              className="template-ds-dark:text-gray-400 template-ds-text-gray-600 template-ds-mb-6"
+              className="dark:text-gray-400 text-gray-600 mb-6"
               variants={textReveal}
             >
               Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
             </motion.p>
 
             {/* Skills Infinite Scroll */}
-            <div className="template-ds-w-full template-ds-overflow-hidden template-ds-relative template-ds-py-4 template-ds-before:template-ds-absolute template-ds-before:left-0 template-ds-before:top-0 template-ds-before:z-10 template-ds-before:w-20 template-ds-before:h-full template-ds-before:bg-gradient-to-r template-ds-before:from-background template-ds-before:to-transparent template-ds-after:template-ds-absolute template-ds-after:right-0 template-ds-after:top-0 template-ds-after:z-10 template-ds-after:w-20 template-ds-after:h-full template-ds-after:bg-gradient-to-l template-ds-after:from-background template-ds-after:to-transparent">
+            <div className="w-full overflow-hidden relative py-4 before:absolute before:left-0 before:top-0 before:z-10 before:w-20 before:h-full before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:w-20 after:h-full after:bg-gradient-to-l after:from-background after:to-transparent">
               <motion.div 
-                className="template-ds-flex template-ds-gap-4 template-ds-whitespace-nowrap"
+                className="flex gap-4 whitespace-nowrap"
                 animate={{ x: ["0%", "-50%"] }}
                 transition={{
                   x: {
@@ -200,7 +200,7 @@ const Portfolio = () => {
                 {scrollSkills.map((skill, index) => (
                   <span
                     key={index}
-                    className="template-ds-bg-card template-ds-px-4 template-ds-py-2 template-ds-rounded-full template-ds-text-sm"
+                    className="bg-card px-4 py-2 rounded-full text-sm"
                   >
                     {skill}
                   </span>
@@ -215,10 +215,10 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="template-ds-py-12 template-ds-border-b template-ds-border-secondary-border"
+          className="py-12 border-b border-secondary-border"
         >
-          <h3 className="template-ds-text-2xl template-ds-font-bold template-ds-mb-6">Experience</h3>
-          <div className="template-ds-space-y-4">
+          <h3 className="text-2xl font-bold mb-6">Experience</h3>
+          <div className="space-y-4">
             {[
               {
                 role: "Senior Product Designer",
@@ -236,15 +236,15 @@ const Portfolio = () => {
               <motion.div
                 key={index}
                 variants={item}
-                className="template-ds-bg-card template-ds-border template-ds-border-card-border template-ds-p-6 template-ds-rounded-lg template-ds-hover:bg-card/80 template-ds-transition-colors"
+                className="bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
-                <div className="template-ds-flex template-ds-justify-between template-ds-items-start">
+                <div className="flex justify-between items-start">
                   <div>
-                    <span className="template-ds-text-primary-foreground template-ds-dark:text-white template-ds-font-medium">{exp.role}</span>
-                    <p className="template-ds-text-sm template-ds-dark:text-gray-400 template-ds-text-gray-600">{exp.company}</p>
-                    <p className="template-ds-dark:text-gray-400 template-ds-text-gray-600 template-ds-mt-2">{exp.description}</p>
+                    <span className="text-primary-foreground dark:text-white font-medium">{exp.role}</span>
+                    <p className="text-sm dark:text-gray-400 text-gray-600">{exp.company}</p>
+                    <p className="dark:text-gray-400 text-gray-600 mt-2">{exp.description}</p>
                   </div>
-                  <span className="template-ds-text-sm template-ds-dark:text-gray-400 template-ds-text-gray-600">{exp.period}</span>
+                  <span className="text-sm dark:text-gray-400 text-gray-600">{exp.period}</span>
                 </div>
               </motion.div>
             ))}
@@ -255,22 +255,22 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="template-ds-py-12 template-ds-border-b template-ds-border-secondary-border"
+          className="py-12 border-b border-secondary-border"
         >
-          <h3 className="template-ds-text-2xl template-ds-font-bold template-ds-mb-8">Tools I Use</h3>
-          <div className="template-ds-grid template-ds-grid-cols-2 template-ds-gap-4">
+          <h3 className="text-2xl font-bold mb-8">Tools I Use</h3>
+          <div className="grid grid-cols-2 gap-4">
             {tools.map((tool, index) => (
               <motion.a
                 key={index}
                 href={tool.link}
                 variants={item}
-                className="template-ds-group template-ds-bg-card template-ds-border template-ds-border-card-border template-ds-p-6 template-ds-rounded-lg template-ds-hover:bg-card/80 template-ds-transition-colors"
+                className="group bg-card border border-card-border p-6 rounded-lg hover:bg-card/80 transition-colors"
               >
-                <div className="template-ds-flex template-ds-items-center template-ds-gap-3">
-                  <div className="template-ds-p-2 template-ds-bg-secondary template-ds-rounded-lg">
-                    <tool.icon className="template-ds-w-5 template-ds-h-5" />
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-secondary rounded-lg">
+                    <tool.icon className="w-5 h-5" />
                   </div>
-                  <span className="template-ds-text-sm">{tool.name}</span>
+                  <span className="text-sm">{tool.name}</span>
                 </div>
               </motion.a>
             ))}
@@ -282,10 +282,10 @@ const Portfolio = () => {
           variants={container}
           initial="hidden"
           animate="show"
-          className="template-ds-py-12 template-ds-border-b template-ds-border-secondary-border"
+          className="py-12 border-b border-secondary-border"
         >
-          <h3 className="template-ds-text-3xl template-ds-font-bold template-ds-mb-12">Featured Projects</h3>
-          <div className="template-ds-flex template-ds-flex-col template-ds-gap-6">
+          <h3 className="text-3xl font-bold mb-12">Featured Projects</h3>
+          <div className="flex flex-col gap-6">
             {[
               {
                 title: "MyCaptain Course Platform",
@@ -318,37 +318,37 @@ const Portfolio = () => {
                   variants={item}
                   ref={cardRef}
                   onMouseMove={handleMouseMove}
-                  className="template-ds-group template-ds-bg-card template-ds-border template-ds-border-card-border template-ds-rounded-lg template-ds-overflow-hidden template-ds-hover:bg-card/80 template-ds-transition-colors template-ds-relative"
+                  className="group bg-card border border-card-border rounded-lg overflow-hidden hover:bg-card/80 transition-colors relative"
                 >
-                  <div className="template-ds-flex template-ds-flex-col template-ds-md:flex-row">
-                    <div className="template-ds-w-[320px] template-ds-h-[240px] template-ds-shrink-0 template-ds-overflow-hidden template-ds-bg-secondary/50">
+                  <div className="flex flex-col md:flex-row">
+                    <div className="w-[320px] h-[240px] shrink-0 overflow-hidden bg-secondary/50">
                       <img
                         src={project.image}
                         alt={project.title}
-                        className="template-ds-w-full template-ds-h-full template-ds-object-cover template-ds-group-hover:scale-105 template-ds-transition-transform template-ds-duration-300"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                     </div>
-                    <div className="template-ds-p-8 template-ds-flex template-ds-flex-col template-ds-justify-between template-ds-flex-grow">
+                    <div className="p-8 flex flex-col justify-between flex-grow">
                       <div>
-                        <h4 className="template-ds-text-2xl template-ds-font-semibold template-ds-mb-3">{project.title}</h4>
-                        <p className="template-ds-dark:text-gray-400 template-ds-text-gray-600">{project.description}</p>
+                        <h4 className="text-2xl font-semibold mb-3">{project.title}</h4>
+                        <p className="dark:text-gray-400 text-gray-600">{project.description}</p>
                       </div>
                       <Button 
                         variant="outline"
                         size="sm"
-                        className="template-ds-self-start template-ds-mt-6 template-ds-group/btn template-ds-relative template-ds-overflow-hidden"
+                        className="self-start mt-6 group/btn relative overflow-hidden"
                         asChild
                       >
-                        <a href={project.link} className="template-ds-relative template-ds-z-10">
-                          <span className="template-ds-absolute template-ds-inset-0 template-ds-group-hover/btn:bg-white/10 template-ds-transition-colors template-ds-duration-300" />
+                        <a href={project.link} className="relative z-10">
+                          <span className="absolute inset-0 group-hover/btn:bg-white/10 transition-colors duration-300" />
                           View Project
-                          <ArrowRight className="template-ds-w-4 template-ds-h-4 template-ds-ml-2" />
+                          <ArrowRight className="w-4 h-4 ml-2" />
                         </a>
                       </Button>
                     </div>
                   </div>
                   <div
-                    className="template-ds-pointer-events-none template-ds-absolute template-ds--inset-px template-ds-opacity-0 template-ds-group-hover:opacity-100 template-ds-transition-opacity template-ds-duration-300"
+                    className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                     style={{
                       background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
                     }}

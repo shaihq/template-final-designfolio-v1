@@ -38,26 +38,26 @@ export const SideProjects = () => {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="template-ds-py-16">
-      <h2 className="template-ds-text-2xl template-ds-font-bold template-ds-mb-8">Side Projects</h2>
+    <section className="py-16">
+      <h2 className="text-2xl font-bold mb-8">Side Projects</h2>
       <motion.div
         ref={ref}
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="template-ds-space-y-4"
+        className="space-y-4"
       >
         {projects.map((project, index) => (
           <motion.div
             key={index}
             variants={item}
-            className="template-ds-bg-card template-ds-p-4 template-ds-rounded-lg template-ds-flex template-ds-items-center template-ds-justify-between hover:template-ds-bg-card/80 template-ds-transition-colors template-ds-cursor-pointer template-ds-shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
+            className="bg-card p-4 rounded-lg flex items-center justify-between hover:bg-card/80 transition-colors cursor-pointer shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
           >
-            <div className="template-ds-flex template-ds-items-center template-ds-gap-3">
-              <span className="template-ds-text-2xl">{project.icon}</span>
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">{project.icon}</span>
               <span>{project.name}</span>
             </div>
-            <span className="template-ds-text-gray-400">→</span>
+            <span className="text-gray-400">→</span>
           </motion.div>
         ))}
       </motion.div>

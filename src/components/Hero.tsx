@@ -22,14 +22,14 @@ export const Hero = () => {
   const scrollSkills = [...skills, ...skills];
 
   return (
-    <section className="template-ds-flex template-ds-flex-col template-ds-items-center template-ds-text-center template-ds-py-12">
+    <section className="flex flex-col items-center text-center py-12">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <Avatar className="template-ds-w-24 template-ds-h-24 template-ds-mb-6 template-ds-relative template-ds-rounded-2xl">
-          <div className="template-ds-relative template-ds-w-full template-ds-h-full">
+        <Avatar className="w-24 h-24 mb-6 relative rounded-2xl">
+          <div className="relative w-full h-full">
             <AnimatePresence mode="wait">
               {!isLoaded && (
                 <motion.div
@@ -37,7 +37,7 @@ export const Hero = () => {
                   initial={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.2 }}
-                  className="template-ds-absolute template-ds-inset-0 template-ds-bg-secondary/50 template-ds-animate-pulse template-ds-rounded-2xl"
+                  className="absolute inset-0 bg-secondary/50 animate-pulse rounded-2xl"
                 />
               )}
             </AnimatePresence>
@@ -47,7 +47,7 @@ export const Hero = () => {
               transition={{ duration: 0.2 }}
               src="/lovable-uploads/328f31e4-c27c-4115-b548-fe916713e90a.png"
               alt="Profile"
-              className="template-ds-rounded-2xl template-ds-w-full template-ds-h-full template-ds-object-cover"
+              className="rounded-2xl w-full h-full object-cover"
               loading="eager"
               decoding="async"
               onLoad={() => setIsLoaded(true)}
@@ -61,7 +61,7 @@ export const Hero = () => {
       </motion.div>
       
       <motion.h1 
-        className="template-ds-text-4xl template-ds-font-bold template-ds-mb-4"
+        className="text-4xl font-bold mb-4"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
@@ -70,7 +70,7 @@ export const Hero = () => {
       </motion.h1>
       
       <motion.p 
-        className="dark:template-ds-text-gray-400 template-ds-text-gray-600 template-ds-max-w-xl template-ds-mb-8"
+        className="dark:text-gray-400 text-gray-600 max-w-xl mb-8"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.6 }}
@@ -78,9 +78,10 @@ export const Hero = () => {
         Product Designer with over 7+ years of experience. A unicorn designer who can both design and code. Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
       </motion.p>
       
-      <div className="template-ds-w-full template-ds-overflow-hidden template-ds-relative template-ds-py-4 template-ds-before:template-ds-absolute template-ds-before:left-0 template-ds-before:top-0 template-ds-before:z-10 template-ds-before:w-20 template-ds-before:h-full template-ds-before:bg-gradient-to-r template-ds-before:from-background template-ds-before:to-transparent template-ds-after:template-ds-absolute template-ds-after:right-0 template-ds-after:top-0 template-ds-after:z-10 template-ds-after:w-20 template-ds-after:h-full template-ds-after:bg-gradient-to-l template-ds-after:from-background template-ds-after:to-transparent">
+      {/* Skills Infinite Scroll */}
+      <div className="w-full overflow-hidden relative py-4 before:absolute before:left-0 before:top-0 before:z-10 before:w-20 before:h-full before:bg-gradient-to-r before:from-background before:to-transparent after:absolute after:right-0 after:top-0 after:z-10 after:w-20 after:h-full after:bg-gradient-to-l after:from-background after:to-transparent">
         <motion.div 
-          className="template-ds-flex template-ds-gap-4 template-ds-whitespace-nowrap"
+          className="flex gap-4 whitespace-nowrap"
           animate={{ x: ["0%", "-50%"] }}
           transition={{
             x: {
@@ -94,7 +95,7 @@ export const Hero = () => {
           {scrollSkills.map((skill, index) => (
             <span
               key={index}
-              className="template-ds-bg-card template-ds-px-4 template-ds-py-2 template-ds-rounded-full template-ds-text-sm"
+              className="bg-card px-4 py-2 rounded-full text-sm"
             >
               {skill}
             </span>
