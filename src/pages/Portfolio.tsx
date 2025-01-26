@@ -122,7 +122,7 @@ const Portfolio = () => {
                 className="w-10 h-10 rounded-full"
               />
               <div>
-                <h2 className="dark:text-white text-primary font-medium">Shai</h2>
+                <h2 className="text-foreground font-medium">Shai</h2>
               </div>
             </motion.div>
             <motion.div
