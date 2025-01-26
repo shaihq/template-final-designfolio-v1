@@ -54,7 +54,7 @@ export const Hero = () => {
         </div>
       </Avatar>
       <h1 className="text-4xl font-bold mb-4">Hey there! I'm Shai</h1>
-      <p className="text-gray-400 max-w-xl mb-8">
+      <p className="dark:text-gray-400 text-gray-600 max-w-xl mb-8">
         Product Designer with over 7+ years of experience. A unicorn designer who can both design and code. Designed experiences in sports, medtech, gig economy, fintech, and designed gamified learning experiences.
       </p>
       

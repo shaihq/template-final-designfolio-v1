@@ -5,7 +5,7 @@ export const Newsletter = () => {
   return (
     <section className="py-16">
       <h2 className="text-2xl font-bold mb-8">Newsletter</h2>
-      <p className="text-gray-400 mb-6">
+      <p className="dark:text-gray-400 text-gray-600 mb-6">
         I share clean dev tips once a month & I would love to share them with you. Give me a
         try - No spam, I promise.
       </p>
