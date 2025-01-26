@@ -83,39 +83,39 @@ export const Spotlight = () => {
   };
 
   return (
-    <section className="py-16">
-      <h2 className="text-2xl font-bold mb-8">Work Experience</h2>
+    <section className="template-ds-py-16">
+      <h2 className="template-ds-text-2xl template-ds-font-bold template-ds-mb-8">Work Experience</h2>
       <motion.div
         ref={ref}
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="space-y-6"
+        className="template-ds-space-y-6"
       >
         {experiences.map((experience, index) => (
           <motion.div
             key={index}
             variants={item}
-            className="group bg-card p-6 rounded-lg hover:bg-card/80 transition-colors relative overflow-hidden shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
+            className="template-ds-group template-ds-bg-card template-ds-p-6 template-ds-rounded-lg hover:template-ds-bg-card/80 template-ds-transition-colors template-ds-relative template-ds-overflow-hidden template-ds-shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
           >
-            <div className="absolute inset-0 overflow-hidden">
-              <div className="absolute inset-0 group-hover:animate-shimmer bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full" />
+            <div className="template-ds-absolute template-ds-inset-0 template-ds-overflow-hidden">
+              <div className="template-ds-absolute template-ds-inset-0 group-hover:template-ds-animate-shimmer template-ds-bg-gradient-to-r template-ds-from-transparent template-ds-via-white/10 template-ds-to-transparent template-ds--translate-x-full" />
             </div>
-            <div className="relative z-10">
-              <div className="flex flex-col gap-1">
-                <div className="flex justify-between items-start">
-                  <h3 className="font-semibold text-lg">{experience.title}</h3>
-                  <span className="text-sm text-foreground/60">{experience.date}</span>
+            <div className="template-ds-relative template-ds-z-10">
+              <div className="template-ds-flex template-ds-flex-col template-ds-gap-1">
+                <div className="template-ds-flex template-ds-justify-between template-ds-items-start">
+                  <h3 className="template-ds-font-semibold template-ds-text-lg">{experience.title}</h3>
+                  <span className="template-ds-text-sm template-ds-text-foreground/60">{experience.date}</span>
                 </div>
-                <div className="text-base text-foreground/80">{experience.company}</div>
-                <p className="text-sm text-foreground/60 mt-2">
+                <div className="template-ds-text-base template-ds-text-foreground/80">{experience.company}</div>
+                <p className="template-ds-text-sm template-ds-text-foreground/60 template-ds-mt-2">
                   {experience.description}
                   {!expandedCards.includes(index) && (
                     <button
                       onClick={() => toggleExpand(index)}
-                      className="ml-1 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                      className="template-ds-ml-1 template-ds-text-foreground hover:template-ds-text-foreground/80 template-ds-inline-flex template-ds-items-center template-ds-gap-1"
                     >
-                      View More<ChevronDown className="h-3 w-3" />
+                      View More<ChevronDown className="template-ds-h-3 template-ds-w-3" />
                     </button>
                   )}
                 </p>
@@ -124,16 +124,16 @@ export const Spotlight = () => {
                   variants={expandContent}
                   initial="hidden"
                   animate={expandedCards.includes(index) ? "show" : "hidden"}
-                  className="overflow-hidden"
+                  className="template-ds-overflow-hidden"
                 >
-                  <div className="mt-4 text-sm text-foreground/60 whitespace-pre-line">
+                  <div className="template-ds-mt-4 template-ds-text-sm template-ds-text-foreground/60 template-ds-whitespace-pre-line">
                     {experience.expandedContent}
                     {expandedCards.includes(index) && (
                       <button
                         onClick={() => toggleExpand(index)}
-                        className="ml-1 block mt-2 text-foreground hover:text-foreground/80 inline-flex items-center gap-1"
+                        className="template-ds-ml-1 template-ds-block template-ds-mt-2 template-ds-text-foreground hover:template-ds-text-foreground/80 template-ds-inline-flex template-ds-items-center template-ds-gap-1"
                       >
-                        Show Less<ChevronUp className="h-3 w-3" />
+                        Show Less<ChevronUp className="template-ds-h-3 template-ds-w-3" />
                       </button>
                     )}
                   </div>

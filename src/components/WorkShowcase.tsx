@@ -51,7 +51,7 @@ export const WorkShowcase = () => {
     const [isLoaded, setIsLoaded] = useState(false);
 
     return (
-      <div className="relative w-full h-full">
+      <div className="template-ds-relative template-ds-w-full template-ds-h-full">
         <AnimatePresence mode="wait">
           {!isLoaded && (
             <motion.div
@@ -59,7 +59,7 @@ export const WorkShowcase = () => {
               initial={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.4 }}
-              className="absolute inset-0 bg-secondary/50"
+              className="template-ds-absolute template-ds-inset-0 template-ds-bg-secondary/50"
             />
           )}
         </AnimatePresence>
@@ -69,7 +69,7 @@ export const WorkShowcase = () => {
           transition={{ duration: 0.4 }}
           src={src}
           alt={alt}
-          className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300"
+          className="template-ds-w-full template-ds-h-full template-ds-object-cover template-ds-object-center template-ds-group-hover:template-ds-scale-105 template-ds-transition-transform template-ds-duration-300"
           loading="eager"
           decoding="async"
           onLoad={() => setIsLoaded(true)}
@@ -96,28 +96,28 @@ export const WorkShowcase = () => {
         variants={item}
         ref={cardRef}
         onMouseMove={handleMouseMove}
-        className="group rounded-3xl bg-card overflow-hidden relative shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
+        className="template-ds-group template-ds-rounded-3xl template-ds-bg-card template-ds-overflow-hidden template-ds-relative template-ds-shadow-[0px_0px_16.4px_0px_rgba(0,0,0,0.02)]"
       >
         <div
-          className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          className="template-ds-pointer-events-none template-ds-absolute template-ds--inset-px template-ds-opacity-0 template-ds-group-hover:template-ds-opacity-100 template-ds-transition-opacity template-ds-duration-300"
           style={{
             background: `radial-gradient(600px circle at ${mousePosition.x}px ${mousePosition.y}px, rgba(255,255,255,.1), transparent 40%)`,
           }}
         />
-        <div className="aspect-[4/3] overflow-hidden bg-secondary/50 relative">
+        <div className="template-ds-aspect-[4/3] template-ds-overflow-hidden template-ds-bg-secondary/50 template-ds-relative">
           <ImageWithPreload src={project.image} alt={project.title} />
           <a
             href={project.link}
-            className="absolute top-6 right-6 size-14 rounded-full bg-tertiary flex items-center justify-center opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-300 hover:bg-tertiary-hover"
+            className="template-ds-absolute template-ds-top-6 template-ds-right-6 template-ds-size-14 template-ds-rounded-full template-ds-bg-tertiary template-ds-flex template-ds-items-center template-ds-justify-center template-ds-opacity-0 template-ds-scale-75 template-ds-group-hover:template-ds-opacity-100 template-ds-group-hover:template-ds-scale-100 template-ds-transition-all template-ds-duration-300 hover:template-ds-bg-tertiary-hover"
           >
-            <ArrowUpRight className="size-6 text-white" />
+            <ArrowUpRight className="template-ds-size-6 template-ds-text-white" />
           </a>
         </div>
-        <div className="p-8 pb-10">
-          <h3 className="text-2xl font-semibold mb-3 leading-tight">
+        <div className="template-ds-p-8 template-ds-pb-10">
+          <h3 className="template-ds-text-2xl template-ds-font-semibold template-ds-mb-3">
             {project.title}
           </h3>
-          <p className="text-gray-400 line-clamp-2">
+          <p className="template-ds-text-gray-400 template-ds-line-clamp-2">
             {project.description}
           </p>
         </div>
@@ -126,14 +126,14 @@ export const WorkShowcase = () => {
   };
 
   return (
-    <section className="pt-0 pb-16">
-      <h2 className="text-2xl font-bold mb-8">Featured Projects</h2>
+    <section className="template-ds-pt-0 template-ds-pb-16">
+      <h2 className="template-ds-text-2xl template-ds-font-bold template-ds-mb-8">Featured Projects</h2>
       <motion.div
         ref={ref}
         variants={container}
         initial="hidden"
         animate={isInView ? "show" : "hidden"}
-        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+        className="template-ds-grid template-ds-grid-cols-1 md:template-ds-grid-cols-2 template-ds-gap-6"
       >
         {projects.map((project, index) => (
           <ProjectCard key={index} project={project} index={index} />
