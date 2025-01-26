@@ -105,15 +105,15 @@ export const Testimonials = () => {
                 animate={{ 
                   scale: 1, 
                   opacity: 1,
-                  rotate: 2 // Default tilt for mobile
+                  rotate: 2
                 }}
                 exit={{ scale: 0.8, opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 whileHover={{ 
-                  rotate: 4, // Slightly more tilt on hover
+                  rotate: 4,
                   transition: { duration: 0.2 }
                 }}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg"
+                className="bg-card border border-card-border p-6 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)]"
               >
                 <p className="text-gray-400">
                   {visibleTestimonials[currentIndex].content}
@@ -187,11 +187,11 @@ export const Testimonials = () => {
                 animate={{ 
                   opacity: 1, 
                   y: 0,
-                  rotate: index % 2 === 0 ? 2 : -2 // Default alternating tilt
+                  rotate: index % 2 === 0 ? 2 : -2
                 }}
                 exit={{ opacity: 0, y: -20 }}
                 whileHover={{ 
-                  rotate: index % 2 === 0 ? 4 : -4, // Slightly more tilt on hover
+                  rotate: index % 2 === 0 ? 4 : -4,
                   transition: { duration: 0.2 }
                 }}
                 transition={{ 
@@ -199,7 +199,7 @@ export const Testimonials = () => {
                   delay: index * 0.1,
                   ease: "easeOut"
                 }}
-                className="bg-card border border-card-border p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+                className="bg-card border border-card-border p-6 rounded-lg shadow-[0_2px_8px_rgba(0,0,0,0.04)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.06)] transition-shadow duration-300"
               >
                 <p className="text-gray-400">
                   {testimonial.content}
