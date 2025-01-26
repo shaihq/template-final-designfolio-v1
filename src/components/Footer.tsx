@@ -24,7 +24,7 @@ export const Footer = () => {
   };
 
   return (
-    <footer className="py-16 border-t border-gray-800">
+    <footer className="py-16 border-t border-secondary-border">
       <div className="container max-w-3xl mx-auto px-4">
         <motion.div 
           ref={ref}
