@@ -1,3 +1,4 @@
+
 @import './styles/theme.css';
 @tailwind base;
 @tailwind components;
@@ -45,3 +46,54 @@
     @apply bg-background text-foreground transition-colors duration-300;
   }
 }
+
+/* Starry background animations */
+.stars-small,
+.stars-medium,
+.stars-large {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.stars-small {
+  box-shadow: 
+    1px 1px white,
+    2px 4px white,
+    4px 8px white,
+    8px 16px white,
+    16px 32px white,
+    32px 64px white;
+  animation: twinkle 4s infinite;
+}
+
+.stars-medium {
+  box-shadow: 
+    4px 4px white,
+    8px 8px white,
+    12px 12px white,
+    16px 16px white,
+    20px 20px white,
+    24px 24px white;
+  animation: twinkle 6s infinite 1s;
+}
+
+.stars-large {
+  box-shadow: 
+    6px 6px white,
+    12px 12px white,
+    18px 18px white,
+    24px 24px white,
+    30px 30px white,
+    36px 36px white;
+  animation: twinkle 8s infinite 2s;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+

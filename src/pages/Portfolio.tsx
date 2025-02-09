@@ -84,7 +84,12 @@ const Portfolio = () => {
   const scrollSkills = [...skills, ...skills];
 
   return (
-    <div className="min-h-screen bg-background text-foreground transition-colors duration-300">
+    <div className="min-h-screen bg-background text-foreground transition-colors duration-300 relative overflow-hidden">
+      <div className="absolute inset-0 dark:block hidden">
+        <div className="stars-small"></div>
+        <div className="stars-medium"></div>
+        <div className="stars-large"></div>
+      </div>
       <header className="border-b border-secondary-border py-6 bg-background transition-colors duration-300">
         <div className="container max-w-3xl mx-auto px-4">
           <motion.div 
